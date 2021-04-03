@@ -4,7 +4,7 @@
 
 First Clone the Repo
 
-> git clone github.com/thinkbots-dcrust/web.git
+> git clone github.com/iic-dcrust/web.git
 
 Install Node Modules
 
