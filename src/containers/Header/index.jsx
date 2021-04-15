@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import {MainLogo} from "components"
 
 const Header = () => {
     return (
         <Main>
             <Container>
-            <Logo src='https://www.edufever.com/wp-content/uploads/2016/12/dcrust-logo.jpg'/>
+            <MainLogo />
             <Name>Institute Innovation Cell</Name>
             </Container>
             <Nav>
@@ -36,9 +37,7 @@ border-bottom: 1px solid rgb(232, 232, 232);
 const Name=styled.h1`
 font-size:26px;
 `
-const Logo =styled.img`
-height:45px;
-`
+
 const Container =styled.div`
 display:flex;
 margin-left:30px;
