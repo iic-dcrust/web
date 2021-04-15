@@ -1,3 +1,4 @@
+import { getDeviceType } from 'helpers'
 import React from 'react'
 import styled from 'styled-components'
 import Links from './Links/Links'
@@ -21,7 +22,7 @@ export default Footer
 
 const Container=styled.div`
 background-color:#040016;
-padding:60px;
+padding:${getDeviceType()==='mobile'?'30px':'60px'};
 display:flex;
 justify-content:space-between;
 `
@@ -29,10 +30,12 @@ const Box = styled.div`
 `
 const Contact = styled.div`
 color:gray;
+font-size:${getDeviceType()==='mobile'?'13px':''};
 `
 
 const Logo = styled.img`
-margin-bottom:60px;
+margin-bottom:${getDeviceType()==='mobile'?'40px':'60px'};
+width:${getDeviceType()==='mobile'?'65px':''};
 `
 const ContactHead= styled.h4`
 text-decoration:underline;

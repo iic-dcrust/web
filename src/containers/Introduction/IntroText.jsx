@@ -1,3 +1,4 @@
+import { getDeviceType } from 'helpers'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -18,15 +19,16 @@ padding-bottom:50px;`
 
 const Head=styled.h2`
 text-align:center;
-font-size:27px;
+font-size:${getDeviceType()==='mobile'?'22px':'27px'};
 color:#0e95d4;
 margin-bottom:20px;
 `
 const Text=styled.p`
 text-align:justify;
-margin-bottom:25px;
+margin-bottom:${getDeviceType()==='mobile'?'0':'25px'};
+padding:${getDeviceType()==='mobile'?'20px':''};
 line-height:1.5;
-font-size:18px;
+font-size:${getDeviceType()==='mobile'?'15px':'18px'};
 color:#242020;
 font-weight:400;
 `

@@ -1,3 +1,4 @@
+import { getDeviceType } from 'helpers'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {imageArray} from './SliderData'
@@ -26,9 +27,7 @@ const Slider = () => {
             <Button onClick={prev}></Button>
             <Button onClick={next} style={{right:0}}></Button>
             <SliderBox>
-            
                 <Slide alt='' src={imageArray[selected].image}></Slide>
-     
             </SliderBox>
        </Container>
     )
@@ -37,10 +36,11 @@ const Slider = () => {
 export default Slider
 
 const Container = styled.div`
+margin:${getDeviceType()==='mobile'?'30px 0':''};
 position:relative;
 display:flex;
 overflow:hidden;
-height:400px;
+height:${getDeviceType()==='mobile'?'110px':'400px'};
 padding-bottom:70px;
 
 `
@@ -61,10 +61,10 @@ background:transparent;
 
 const Slide=styled.img`
 width:100%;
-height:400px;
+height:${getDeviceType()==='mobile'?'180px':'400px'};
 transition-duration:1s ease;
 
 `
 const SliderBox = styled.div`
-width:75vw;
+width:${getDeviceType()==='mobile'?'100%':'75vw'};;
 `

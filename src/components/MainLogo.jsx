@@ -6,4 +6,5 @@ export default function MainLogo() {
 
 const Logo =styled.img`
 height:45px;
+align-self:center;
 `

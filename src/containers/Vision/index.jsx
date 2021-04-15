@@ -1,3 +1,4 @@
+import { getDeviceType } from 'helpers'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -25,23 +26,26 @@ padding:10vh 10vw;
 `
 const Head =styled.h2`
 color:#2e2c2c;
-font-size:32px;
+font-size:${getDeviceType()==='mobile'?'28px':'32px'};
 font-weight:600;
-margin-bottom:70px;
+margin-bottom:${getDeviceType()==='mobile'?'50px':'70px'};
 text-decoration:underline;
 text-decoration-color:#a09e9e;
 text-underline-offset:10px;
+text-align:${getDeviceType()==='mobile'?'center':''};
 `
 
 const Box = styled.div``
 
 const Content = styled.div`
 display:flex;
+flex-direction:${getDeviceType()==='mobile'?'column':'row'};
 align-items:center;
 justify-content:space-between;
 `
 const Text=styled.p`
-font-size:18px;
+font-size:${getDeviceType()==='mobile'?'15px':'18px'};
+padding-bottom:${getDeviceType()==='mobile'?'20px':''};
 color:#2e2c2c;
 font-weight:400;
 `
@@ -51,5 +55,5 @@ text-align:justify;
 `
 const Logo = styled.img`
 height:max-content;
-width:max-content;
+width:${getDeviceType()==='mobile'?'100%':'max-content'};
 `

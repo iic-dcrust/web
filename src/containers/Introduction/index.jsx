@@ -1,3 +1,4 @@
+import { getDeviceType } from 'helpers'
 import React from 'react'
 import styled from 'styled-components'
 import IntroText from './IntroText'
@@ -16,7 +17,7 @@ const Introduction = () => {
 export default Introduction;
 
 const Container = styled.div`
-width:75vw;
+width:${getDeviceType()==='mobile'?'100vw':'75vw'};;
 margin:0 auto;
 padding-top:65px;
 `
