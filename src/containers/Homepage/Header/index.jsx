@@ -7,8 +7,14 @@ import { Drawer, IconButton } from "@material-ui/core";
 import DrawerStructure from "./drawer";
 import { useHistory } from "react-router-dom";
 import LoginModal from "./LoginModal";
+import { useStateValue } from "helpers/StateProvider";
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [{ user }, dispatch] = useStateValue();
+  if (user) {
+    setIsLoggedIn(true);
+  }
   const [open, setOpen] = useState(false);
   const history = useHistory();
   const toggleDrawer = () => {
@@ -17,7 +23,14 @@ const Header = () => {
   const [login, setLogin] = useState(false);
 
   const handleOpenLogin = () => {
-    setLogin(true);
+    if (isLoggedIn) {
+      dispatch({
+        type: "SET_USER",
+        user: null,
+      });
+    } else {
+      setLogin(true);
+    }
   };
 
   const handleCloseLogin = () => {
@@ -29,7 +42,8 @@ const Header = () => {
       case "home":
         history.push("/home");
         break;
-      case "login":
+      case "faq":
+        history.push("/faq");
         break;
       default:
         history.push("/home");
@@ -45,9 +59,11 @@ const Header = () => {
         <NavItem onClick={() => handleChange("home")}>Home</NavItem>
         <NavItem>Events</NavItem>
         <NavItem>Blogs</NavItem>
-        <NavItem>FAQ's</NavItem>
+        <NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
         <NavItem>Our Team</NavItem>
-        <NavButton onClick={handleOpenLogin}>Login</NavButton>
+        <NavButton onClick={handleOpenLogin}>
+          {isLoggedIn ? "Logout" : "Login"}
+        </NavButton>
       </Nav>
       <LoginModal login={login} handleCloseLogin={handleCloseLogin} />
       <DrawerIcon>

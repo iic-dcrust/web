@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 
 import Homepage from "pages/Homepage";
-import { Header, Footer } from "containers";
-import Users from "pages/Login";
+import { Header, Footer } from "containers/Homepage";
+import FAQ from "containers/FAQ";
 
 export default function App() {
   return (
@@ -19,10 +19,9 @@ export default function App() {
         <Route exact path="/home">
           <Homepage />
         </Route>
-        <Route path="/users">
-          <Users />
+        <Route path="/faq">
+          <FAQ />
         </Route>
-        <Route path="/register">Register</Route>
       </Switch>
       <Footer />
     </Router>

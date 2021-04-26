@@ -1,4 +1,4 @@
-import { Functions, Introduction, Vision } from "containers";
+import { Functions, Introduction, Vision } from "containers/Homepage";
 
 import styled from "styled-components";
 
