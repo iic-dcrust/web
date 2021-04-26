@@ -1,23 +1,27 @@
-import { getDeviceType } from 'helpers'
-import React from 'react'
-import styled from 'styled-components'
-import IntroText from './IntroText'
-import Slider from './Slider'
+import { getDeviceType } from "helpers";
+import React from "react";
+import styled from "styled-components";
+import IntroText from "./IntroText";
+import { imageArray } from "./SliderData";
+import SwiftSlider from "react-swift-slider";
 
 const Introduction = () => {
-    return (
-        <Container>
-            <Slider  />
-            <IntroText />
-        </Container>
-
-    )
-}
+  return (
+    <Container>
+      <SwiftSlider
+        data={imageArray}
+        interval={3000}
+        activeDotColor={"#040016"}
+      />
+      <IntroText />
+    </Container>
+  );
+};
 
 export default Introduction;
 
 const Container = styled.div`
-width:${getDeviceType()==='mobile'?'100vw':'75vw'};;
-margin:0 auto;
-padding-top:65px;
-`
+  width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
+  margin: 0 auto;
+  padding-top: 65px;
+`;

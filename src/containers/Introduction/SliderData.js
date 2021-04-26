@@ -1,14 +1,27 @@
-export const imageArray=[
-    {
-        image:'https://images.unsplash.com/photo-1609619385076-36a873425636?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
-    },
-    {
-        image:'https://images.unsplash.com/photo-1488229297570-58520851e868?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80'
-    },
-    {
-        image:'https://images.unsplash.com/photo-1488229297570-58520851e868?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80'
-    },
-    {
-        image:'https://images.unsplash.com/photo-1488229297570-58520851e868?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80'
-    }
-]
+export const imageArray = [
+  {
+    id: "1",
+    src:
+      "https://media.mfbproject.co.za/repos/2017_alfa-romeo_stelvio_leaked_02.jpg",
+  },
+  {
+    id: "2",
+    src:
+      "https://media.mfbproject.co.za/repos/2017_alfa_romeo_stelvioquadrifoglio_official_09.jpg",
+  },
+  {
+    id: "3",
+    src:
+      "https://media.mfbproject.co.za/repos/2018-alfa-romeo-stelvio-quadrifoglio-specs-photos-speed-2.jpg",
+  },
+  {
+    id: "4",
+    src:
+      "https://media.mfbproject.co.za/repos/alfa-romeo-giulia-quadrifoglio-2017-us-wallpapers-and-hd-images-13.jpg",
+  },
+  {
+    id: "5",
+    src:
+      "https://media.mfbproject.co.za/repos/ARWP_Infra_Desk_1920_1080_Quad.png",
+  },
+];
