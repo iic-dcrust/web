@@ -1,29 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MainLogo } from "components";
 import { getDeviceType } from "helpers";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Drawer, IconButton } from "@material-ui/core";
+import { Collapse, Drawer, IconButton } from "@material-ui/core";
 import DrawerStructure from "./drawer";
 import { useHistory } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { useStateValue } from "helpers/StateProvider";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [{ user }, dispatch] = useStateValue();
-  if (user) {
-    setIsLoggedIn(true);
-  }
   const [open, setOpen] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(true);
+  const [login, setLogin] = useState(false);
+
   const history = useHistory();
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const [login, setLogin] = useState(false);
+
+  useEffect(() => {
+    setAlertOpen(true);
+    setTimeout(() => {
+      setAlertOpen(false);
+    }, 1500);
+  }, [user]);
+
+  useEffect(() => {
+    setAlertOpen(false);
+  }, []);
 
   const handleOpenLogin = () => {
-    if (isLoggedIn) {
+    if (user) {
       dispatch({
         type: "SET_USER",
         user: null,
@@ -49,8 +60,41 @@ const Header = () => {
         history.push("/home");
     }
   };
+  const alertStyle = {
+    width: "60%",
+    position: "absolute",
+    marginLeft: "18%",
+  };
+
   return (
     <Main>
+      {user ? (
+        <Collapse in={alertOpen}>
+          <Alert
+            severity="success"
+            style={alertStyle}
+            onClose={() => {
+              setAlertOpen(false);
+            }}
+          >
+            <AlertTitle>Welcome</AlertTitle>
+            Logged in successfully as — <strong>{user?.name}</strong>
+          </Alert>
+        </Collapse>
+      ) : (
+        <Collapse in={alertOpen}>
+          <Alert
+            severity="info"
+            style={alertStyle}
+            onClose={() => {
+              setAlertOpen(false);
+            }}
+          >
+            <AlertTitle>Thanks for visiting</AlertTitle>
+            Successfully Logged Out
+          </Alert>
+        </Collapse>
+      )}
       <Container>
         <MainLogo />
         <Name>Institute Innovation Cell</Name>
@@ -59,10 +103,10 @@ const Header = () => {
         <NavItem onClick={() => handleChange("home")}>Home</NavItem>
         <NavItem>Events</NavItem>
         <NavItem>Blogs</NavItem>
-        <NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
+        <NavItem>FAQ's</NavItem>
         <NavItem>Our Team</NavItem>
         <NavButton onClick={handleOpenLogin}>
-          {isLoggedIn ? "Logout" : "Login"}
+          {user ? "Logout" : "Login"}
         </NavButton>
       </Nav>
       <LoginModal login={login} handleCloseLogin={handleCloseLogin} />
@@ -77,6 +121,7 @@ const Header = () => {
           login={login}
           handleCloseLogin={handleCloseLogin}
           handleChange={handleChange}
+          toggleDrawer={toggleDrawer}
         />
       </Drawer>
     </Main>

@@ -10,9 +10,17 @@ import {
 } from "@material-ui/icons";
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import LoginModal from "./LoginModal";
+import { useStateValue } from "helpers/StateProvider";
 
-const drawer = ({ handleOpenLogin, login, handleCloseLogin, handleChange }) => {
+const Drawer = ({
+  handleOpenLogin,
+  login,
+  handleCloseLogin,
+  handleChange,
+  toggleDrawer,
+}) => {
   const IconStyle = { color: "#fafafa" };
+  const [{ user }] = useStateValue();
 
   return (
     <DrawerBox>
@@ -65,19 +73,24 @@ const drawer = ({ handleOpenLogin, login, handleCloseLogin, handleChange }) => {
             <NavItem
               onClick={() => {
                 handleOpenLogin();
+                toggleDrawer();
               }}
             >
-              Login
+              {user ? "Logout" : "Login"}
             </NavItem>
           </ListItemText>
         </ListItem>
       </List>
-      <LoginModal login={login} handleCloseLogin={handleCloseLogin} />
+      <LoginModal
+        login={login}
+        handleCloseLogin={handleCloseLogin}
+        toggleDrawer={toggleDrawer}
+      />
     </DrawerBox>
   );
 };
 
-export default drawer;
+export default Drawer;
 
 const DrawerBox = styled.div`
   color: #fafafa;

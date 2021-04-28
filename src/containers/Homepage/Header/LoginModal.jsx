@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useStateValue } from "helpers/StateProvider";
 import axios from "helpers/axios";
+import GoogleLogin from "react-google-login";
 
-const LoginModal = ({ login, handleCloseLogin }) => {
+const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const [, dispatch] = useStateValue();
   const [register, setRegister] = useState(false);
   const [email, setEmail] = useState("");
@@ -18,6 +19,7 @@ const LoginModal = ({ login, handleCloseLogin }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (register) {
       if (password === confirmPassword) {
         axios
@@ -30,12 +32,13 @@ const LoginModal = ({ login, handleCloseLogin }) => {
                   roll: roll,
                   password: password,
                 })
-                .then((res) =>
+                .then((res) => {
                   dispatch({
                     type: "SET_USER",
                     user: res.data,
-                  })
-                )
+                  });
+                  close();
+                })
                 .catch((error) => alert(error.message));
             } else {
               axios
@@ -43,12 +46,13 @@ const LoginModal = ({ login, handleCloseLogin }) => {
                   email: email,
                   password: password,
                 })
-                .then((res) =>
+                .then((res) => {
                   dispatch({
                     type: "SET_USER",
                     user: res.data,
-                  })
-                )
+                  });
+                  close();
+                })
                 .catch((error) => alert(error.message));
             }
           })
@@ -62,12 +66,13 @@ const LoginModal = ({ login, handleCloseLogin }) => {
           email: email,
           password: password,
         })
-        .then((res) =>
+        .then((res) => {
           dispatch({
             type: "SET_USER",
             user: res.data,
-          })
-        )
+          });
+          close();
+        })
         .catch((error) => alert(error.message));
     }
   };
@@ -81,6 +86,14 @@ const LoginModal = ({ login, handleCloseLogin }) => {
     setConfirmPassword("");
   };
 
+  const responseGoogle = (res) => {
+    dispatch({
+      type: "SET_USER",
+      user: { id: res.googleId, name: res.ft.Ue, email: res.ft.Qt },
+    });
+    handleCloseLogin();
+    toggleDrawer();
+  };
   return (
     <Modal
       open={login}
@@ -116,6 +129,17 @@ const LoginModal = ({ login, handleCloseLogin }) => {
                   New User?
                   <Register onClick={handleRegister}>Register</Register>
                 </p>
+                <p>
+                  <GoogleLogin
+                    clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+                    buttonText="Login with Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    theme="dark"
+                    // isSignedIn={true}
+                    cookiePolicy={"single_host_origin"}
+                  />
+                </p>
               </Form>
             </Box>
           ) : (
@@ -129,11 +153,13 @@ const LoginModal = ({ login, handleCloseLogin }) => {
                   type="phone"
                   placeholder="Roll no."
                   value={roll}
+                  name="roll"
                   onChange={(e) => setRoll(e.target.value)}
                 />
                 <Input
                   type="email"
                   placeholder="Email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -154,6 +180,16 @@ const LoginModal = ({ login, handleCloseLogin }) => {
                   Register
                 </Button>
                 <p>
+                  <GoogleLogin
+                    clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+                    buttonText="Register with Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    theme="dark"
+                    cookiePolicy={"single_host_origin"}
+                  />
+                </p>
+                <p>
                   <Register onClick={handleRegister}>Back to Login</Register>
                 </p>
               </Form>
@@ -169,7 +205,7 @@ export default LoginModal;
 const ModalContainer = styled.div`
   position: "absolute";
   width: ${getDeviceType() === "desktop" ? "30vw" : "82vw"};
-  height: 70vh;
+  height: 80vh;
   margin: auto;
   background-color: rgba(12, 136, 194, 0.945);
   border: 1px solid rgba(255, 255, 255, 0.479);
@@ -179,7 +215,7 @@ const ModalContainer = styled.div`
 const Box = styled.div`
   padding: 50px 30px;
   display: flex;
-  height: 80%;
+  height: 85%;
   flex-direction: column;
   justify-content: space-between;
   color: #040016;
