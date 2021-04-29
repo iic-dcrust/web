@@ -21,13 +21,12 @@ export default Footer;
 
 const Container = styled.div`
   background-color: #040016;
-  padding: ${getDeviceType() === "mobile" ? "25px" : "45px"};
+  padding: ${getDeviceType() === "mobile" ? "25px" : "40px"};
   display: flex;
   justify-content: space-between;
 `;
 const Box = styled.div``;
 
 const Logo = styled.img`
-  margin-bottom: ${getDeviceType() === "mobile" ? "40px" : "60px"};
   width: ${getDeviceType() === "mobile" ? "65px" : ""};
 `;

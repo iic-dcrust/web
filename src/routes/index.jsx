@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,8 +9,41 @@ import {
 import Homepage from "pages/Homepage";
 import { Header, Footer } from "containers/Homepage";
 import FAQ from "containers/FAQ";
+import Team from "containers/Team";
+import { useStateValue } from "helpers/StateProvider";
+import axios from "axios";
 
 export default function App() {
+  const [, dispatch] = useStateValue();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      axios
+        .get(
+          `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${localStorage.getItem(
+            "token"
+          )}`
+        )
+        .then((res) => {
+          dispatch({
+            type: "SET_USER",
+            user: {
+              id: res.data.sub,
+              firstName: res.data.givenName,
+              lastName: res.data.familyName,
+              email: res.data.email,
+              token: res.accessToken,
+            },
+          });
+        });
+    } else {
+      dispatch({
+        type: "SET_USER",
+        user: null,
+      });
+    }
+  }, []);
+
   return (
     <Router>
       <Header />
@@ -19,8 +52,18 @@ export default function App() {
         <Route exact path="/home">
           <Homepage />
         </Route>
+        <Route path="/events">
+          <Team />
+        </Route>
+        <Route path="/blogs">
+          <Team />
+        </Route>
         <Route path="/faq">
-          <FAQ />
+          <Team />
+          {/* <FAQ /> */}
+        </Route>
+        <Route path="/team">
+          <Team />
         </Route>
       </Switch>
       <Footer />

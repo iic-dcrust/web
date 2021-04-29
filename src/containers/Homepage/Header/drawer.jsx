@@ -33,7 +33,7 @@ const Drawer = ({
             <NavItem>Home</NavItem>
           </ListItemText>
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleChange("events")}>
           <ListItemIcon>
             <Event style={IconStyle} />
           </ListItemIcon>
@@ -41,7 +41,7 @@ const Drawer = ({
             <NavItem>Events</NavItem>
           </ListItemText>
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleChange("blogs")}>
           <ListItemIcon>
             <RateReview style={IconStyle} />
           </ListItemIcon>
@@ -49,7 +49,7 @@ const Drawer = ({
             <NavItem>Blogs</NavItem>
           </ListItemText>
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleChange("faq")}>
           <ListItemIcon>
             <QuestionAnswer style={IconStyle} />
           </ListItemIcon>
@@ -57,7 +57,7 @@ const Drawer = ({
             <NavItem>FAQ's</NavItem>
           </ListItemText>
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleChange("team")}>
           <ListItemIcon>
             <PeopleRounded style={IconStyle} />
           </ListItemIcon>

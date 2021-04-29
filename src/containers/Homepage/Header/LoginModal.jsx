@@ -1,79 +1,117 @@
-import { IconButton, Modal } from "@material-ui/core";
+import { IconButton, Modal, TextField } from "@material-ui/core";
 import { getDeviceType } from "helpers";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useStateValue } from "helpers/StateProvider";
-import axios from "helpers/axios";
+// import axios from "helpers/axios";
 import GoogleLogin from "react-google-login";
+import { Close } from "@material-ui/icons";
+import Alerts from "./Alerts";
 
 const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const [, dispatch] = useStateValue();
   const [register, setRegister] = useState(false);
+  const [details, setDetails] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alertOpen, setAlertOpen] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [roll, setRoll] = useState("");
+  const [fname, setfName] = useState("");
+  const [lname, setlName] = useState("");
+  const [username, setUsername] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [valError, setvalError] = useState(null);
 
   const handleRegister = () => {
     setRegister(!register);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    if (register) {
-      if (password === confirmPassword) {
-        axios
-          .get(`/api/v1/login/${email}`)
-          .then((response) => {
-            if (response.data.length === 0) {
-              axios
-                .post("/api/v1/register", {
-                  email: email,
-                  roll: roll,
-                  password: password,
-                })
-                .then((res) => {
-                  dispatch({
-                    type: "SET_USER",
-                    user: res.data,
-                  });
-                  close();
-                })
-                .catch((error) => alert(error.message));
-            } else {
-              axios
-                .post("/api/v1/login", {
-                  email: email,
-                  password: password,
-                })
-                .then((res) => {
-                  dispatch({
-                    type: "SET_USER",
-                    user: res.data,
-                  });
-                  close();
-                })
-                .catch((error) => alert(error.message));
-            }
-          })
-          .catch((error) => alert(error.message));
+  const handleDetails = (e) => {
+    e.preventDefault();
+    if (!details) {
+      if (username && email && password && confirmPassword) {
+        if (password === confirmPassword) {
+          setDetails(true);
+        } else {
+          setvalError({
+            title: "Incorrect Input",
+            body: "Password and Confirm Password should match",
+          });
+          setAlertOpen(true);
+          setTimeout(() => setAlertOpen(false), 2000);
+        }
       } else {
-        alert("Password and Confirm Password don't match ");
+        setvalError({
+          title: "Missing Input",
+          body: "Please fill all fields",
+        });
+        setAlertOpen(true);
+        setTimeout(() => setAlertOpen(false), 2000);
       }
     } else {
-      axios
-        .post("/api/v1/login", {
-          email: email,
-          password: password,
-        })
-        .then((res) => {
-          dispatch({
-            type: "SET_USER",
-            user: res.data,
-          });
-          close();
-        })
-        .catch((error) => alert(error.message));
+      setDetails(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (register) {
+      if (fname && lname && setSelectedDate) {
+      } else {
+        setvalError({
+          title: "Missing Input",
+          body: "Please fill all fields",
+        });
+        setAlertOpen(true);
+        setTimeout(() => setAlertOpen(false), 2000);
+      }
+      //     axios
+      //       .get(`/api/v1/login/${email}`)
+      //       .then((response) => {
+      //         if (response.data.length === 0) {
+      //           axios
+      //             .post("/api/v1/register", {
+      //               email: email,
+      //               username: username,
+      //               password: password,
+      //             })
+      //             .then((res) => {
+      //               dispatch({
+      //                 type: "SET_USER",
+      //                 user: res.data,
+      //               });
+      //               close();
+      //             })
+      //             .catch((error) => alert(error.message));
+      //           axios
+      //             .post("/api/v1/login", {
+      //               email: email,
+      //               password: password,
+      //             })
+      //             .then((res) => {
+      //               dispatch({
+      //                 type: "SET_USER",
+      //                 user: res.data,
+      //               });
+      //               close();
+      //             })
+      //             .catch((error) => alert(error.message));
+      //       }).catch((error) => alert(error.message));
+      // } else {
+      //   axios
+      //     .post("/api/v1/login", {
+      //       email: email,
+      //       password: password,
+      //     })
+      //     .then((res) => {
+      //       dispatch({
+      //         type: "SET_USER",
+      //         user: res.data,
+      //       });
+      //       close();
+      //     })
+      //     .catch((error) => alert(error.message));
+      // }
     }
   };
 
@@ -81,7 +119,10 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
     handleCloseLogin();
     setRegister(false);
     setEmail("");
-    setRoll("");
+    setUsername("");
+    setfName("");
+    setlName("");
+    setSelectedDate("");
     setPassword("");
     setConfirmPassword("");
   };
@@ -89,115 +130,193 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const responseGoogle = (res) => {
     dispatch({
       type: "SET_USER",
-      user: { id: res.googleId, name: res.ft.Ue, email: res.ft.Qt },
+      user: {
+        id: res.googleId,
+        firstName: res.profileObj.givenName,
+        lastName: res.profileObj.familyName,
+        email: res.profileObj.email,
+        token: res.accessToken,
+      },
     });
+    localStorage.setItem("token", res.tokenId);
     handleCloseLogin();
     toggleDrawer();
   };
   return (
-    <Modal
-      open={login}
-      onClose={close}
-      aria-labelledby="simple-modal-title"
-      aria-describedby="simple-modal-description"
-    >
-      {
-        <ModalContainer>
-          {!register ? (
-            <Box>
-              <Head>
-                <h2>Login</h2>
-                <IconButton onClick={close}>x</IconButton>
-              </Head>
-              <Form>
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Button type="submit" onClick={(e) => handleSubmit(e)}>
-                  Login
-                </Button>
-                <p>
-                  New User?
-                  <Register onClick={handleRegister}>Register</Register>
-                </p>
-                <p>
-                  <GoogleLogin
-                    clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
-                    buttonText="Login with Google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    theme="dark"
-                    // isSignedIn={true}
-                    cookiePolicy={"single_host_origin"}
+    <>
+      <Modal
+        open={login}
+        onClose={close}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {
+          <ModalContainer>
+            <Alerts
+              setAlertOpen={setAlertOpen}
+              alertOpen={alertOpen}
+              type="error"
+              title={valError?.title}
+              body={valError?.body}
+              isVal={true}
+            />
+            {!register ? (
+              <Box>
+                <Head>
+                  <h2>Login</h2>
+                  <IconButton onClick={close}>
+                    <Close />
+                  </IconButton>
+                </Head>
+                <Form>
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                </p>
-              </Form>
-            </Box>
-          ) : (
-            <Box>
-              <Head>
-                <h2>Register</h2>
-                <IconButton onClick={close}>x</IconButton>
-              </Head>
-              <Form>
-                <Input
-                  type="phone"
-                  placeholder="Roll no."
-                  value={roll}
-                  name="roll"
-                  onChange={(e) => setRoll(e.target.value)}
-                />
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Input
-                  type="password"
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <Button type="submit" onClick={(e) => handleSubmit(e)}>
+                    Login
+                  </Button>
+                  <p>
+                    New User?
+                    <Register onClick={handleRegister}>Register</Register>
+                  </p>
+                  <p>
+                    <GoogleLogin
+                      clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+                      buttonText="Login with Google"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                      theme="dark"
+                      // isSignedIn={true}
+                      cookiePolicy={"single_host_origin"}
+                    />
+                  </p>
+                </Form>
+              </Box>
+            ) : !details ? (
+              <Box>
+                <Head>
+                  <h2>Register</h2>
+                  <IconButton onClick={close}>
+                    <Close />
+                  </IconButton>
+                </Head>
+                <Form>
+                  <Input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    name="username"
+                    autocomplete="off"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    autocomplete="off"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    autocomplete="off"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <Input
+                    type="password"
+                    placeholder="Confirm Password"
+                    autocomplete="off"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
 
-                <Button type="submit" onClick={(e) => handleSubmit(e)}>
-                  Register
-                </Button>
-                <p>
-                  <GoogleLogin
-                    clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
-                    buttonText="Register with Google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    theme="dark"
-                    cookiePolicy={"single_host_origin"}
+                  <Button
+                    type="submit"
+                    onClick={(e) => {
+                      handleDetails(e);
+                    }}
+                  >
+                    Next
+                  </Button>
+                  <p>
+                    <GoogleLogin
+                      clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+                      buttonText="Login with Google"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                      theme="dark"
+                      // isSignedIn={true}
+                      cookiePolicy={"single_host_origin"}
+                    />
+                  </p>
+                  <p>
+                    <Register onClick={handleRegister}>Back to Login</Register>
+                  </p>
+                </Form>
+              </Box>
+            ) : (
+              <Box>
+                <Head>
+                  <h2>Details</h2>
+                  <IconButton onClick={close}>
+                    <Close />
+                  </IconButton>
+                </Head>
+                <Form>
+                  <Input
+                    type="text"
+                    placeholder="First Name"
+                    value={fname}
+                    autocomplete="off"
+                    name="first"
+                    onChange={(e) => setfName(e.target.value)}
                   />
-                </p>
-                <p>
-                  <Register onClick={handleRegister}>Back to Login</Register>
-                </p>
-              </Form>
-            </Box>
-          )}
-        </ModalContainer>
-      }
-    </Modal>
+                  <Input
+                    type="text"
+                    placeholder="Last Name"
+                    autocomplete="off"
+                    value={lname}
+                    name="last"
+                    onChange={(e) => setlName(e.target.value)}
+                  />
+                  <DOB
+                    id="dob"
+                    label="Birthday"
+                    type="date"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                  />
+
+                  <Button type="submit" onClick={(e) => handleSubmit(e)}>
+                    Register
+                  </Button>
+
+                  <p>
+                    <Register onClick={handleDetails}>
+                      Back to Register
+                    </Register>
+                  </p>
+                </Form>
+              </Box>
+            )}
+          </ModalContainer>
+        }
+      </Modal>
+    </>
   );
 };
 
@@ -223,7 +342,7 @@ const Box = styled.div`
 
 const Input = styled.input`
   width: 90%;
-  height: 7vh;
+  height: 6vh;
   padding-left: 20px;
   border: none;
   border-radius: 20px;
@@ -260,4 +379,11 @@ const Register = styled.span`
 const Head = styled.p`
   justify-content: space-between;
   display: flex;
+`;
+
+const DOB = styled(TextField)`
+  && {
+    color: white;
+    width: 90%;
+  }
 `;

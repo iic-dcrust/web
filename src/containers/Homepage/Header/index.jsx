@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { MainLogo } from "components";
 import { getDeviceType } from "helpers";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Collapse, Drawer, IconButton } from "@material-ui/core";
+import { Drawer, IconButton } from "@material-ui/core";
 import DrawerStructure from "./drawer";
 import { useHistory } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { useStateValue } from "helpers/StateProvider";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import Alerts from "./Alerts";
 
 const Header = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -26,7 +26,7 @@ const Header = () => {
     setAlertOpen(true);
     setTimeout(() => {
       setAlertOpen(false);
-    }, 1500);
+    }, 2000);
   }, [user]);
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const Header = () => {
         type: "SET_USER",
         user: null,
       });
+      localStorage.removeItem("token");
     } else {
       setLogin(true);
     }
@@ -53,63 +54,61 @@ const Header = () => {
       case "home":
         history.push("/home");
         break;
+      case "events":
+        history.push("/events");
+        break;
+      case "team":
+        history.push("/team");
+        break;
+      case "blogs":
+        history.push("/blogs");
+        break;
       case "faq":
         history.push("/faq");
         break;
       default:
-        history.push("/home");
+        break;
     }
-  };
-  const alertStyle = {
-    width: "60%",
-    position: "absolute",
-    marginLeft: "18%",
   };
 
   return (
     <Main>
-      {user ? (
-        <Collapse in={alertOpen}>
-          <Alert
-            severity="success"
-            style={alertStyle}
-            onClose={() => {
-              setAlertOpen(false);
-            }}
-          >
-            <AlertTitle>Welcome</AlertTitle>
-            Logged in successfully as — <strong>{user?.name}</strong>
-          </Alert>
-        </Collapse>
-      ) : (
-        <Collapse in={alertOpen}>
-          <Alert
-            severity="info"
-            style={alertStyle}
-            onClose={() => {
-              setAlertOpen(false);
-            }}
-          >
-            <AlertTitle>Thanks for visiting</AlertTitle>
-            Successfully Logged Out
-          </Alert>
-        </Collapse>
-      )}
       <Container>
+        {user ? (
+          <Alerts
+            setAlertOpen={setAlertOpen}
+            alertOpen={alertOpen}
+            type="success"
+            title="Welcome to IIC"
+            body={`Logged in as - ${user.firstName} ${user.lastName}`}
+          />
+        ) : (
+          <Alerts
+            setAlertOpen={setAlertOpen}
+            alertOpen={alertOpen}
+            type="info"
+            title="Thanks for Visiting"
+            body="Successfully logged out."
+          />
+        )}
         <MainLogo />
         <Name>Institute Innovation Cell</Name>
       </Container>
       <Nav>
         <NavItem onClick={() => handleChange("home")}>Home</NavItem>
-        <NavItem>Events</NavItem>
-        <NavItem>Blogs</NavItem>
-        <NavItem>FAQ's</NavItem>
-        <NavItem>Our Team</NavItem>
+        <NavItem onClick={() => handleChange("events")}>Events</NavItem>
+        <NavItem onClick={() => handleChange("blogs")}>Blogs</NavItem>
+        <NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
+        <NavItem onClick={() => handleChange("team")}>Our Team</NavItem>
         <NavButton onClick={handleOpenLogin}>
           {user ? "Logout" : "Login"}
         </NavButton>
       </Nav>
-      <LoginModal login={login} handleCloseLogin={handleCloseLogin} />
+      <LoginModal
+        login={login}
+        handleCloseLogin={handleCloseLogin}
+        setAlertOpen={setAlertOpen}
+      />
       <DrawerIcon>
         <IconButton>
           <MenuIcon style={{ color: "#fafafa" }} onClick={toggleDrawer} />
