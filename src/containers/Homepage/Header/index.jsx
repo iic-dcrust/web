@@ -53,18 +53,33 @@ const Header = () => {
     switch (type) {
       case "home":
         history.push("/home");
+        if (process.browser) {
+          window.scrollTo(0, 0);
+        }
         break;
       case "events":
         history.push("/events");
+        if (process.browser) {
+          window.scrollTo(0, 0);
+        }
         break;
       case "team":
         history.push("/team");
+        if (process.browser) {
+          window.scrollTo(0, 0);
+        }
         break;
       case "blogs":
         history.push("/blogs");
+        if (process.browser) {
+          window.scrollTo(0, 0);
+        }
         break;
       case "faq":
         history.push("/faq");
+        if (process.browser) {
+          window.scrollTo(0, 0);
+        }
         break;
       default:
         break;

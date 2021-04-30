@@ -135,7 +135,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
         firstName: res.profileObj.givenName,
         lastName: res.profileObj.familyName,
         email: res.profileObj.email,
-        token: res.accessToken,
       },
     });
     localStorage.setItem("token", res.tokenId);
@@ -147,8 +146,8 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
       <Modal
         open={login}
         onClose={close}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
+        aria-labelledby="Login Modal"
+        aria-describedby="Modal for login and register functionality"
       >
         {
           <ModalContainer>

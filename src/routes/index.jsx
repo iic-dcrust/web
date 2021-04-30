@@ -12,9 +12,10 @@ import FAQ from "containers/FAQ";
 import Team from "containers/Team";
 import { useStateValue } from "helpers/StateProvider";
 import axios from "axios";
+import Events from "containers/Events";
 
 export default function App() {
-  const [, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -29,10 +30,9 @@ export default function App() {
             type: "SET_USER",
             user: {
               id: res.data.sub,
-              firstName: res.data.givenName,
-              lastName: res.data.familyName,
+              firstName: res.data.given_name,
+              lastName: res.data.family_name,
               email: res.data.email,
-              token: res.accessToken,
             },
           });
         });
@@ -53,7 +53,7 @@ export default function App() {
           <Homepage />
         </Route>
         <Route path="/events">
-          <Team />
+          <Events />
         </Route>
         <Route path="/blogs">
           <Team />

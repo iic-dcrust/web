@@ -1,4 +1,5 @@
 import { Functions, Introduction, Vision } from "containers/Homepage";
+import { getDeviceType } from "helpers";
 
 import styled from "styled-components";
 
