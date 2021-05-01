@@ -1,6 +1,6 @@
 import { IconButton, Modal, TextField } from "@material-ui/core";
-import { getDeviceType } from "helpers";
-import React, { useState } from "react";
+import { getDeviceType, validateInput } from "helpers";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useStateValue } from "helpers/StateProvider";
 // import axios from "helpers/axios";
@@ -19,34 +19,38 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const [fname, setfName] = useState("");
   const [lname, setlName] = useState("");
   const [username, setUsername] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
   const [valError, setvalError] = useState(null);
 
   const handleRegister = () => {
     setRegister(!register);
   };
 
+  useEffect(() => {
+    if (valError) {
+      setAlertOpen(true);
+      setTimeout(() => setAlertOpen(false), 2000);
+    } else {
+      setDetails(true);
+    }
+  }, [valError]);
+
   const handleDetails = (e) => {
     e.preventDefault();
     if (!details) {
       if (username && email && password && confirmPassword) {
-        if (password === confirmPassword) {
-          setDetails(true);
-        } else {
-          setvalError({
-            title: "Incorrect Input",
-            body: "Password and Confirm Password should match",
-          });
-          setAlertOpen(true);
-          setTimeout(() => setAlertOpen(false), 2000);
-        }
+        setvalError(
+          validateInput({
+            username: username,
+            pass: password,
+            confirm: confirmPassword,
+          })
+        );
       } else {
         setvalError({
           title: "Missing Input",
           body: "Please fill all fields",
         });
-        setAlertOpen(true);
-        setTimeout(() => setAlertOpen(false), 2000);
       }
     } else {
       setDetails(false);
@@ -56,7 +60,8 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (register) {
-      if (fname && lname && setSelectedDate) {
+      if (fname && lname && selectedDate) {
+        //request
       } else {
         setvalError({
           title: "Missing Input",
@@ -65,53 +70,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
         setAlertOpen(true);
         setTimeout(() => setAlertOpen(false), 2000);
       }
-      //     axios
-      //       .get(`/api/v1/login/${email}`)
-      //       .then((response) => {
-      //         if (response.data.length === 0) {
-      //           axios
-      //             .post("/api/v1/register", {
-      //               email: email,
-      //               username: username,
-      //               password: password,
-      //             })
-      //             .then((res) => {
-      //               dispatch({
-      //                 type: "SET_USER",
-      //                 user: res.data,
-      //               });
-      //               close();
-      //             })
-      //             .catch((error) => alert(error.message));
-      //           axios
-      //             .post("/api/v1/login", {
-      //               email: email,
-      //               password: password,
-      //             })
-      //             .then((res) => {
-      //               dispatch({
-      //                 type: "SET_USER",
-      //                 user: res.data,
-      //               });
-      //               close();
-      //             })
-      //             .catch((error) => alert(error.message));
-      //       }).catch((error) => alert(error.message));
-      // } else {
-      //   axios
-      //     .post("/api/v1/login", {
-      //       email: email,
-      //       password: password,
-      //     })
-      //     .then((res) => {
-      //       dispatch({
-      //         type: "SET_USER",
-      //         user: res.data,
-      //       });
-      //       close();
-      //     })
-      //     .catch((error) => alert(error.message));
-      // }
     }
   };
 
@@ -124,22 +82,34 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
     setlName("");
     setSelectedDate("");
     setPassword("");
+    setDetails(false);
     setConfirmPassword("");
   };
 
   const responseGoogle = (res) => {
-    dispatch({
-      type: "SET_USER",
-      user: {
-        id: res.googleId,
-        firstName: res.profileObj.givenName,
-        lastName: res.profileObj.familyName,
-        email: res.profileObj.email,
-      },
-    });
-    localStorage.setItem("token", res.tokenId);
-    handleCloseLogin();
-    toggleDrawer();
+    fetch("/api/register/google", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tokenId: res.tokenId }),
+    })
+      .then((res) => res.json())
+      .then((parJson) => {
+        if (parJson.email) {
+          dispatch({
+            type: "SET_USER",
+            user: {
+              id: res.googleId,
+              firstName: res.profileObj.givenName,
+              lastName: res.profileObj.familyName,
+              email: res.profileObj.email,
+            },
+          });
+          handleCloseLogin();
+          toggleDrawer();
+        } else if (parJson.error) {
+          alert("error occured");
+        }
+      });
   };
   return (
     <>
@@ -190,11 +160,10 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                   <p>
                     <GoogleLogin
                       clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
-                      buttonText="Login with Google"
+                      buttonText="Continue with Google"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
                       theme="dark"
-                      // isSignedIn={true}
                       cookiePolicy={"single_host_origin"}
                     />
                   </p>
@@ -251,7 +220,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                   <p>
                     <GoogleLogin
                       clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
-                      buttonText="Login with Google"
+                      buttonText="Continue with Google"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
                       theme="dark"

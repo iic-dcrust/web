@@ -1,43 +1,32 @@
+import { Grid } from "@material-ui/core";
+import { Pagination } from "@material-ui/lab";
 import { getDeviceType } from "helpers";
+import { useStateValue } from "helpers/StateProvider";
 import React from "react";
 import styled from "styled-components";
-import EventBox from "./EventBox";
+import EventBox from "./EventBox/EventBox";
+import EventHeader from "./EventBox/EventHeader";
 
 const Events = () => {
+  const [{ events }] = useStateValue();
   return (
     <Container>
       <Mask>
         <Text>Event Calendar</Text>
       </Mask>
       <Image src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=748&q=80" />
-      <Upcoming>
-        <Head>Upcoming Events</Head>
-        <EventHolder>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-        </EventHolder>
-        <Head>Past Events</Head>
-        <EventHolder>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-          <EventBox></EventBox>
-        </EventHolder>
-      </Upcoming>
+      <Box>
+        <EventHeader />
+        <Grid container spacing={0}>
+          {events.map((event) => (
+            <Grid item sm={4} xs={12} key={event.id}>
+              <EventBox event={event} />
+            </Grid>
+          ))}
+        </Grid>
+
+        <Page count={10} color="primary" />
+      </Box>
     </Container>
   );
 };
@@ -45,17 +34,18 @@ const Events = () => {
 export default Events;
 
 const Container = styled.div`
-  width: ${getDeviceType() === "mobile" ? "100vw" : "80vw"};
+  width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
   margin: 0 auto;
+  background-color: #f5f5f5;
   padding-top: 70px;
 `;
 const Image = styled.img`
   width: 100%;
-  max-height: 75vh;
+  max-height: 50vh;
 `;
 const Mask = styled.div`
-  width: ${getDeviceType() === "mobile" ? "100vw" : "80vw"};
-  height: ${getDeviceType() === "mobile" ? "40vh" : "75vh"};
+  width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
+  height: ${getDeviceType() === "mobile" ? "40vh" : "50vh"};
   background-color: rgba(0, 0, 0, 0.699);
   position: absolute;
   display: flex;
@@ -69,24 +59,20 @@ const Text = styled.span`
   font-family: Quicksand;
 `;
 
-const Upcoming = styled.div`
-  color: #040016;
-  padding: 30px 0;
-  overflow-x: hidden;
-`;
-
-const Head = styled.h1`
-  font-family: Quicksand;
-  font-size: ${getDeviceType() === "mobile" ? "28px" : "35px"};
-  padding-left: 10px;
-`;
-
-const EventHolder = styled.div`
-  height: 40vh;
-  margin: 30px;
-  overflow-x: scroll;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.055);
+const Box = styled.div`
+  width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  border: 1px solid rgba(4, 0, 22, 0.541);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 10px;
   display: flex;
-  border-radius: 5px;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+`;
+
+const Page = styled(Pagination)`
+  padding-top: 20px;
 `;

@@ -8,6 +8,7 @@ import DrawerStructure from "./drawer";
 import { useHistory } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { useStateValue } from "helpers/StateProvider";
+import axios from "../../../helpers/axios";
 import Alerts from "./Alerts";
 
 const Header = () => {
@@ -18,6 +19,22 @@ const Header = () => {
 
   const history = useHistory();
 
+  useEffect(() => {
+    axios.get("/api/").then((res) =>
+      dispatch({
+        type: "SET_EVENTS",
+        events: {
+          id: res.data.id,
+          title: res.data.title,
+          desc: res.data.desc,
+          start: res.data.start,
+          venue: res.data.venue,
+          url: res.data.url,
+        },
+      })
+    );
+    // .catch((e) => alert(e));
+  }, [dispatch]);
   const toggleDrawer = () => {
     setOpen(!open);
   };
