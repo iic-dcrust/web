@@ -41,7 +41,7 @@ const Container = styled.div`
 `;
 const Image = styled.img`
   width: 100%;
-  max-height: 50vh;
+  height: ${getDeviceType() === "mobile" ? "40vh" : "50vh"};
 `;
 const Mask = styled.div`
   width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};

@@ -11,6 +11,7 @@ const Introduction = () => {
       <SwiftSlider
         data={imageArray}
         interval={3000}
+        height={"max-content"}
         activeDotColor={"#040016"}
       />
       <IntroText />
