@@ -5,6 +5,7 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import CodeIcon from "@material-ui/icons/Code";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { getDeviceType } from "helpers";
+import { appColors } from "styles/colors";
 const EventHeader = () => {
   return (
     <>
@@ -37,12 +38,12 @@ const Container = styled.div`
   width: 100%;
   justify-content: ${getDeviceType() === "desktop" ? "space-evenly" : ""};
   align-items: center;
-  background-color: rgba(4, 0, 22, 0.87);
+  background-color: ${appColors.accentDark};
   display: flex;
   border-radius: 5px;
   overflow-x: scroll;
   font-size: ${getDeviceType() === "desktop" ? "20px" : "16px"};
-  border-bottom: 1px solid rgba(4, 0, 22, 0.541);
+  border-bottom: ${appColors.accentDark};
 `;
 const Tag = styled.span`
   padding: 20px;
@@ -51,7 +52,7 @@ const Tag = styled.span`
   color: white;
   cursor: pointer;
   :hover {
-    background-color: rgba(14, 149, 212, 0.918);
+    background-color: ${appColors.accentDark};
   }
 `;
 

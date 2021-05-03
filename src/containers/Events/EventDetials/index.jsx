@@ -1,16 +1,18 @@
 import { getDeviceType } from "helpers";
-import { useStateValue } from "helpers/StateProvider";
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+// import { useStateValue } from "helpers/StateProvider";
+// import { useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { appColors } from "styles/colors";
 
 const EventDetails = () => {
-  const location = useLocation();
-  const [{ events }] = useStateValue();
+  //   const location = useLocation();
+  //   const [{ events }] = useStateValue();
+  const [isPast, setIsPast] = useState(true);
   let desc =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
 
-  const event = events.filter((e) => e.id == location.pathname.slice(8))[0];
+  // const event = events.filter((e) => e.id === location.pathname.slice(8))[0];
   return (
     <Container>
       <Image src="https://images.unsplash.com/photo-1578775334692-756031b1121a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"></Image>
@@ -19,11 +21,15 @@ const EventDetails = () => {
         <Info>
           <Button>Register</Button>
           <Tag>
-            <InfoHead>Starts on</InfoHead>
+            <InfoHead>Starts on:</InfoHead>
             <InfoBody>Start Time</InfoBody>
           </Tag>
           <Tag>
-            <InfoHead>Venue</InfoHead>
+            <InfoHead>Ends on:</InfoHead>
+            <InfoBody>End Time</InfoBody>
+          </Tag>
+          <Tag>
+            <InfoHead>Venue:</InfoHead>
             <InfoBody>DCRUST Campus</InfoBody>
           </Tag>
         </Info>
@@ -33,6 +39,13 @@ const EventDetails = () => {
         <Body>{desc}</Body>
         <Info>
           <Type>Webinar</Type>
+          {isPast && (
+            <Type>
+              <Download href="https://drive.google.com/u/0/uc?id=1DrEpG4dQgKLmTHmB4ffQHavISp16EduX&export=download">
+                Event Record
+              </Download>
+            </Type>
+          )}
         </Info>
       </Box>
     </Container>
@@ -44,7 +57,7 @@ export default EventDetails;
 const Container = styled.div`
   width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
   margin: 0 auto;
-  color: #040016;
+  color: ${appColors.primary};
   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
     rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
     rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
@@ -132,7 +145,15 @@ const Type = styled.span`
   border-radius: 10px;
   color: #fff;
   font-size: 16px;
-  border: 1px solid #040016;
+  border: 1px solid ${appColors.primary};
   background-color: rgb(12, 136, 194);
   text-align: center;
+  :hover {
+    background-color: ${appColors.primary};
+  }
+`;
+
+const Download = styled.a`
+  color: white;
+  text-decoration: none;
 `;

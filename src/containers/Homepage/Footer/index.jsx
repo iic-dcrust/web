@@ -1,6 +1,7 @@
 import { getDeviceType } from "helpers";
 import React from "react";
 import styled from "styled-components";
+import { appColors } from "styles/colors";
 import Links from "./Links/Links";
 
 const Footer = () => {
@@ -20,10 +21,10 @@ const Footer = () => {
 export default Footer;
 
 const Container = styled.div`
-  background-color: #040016;
+  background-color: ${appColors.primary};
   padding: ${getDeviceType() === "mobile" ? "25px" : "40px"};
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `;
 const Box = styled.div``;
 

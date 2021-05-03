@@ -4,8 +4,8 @@ import { getDeviceType } from "helpers";
 import { useStateValue } from "helpers/StateProvider";
 import React from "react";
 import styled from "styled-components";
-import EventBox from "./EventBox/EventBox";
-import EventHeader from "./EventBox/EventHeader";
+import EventBox from "containers/Events/EventBox/EventBox";
+import EventHeader from "containers/Events/EventBox/EventHeader";
 
 const Events = () => {
   const [{ events }] = useStateValue();
@@ -17,14 +17,13 @@ const Events = () => {
       <Image src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=748&q=80" />
       <Box>
         <EventHeader />
-        <Grid container spacing={0}>
+        <Grid container spacing={1} style={{ padding: "15px" }}>
           {events.map((event) => (
-            <Grid item sm={4} xs={12} key={event.id}>
+            <Grid item sm={6} xs={12} key={event.id}>
               <EventBox event={event} />
             </Grid>
           ))}
         </Grid>
-
         <Page count={10} color="primary" />
       </Box>
     </Container>

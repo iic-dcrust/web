@@ -10,6 +10,7 @@ import LoginModal from "./LoginModal";
 import { useStateValue } from "helpers/StateProvider";
 import axios from "../../../helpers/axios";
 import Alerts from "./Alerts";
+import { appColors } from "styles/colors";
 
 const Header = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -165,13 +166,13 @@ const Main = styled.div`
   width: 100%;
   position: fixed;
   z-index: 101;
-  background-color: #040016;
+  background-color: ${appColors.primary};
   height: 65px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #fafafa;
-  border-bottom: 1px solid #0e95d4;
+  color: ${appColors.bgVar3};
+  border-bottom: 1px solid ${appColors.secondary};
 `;
 const Name = styled.h1`
   display: flex;
@@ -201,15 +202,17 @@ const NavItem = styled.span`
   cursor: pointer;
   align-items: center;
   :hover {
-    background-color: ${getDeviceType() === "desktop" ? "#0e95d4" : ""};
+    background-color: ${getDeviceType() === "desktop"
+      ? appColors.secondary
+      : ""};
   }
 `;
 const NavButton = styled.button`
   height: 35px;
   cursor: pointer;
   margin: auto 0;
-  background-color: #0e95d4;
-  border: 1px solid #0e95d4;
+  background-color: ${appColors.secondary};
+  border: 1px solid ${appColors.accentLight};
   border-radius: 20px;
   color: #fafafa;
   font-weight: 700;

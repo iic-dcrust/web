@@ -2,6 +2,7 @@ import { getDeviceType } from "helpers";
 import React from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
+import { appColors } from "styles/colors";
 
 const Links = () => {
   const history = useHistory();
@@ -43,28 +44,27 @@ const Container = styled.div`
 `;
 
 const Column = styled.div`
-  color: gray;
+  color: ${appColors.footerText};
 `;
 
 const Head = styled.h4`
-  text-decoration: underline;
   margin-bottom: 20px;
   font-size: ${getDeviceType() === "mobile" ? "10px" : "20px"};
 `;
 
 const Body = styled.div`
   font-size: ${getDeviceType() === "mobile" ? "8px" : "16px"};
-  color: gray;
+  color: ${appColors.footerText};
   display: flex;
   flex-direction: column;
 `;
 
 const Link = styled.a`
-  color: gray;
+  color: ${appColors.footerText};
   text-decoration: none;
   font-size: ${getDeviceType() === "mobile" ? "8px" : ""};
   cursor: pointer;
   :hover {
-    color: lightgray;
+    color: ${appColors.footerHover};
   }
 `;
