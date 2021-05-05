@@ -7,6 +7,7 @@ import { useStateValue } from "helpers/StateProvider";
 import GoogleLogin from "react-google-login";
 import { Close } from "@material-ui/icons";
 import Alerts from "./Alerts";
+import './LoginModal.css';
 
 const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const [, dispatch] = useStateValue();
@@ -130,156 +131,197 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
               isVal={true}
             />
             {!register ? (
-              <Box>
-                <Head>
-                  <h2>Login</h2>
-                  <IconButton onClick={close}>
+              <Content>
+                <SideBar>
+                  <div className="logo">
+                    <img src="https://www.edufever.com/wp-content/uploads/2016/12/dcrust-logo.jpg" alt="" />
+                    <h2>IIC</h2>
+                  </div>
+                  <div className="links">
+                    <p className="sec-link">Don't have an account?</p>
+                    <p className="prim-link" onClick={handleRegister}>Sign Up</p>
+                  </div>
+                </SideBar>
+                <div className="box login">
+                  <IconButton onClick={close} className="close">
                     <Close />
                   </IconButton>
-                </Head>
-                <Form>
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <Input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <Button type="submit" onClick={(e) => handleSubmit(e)}>
-                    Login
-                  </Button>
-                  <p>
-                    New User?
-                    <Register onClick={handleRegister}>Register</Register>
-                  </p>
-                  <p>
-                    <GoogleLogin
-                      clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
-                      buttonText="Continue with Google"
-                      onSuccess={responseGoogle}
-                      onFailure={responseGoogle}
-                      theme="dark"
-                      cookiePolicy={"single_host_origin"}
+                  <h1 className="auth-heading">Sign In</h1>
+                  <div className="form login-form">
+                    <div>
+                      <GoogleLogin
+                        clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+                        buttonText="Continue with Google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        theme="light"
+                        cookiePolicy={"single_host_origin"}
+                        className="google-login"
+                      />
+                      <p className="login-alt-text sideline">
+                        <span>or login with email</span>
+                      </p>
+                    </div>
+
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
-                  </p>
-                </Form>
-              </Box>
+                    <Input
+                      type="password"
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Button type="submit" onClick={(e) => handleSubmit(e)}>
+                      Sign In
+                    </Button>
+                    
+                  </div>
+                </div>
+              </Content>
             ) : !details ? (
-              <Box>
-                <Head>
-                  <h2>Register</h2>
-                  <IconButton onClick={close}>
+                <Content>
+                  <div className="box login">
+                  <IconButton onClick={close} className="close">
                     <Close />
                   </IconButton>
-                </Head>
-                <Form>
-                  <Input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    name="username"
-                    autocomplete="off"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    autocomplete="off"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <Input
-                    type="password"
-                    placeholder="Password"
-                    autocomplete="off"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <Input
-                    type="password"
-                    placeholder="Confirm Password"
-                    autocomplete="off"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
+                  <h1 className="auth-heading register-head">Sign Up</h1>
+                  <div className="form login-form">
+                    <div>
+                      <GoogleLogin
+                        clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+                        buttonText="Continue with Google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        theme="light"
+                        cookiePolicy={"single_host_origin"}
+                        className="google-login"
+                      />
+                      <p className="login-alt-text sideline">
+                        <span>or login with email</span>
+                      </p>
+                    </div>
 
-                  <Button
-                    type="submit"
-                    onClick={(e) => {
-                      handleDetails(e);
-                    }}
-                  >
-                    Next
-                  </Button>
-                  <p>
-                    <GoogleLogin
-                      clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
-                      buttonText="Continue with Google"
-                      onSuccess={responseGoogle}
-                      onFailure={responseGoogle}
-                      theme="dark"
-                      // isSignedIn={true}
-                      cookiePolicy={"single_host_origin"}
+                    <Input
+                      type="text"
+                      placeholder="Username"
+                      value={username}
+                      name="username"
+                      autocomplete="off"
+                      onChange={(e) => setUsername(e.target.value)}
+                      className="register-input"
                     />
-                  </p>
-                  <p>
-                    <Register onClick={handleRegister}>Back to Login</Register>
-                  </p>
-                </Form>
-              </Box>
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      autocomplete="off"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="register-input"
+                    />
+                    <Input
+                      type="password"
+                      placeholder="Password"
+                      autocomplete="off"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="register-input"
+                    />
+                    <Input
+                      type="password"
+                      placeholder="Confirm Password"
+                      autocomplete="off"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className="register-input"
+                    />
+                    <Button type="submit" onClick={(e) => handleDetails(e)}>
+                      Next
+                    </Button>
+                    
+                  </div>
+                </div>
+                  <SideBar>
+                    <div className="logo">
+                      <img src="https://www.edufever.com/wp-content/uploads/2016/12/dcrust-logo.jpg" alt="" />
+                      <h2>IIC</h2>
+                    </div>
+                    <div className="links">
+                      <p className="sec-link">Already have an account?</p>
+                      <p className="prim-link" onClick={handleRegister}>Sign In</p>
+                    </div>
+                  </SideBar>
+              </Content>
             ) : (
-              <Box>
-                <Head>
-                  <h2>Details</h2>
-                  <IconButton onClick={close}>
+              <Content>
+                <div className="box login">
+                  <IconButton onClick={close} className="close">
                     <Close />
                   </IconButton>
-                </Head>
-                <Form>
-                  <Input
-                    type="text"
-                    placeholder="First Name"
-                    value={fname}
-                    autocomplete="off"
-                    name="first"
-                    onChange={(e) => setfName(e.target.value)}
-                  />
-                  <Input
-                    type="text"
-                    placeholder="Last Name"
-                    autocomplete="off"
-                    value={lname}
-                    name="last"
-                    onChange={(e) => setlName(e.target.value)}
-                  />
-                  <DOB
-                    id="dob"
-                    label="Birthday"
-                    type="date"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
-                  />
+                  <h1 className="auth-heading register-head">Details</h1>
+                  <div className="form login-form">
+                    <div>
+                      <GoogleLogin
+                        clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+                        buttonText="Continue with Google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        theme="light"
+                        cookiePolicy={"single_host_origin"}
+                        className="google-login"
+                      />
+                      <p className="login-alt-text sideline">
+                        <span>or login with email</span>
+                      </p>
+                    </div>
 
-                  <Button type="submit" onClick={(e) => handleSubmit(e)}>
-                    Register
-                  </Button>
-
-                  <p>
-                    <Register onClick={handleDetails}>
-                      Back to Register
-                    </Register>
-                  </p>
-                </Form>
-              </Box>
+                    <Input
+                      type="text"
+                      placeholder="First Name"
+                      value={fname}
+                      autocomplete="off"
+                      name="first"
+                      onChange={(e) => setfName(e.target.value)}
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Last Name"
+                      autocomplete="off"
+                      value={lname}
+                      name="last"
+                      onChange={(e) => setlName(e.target.value)}
+                    />
+                    <DOB
+                      id="dob"
+                      label="DOB"
+                      type="date"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      value={selectedDate}
+                      onChange={(e) => setSelectedDate(e.target.value)}
+                    />
+                    <Button type="submit" onClick={(e) => handleSubmit(e)}>
+                      Sign Up
+                    </Button>
+                    
+                  </div>
+                </div>
+                  <SideBar>
+                    <div className="logo">
+                      <img src="https://www.edufever.com/wp-content/uploads/2016/12/dcrust-logo.jpg" alt="" />
+                      <h2>IIC</h2>
+                    </div>
+                    <div className="links">
+                      <p className="sec-link">Already have an account?</p>
+                      <p className="prim-link" onClick={handleRegister}>Sign In</p>
+                    </div>
+                  </SideBar>
+              </Content>
             )}
           </ModalContainer>
         }
@@ -291,16 +333,30 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 export default LoginModal;
 const ModalContainer = styled.div`
   position: "absolute";
-  width: ${getDeviceType() === "desktop" ? "30vw" : "82vw"};
-  height: 80vh;
+  width: 100vw;
+  height: 100vh;
   margin: auto;
-  background-color: rgba(12, 136, 194, 0.945);
-  border: 1px solid rgba(255, 255, 255, 0.479);
-  margin-top: 15vh;
-  border-radius: 30px;
+  background-color: #F6F6F6;
+  font-family: Poppins, Verdana sans-serif !important;
 `;
+
+const Content = styled.div`
+  display: flex;
+`;
+
+const SideBar = styled.div`
+  height: 100vh;
+  flex: 3;
+  background-color: #034B94;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Box = styled.div`
   padding: 50px 30px;
+  flex: 5;
   display: flex;
   height: 85%;
   flex-direction: column;
@@ -309,12 +365,15 @@ const Box = styled.div`
 `;
 
 const Input = styled.input`
-  width: 90%;
-  height: 6vh;
-  padding-left: 20px;
-  border: none;
-  border-radius: 20px;
+  width: 40%;
+  height: 7vh;
+  padding-left: 30px;
+  border: 0.3px #eee solid;
+  border-radius: 5px;
   outline: none;
+  box-shadow: 12px 12px 25px rgb(0 0 0 / 6%);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 `;
 const Form = styled.form`
   display: flex;
@@ -324,15 +383,20 @@ const Form = styled.form`
   justify-content: space-evenly;
 `;
 const Button = styled.button`
-  width: 80%;
+  margin-top: 1.5rem;
+  width: 20%;
   height: 7vh;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 100px;
   border: none;
-  background-color: #040016;
-  color: #fff;
+  background-color: #034B94;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #F6F6F6;
+  letter-spacing: .5px;
+  font-family: Poppins, Verdana sans-serif;
   :hover {
-    background-color: rgba(4, 0, 22, 0.781);
+    background-color: #004182;
   }
 `;
 
@@ -352,6 +416,8 @@ const Head = styled.p`
 const DOB = styled(TextField)`
   && {
     color: white;
-    width: 90%;
+    width: 40%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 `;
