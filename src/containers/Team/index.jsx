@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";	
 import {getDeviceType} from "helpers";
-import TeamDetails from "./TeamDetails";
-import { Grid } from "@material-ui/core";
+
+import TeamBox from "./TeamBox";
 
 const Team = () => {
 	return (
@@ -15,12 +15,7 @@ const Team = () => {
 			<Image
 				src="https://i.pinimg.com/originals/70/9d/00/709d007dc00655a582927bdb1e08e080.jpg"
 			/>
-			<Grid container spacing={0}>
-			<Grid item xs={12} spacing ={3}>
-				<TeamDetails position ="President" name ="Suman Sangwan" />	
-				<TeamDetails position ="Member" name="Harsh"/>
-			</Grid>
-			</Grid>
+			<TeamBox />
 		</Container>
 	);
 };
@@ -29,30 +24,32 @@ export default Team;
 
 const Container = styled.div`
 	width: ${getDeviceType() === "mobile" ? "75vw" : "100%"};
-	padding-left:390px;
+	padding-left:50px;
 	padding-top:80px;
 	margin:0 auto;
 	background-color:#f5f5f5;
 `;
 
 const Box = styled.div`
+	padding-left:340px;
 	margin-top: 30px;
-	width: ${getDeviceType() === "mobile" ? "75vw" : "50vw"};
-	height: ${getDeviceType() === "mobile" ? "30vh" : "45vh"};
 	position:absolute;
-	display:flex;
-	justify-content:center;
-	background-color:rgba(0,0,0,0.2);
 `;
 
 const Heading = styled.h1`
+	width: ${getDeviceType() === "mobile" ? "75vw" : "50vw"};
+	height: ${getDeviceType() === "mobile" ? "30vh" : "45vh"};
 	font-size: ${getDeviceType() === "mobile" ? "30px" : "60px"};
 	font-family: time;
 	color:purple;
-
+	background-color:rgba(0,0,0,0.2);
+	display:flex;
+	justify-content:center;
 `;
 const Image = styled.img`
+	padding-left:340px;
 	margin-top: 30px;
+	background-size:cover;
 	height: ${getDeviceType() === "mobile" ? "30vh" : "45vh"};
 	width: ${getDeviceType() === "mobile" ? "75vw" : "50vw"};
 `
