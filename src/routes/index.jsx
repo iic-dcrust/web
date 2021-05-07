@@ -11,7 +11,7 @@ import Homepage from "pages/Homepage";
 import { Header, Footer } from "containers/Homepage";
 import Team from "containers/Team";
 
-import Events from "containers/Events";
+import Events from "pages/Events";
 import EventDetails from "containers/Events/EventDetials";
 
 export default function App() {
@@ -48,5 +48,5 @@ export default function App() {
 }
 
 const MainWrapper = styled.div`
-	min-height: 80vh;
+	overflow-x: hidden;
 `;

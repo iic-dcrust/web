@@ -16,9 +16,13 @@ export default Team;
 
 const Container = styled.div`
 	padding-top: 70px;
-	text-align: center;
+	min-height: 70vh;
+
+	display: grid;
+	justify-content: center;
+	align-content: center;
 `;
 
 const Image = styled.img`
-	margin-top: 30px;
+	max-width: 100vw;
 `;
