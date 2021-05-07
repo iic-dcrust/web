@@ -13,6 +13,7 @@ import Team from "containers/Team";
 
 import Events from "containers/Events";
 import EventDetails from "containers/Events/EventDetials";
+import FAQ from "containers/FAQ";
 
 export default function App() {
 	return (
@@ -31,10 +32,10 @@ export default function App() {
 						<Events />
 					</Route>
 					<Route path="/blogs">
-						<Team />
+						<FAQ />
 					</Route>
 					<Route path="/faq">
-						<Team />
+						<FAQ />
 					</Route>
 					<Route path="/team">
 						<Team />
