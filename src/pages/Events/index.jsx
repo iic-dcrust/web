@@ -17,13 +17,13 @@ const Events = () => {
 	const [time, setTime] = useState("all");
 
 	useEffect(() => {
-		updateEventsList();
+		updateEventsList(page, type, time);
 	}, [type, time, page]);
 	useEffect(() => {
 		setPage(1);
 	}, [time, type]);
 
-	const updateEventsList = () => {
+	const updateEventsList = (page, type, time) => {
 		setLoading(true);
 		axios
 			.get(`/api/events?type=${type}&page=${page}&time=${time}`)
