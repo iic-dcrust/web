@@ -23,6 +23,16 @@ const Container = styled.div`
 	align-content: center;
 `;
 
+const Heading = styled.h1`
+	width: ${getDeviceType() === "mobile" ? "35vw" : "50vw"};
+	height: ${getDeviceType() === "mobile" ? "30vh" : "45vh"};
+	font-size: ${getDeviceType() === "mobile" ? "30px" : "60px"};
+	font-family: time;
+	color:purple;
+	background-color:rgba(0,0,0,0.2);
+	display:flex;
+	justify-content:center;
+`;
 const Image = styled.img`
 	max-width: 100vw;
 `;
