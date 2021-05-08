@@ -1,9 +1,8 @@
-import { IconButton, Modal, TextField } from "@material-ui/core";
-import { getDeviceType, validateInput } from "helpers";
+import { IconButton, MenuItem, Modal, TextField } from "@material-ui/core";
+import { getDeviceType, validateDetails, validateInput } from "helpers";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useStateValue } from "helpers/StateProvider";
-// import axios from "helpers/axios";
 import GoogleLogin from "react-google-login";
 import { Close } from "@material-ui/icons";
 import Alerts from "./Alerts";
@@ -18,11 +17,11 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alertOpen, setAlertOpen] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [fname, setfName] = useState("");
-  const [lname, setlName] = useState("");
-  const [username, setUsername] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [roll, setRoll] = useState("");
+  const [year, setYear] = useState("");
+  const [branch, setBranch] = useState("");
   const [valError, setvalError] = useState(null);
 
   const handleRegister = () => {
@@ -40,21 +39,14 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 
   const handleDetails = (e) => {
     e.preventDefault();
-    if (!details) {
-      if (username && email && password && confirmPassword) {
-        setvalError(
-          validateInput({
-            username: username,
-            pass: password,
-            confirm: confirmPassword,
-          })
-        );
-      } else {
-        setvalError({
-          title: "Missing Input",
-          body: "Please fill all fields",
-        });
-      }
+    const error = validateInput({
+      name: name,
+      roll: roll,
+      year: year,
+      branch: branch,
+    });
+    if (error) {
+      setvalError(error);
     } else {
       setDetails(false);
     }
@@ -63,12 +55,31 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (register) {
-      if (fname && lname && selectedDate) {
+      const error = validateDetails({
+        email: email,
+        phone: phone,
+        password: password,
+      });
+      if (error) {
+        setvalError(error);
+      } else {
+        //request
+      }
+    } else {
+      if (email && password) {
         //request
       } else {
         setvalError({
           title: "Missing Input",
           body: "Please fill all fields",
+          items:
+            !email && !password
+              ? "all"
+              : !email
+              ? "email"
+              : !password
+              ? "password"
+              : "",
         });
         setAlertOpen(true);
         setTimeout(() => setAlertOpen(false), 2000);
@@ -80,13 +91,13 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
     handleCloseLogin();
     setRegister(false);
     setEmail("");
-    setUsername("");
-    setfName("");
-    setlName("");
-    setSelectedDate("");
     setPassword("");
-    setDetails(false);
-    setConfirmPassword("");
+    setBranch("");
+    setName("");
+    setPhone("");
+    setYear("");
+    setRoll("");
+    setDetails(true);
   };
 
   const responseGoogle = (res) => {
@@ -166,26 +177,47 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                         <span>or login with email</span>
                       </p>
                     </div>
-
                     <Input
                       type="email"
+                      label="Email"
                       placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      error={
+                        valError &&
+                        (valError.items === "all" || valError.items === "email")
+                          ? true
+                          : false
+                      }
                     />
+
                     <Input
+                      label="Password"
                       type="password"
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      error={
+                        valError &&
+                        (valError.items === "all" ||
+                          valError.items === "password")
+                          ? true
+                          : false
+                      }
                     />
                     <Button type="submit" onClick={(e) => handleSubmit(e)}>
                       Sign In
                     </Button>
+                    <MobLink className="links">
+                      <p className="sec-link">Don't have an account?</p>
+                      <p className="prim-link" onClick={handleRegister}>
+                        Sign Up
+                      </p>
+                    </MobLink>
                   </div>
                 </div>
               </Content>
-            ) : !details ? (
+            ) : details ? (
               <Content>
                 <div className="box login">
                   <IconButton onClick={close} className="close">
@@ -209,42 +241,69 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     </div>
 
                     <Input
-                      type="text"
-                      placeholder="Username"
-                      value={username}
-                      name="username"
-                      autocomplete="off"
-                      onChange={(e) => setUsername(e.target.value)}
-                      className="register-input"
+                      label="Full Name"
+                      placeholder="Name"
+                      value={name}
+                      name="name"
+                      error={
+                        valError && valError.items.includes("name")
+                          ? true
+                          : false
+                      }
+                      onChange={(e) => setName(e.target.value)}
                     />
                     <Input
-                      type="email"
-                      placeholder="Email"
-                      name="email"
-                      autocomplete="off"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="register-input"
+                      type="phone"
+                      label="Roll No."
+                      placeholder="Roll No."
+                      name="roll"
+                      value={roll}
+                      error={
+                        valError && valError.items.includes("roll")
+                          ? true
+                          : false
+                      }
+                      onChange={(e) => setRoll(e.target.value)}
                     />
                     <Input
-                      type="password"
-                      placeholder="Password"
-                      autocomplete="off"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="register-input"
-                    />
+                      select
+                      label="Year of study"
+                      value={year}
+                      error={
+                        valError && valError.items.includes("year")
+                          ? true
+                          : false
+                      }
+                      onChange={(e) => setYear(e.target.value)}
+                    >
+                      <MenuItem value={1}>First</MenuItem>
+                      <MenuItem value={2}>Second</MenuItem>
+                      <MenuItem value={3}>Third</MenuItem>
+                      <MenuItem value={4}>Fourth</MenuItem>
+                      <MenuItem value={5}>Fifth</MenuItem>
+                    </Input>
                     <Input
-                      type="password"
-                      placeholder="Confirm Password"
-                      autocomplete="off"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      className="register-input"
+                      label="Branch"
+                      placeholder="Branch"
+                      value={branch}
+                      name="branch"
+                      error={
+                        valError && valError.items.includes("branch")
+                          ? true
+                          : false
+                      }
+                      onChange={(e) => setBranch(e.target.value)}
                     />
+
                     <Button type="submit" onClick={(e) => handleDetails(e)}>
                       Next
                     </Button>
+                    <MobLink className="links">
+                      <p className="sec-link">Already have an account?</p>
+                      <p className="prim-link" onClick={handleRegister}>
+                        Sign In
+                      </p>
+                    </MobLink>
                   </div>
                 </div>
                 <SideBar>
@@ -284,33 +343,54 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     </div>
 
                     <Input
-                      type="text"
-                      placeholder="First Name"
-                      value={fname}
-                      autocomplete="off"
-                      name="first"
-                      onChange={(e) => setfName(e.target.value)}
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      label="Email"
+                      value={email}
+                      error={
+                        valError &&
+                        (valError.items.includes("email") ||
+                          valError.items.includes("emailInvalid"))
+                          ? true
+                          : false
+                      }
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <Input
-                      type="text"
-                      placeholder="Last Name"
-                      autocomplete="off"
-                      value={lname}
-                      name="last"
-                      onChange={(e) => setlName(e.target.value)}
+                      type="phone"
+                      label="Phone"
+                      placeholder="Phone"
+                      name="phone"
+                      value={phone}
+                      error={
+                        valError &&
+                        (valError.items.includes("phone") ||
+                          valError.items.includes("phoneInvalid"))
+                          ? true
+                          : false
+                      }
+                      onChange={(e) => setPhone(e.target.value)}
                     />
-                    <DOB
-                      id="dob"
-                      label="DOB"
-                      type="date"
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                      value={selectedDate}
-                      onChange={(e) => setSelectedDate(e.target.value)}
+                    <Input
+                      type="password"
+                      label="Password"
+                      placeholder="Password"
+                      value={password}
+                      error={
+                        valError &&
+                        (valError.items.includes("password") ||
+                          valError.items.includes("passInvalid"))
+                          ? true
+                          : false
+                      }
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <Button type="submit" onClick={(e) => handleSubmit(e)}>
                       Sign Up
+                    </Button>
+                    <Button type="submit" onClick={(e) => setDetails(!details)}>
+                      Back
                     </Button>
                   </div>
                 </div>
@@ -360,43 +440,22 @@ const SideBar = styled.div`
   height: 100vh;
   flex: 3;
   background-color: #034b94;
-  display: flex;
+  display: ${getDeviceType() === "mobile" ? "none" : "flex"};
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 `;
 
-const Box = styled.div`
-  padding: 50px 30px;
-  flex: 5;
-  display: flex;
-  height: 85%;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #040016;
-`;
-
-const Input = styled.input`
-  width: 40%;
+const Input = styled(TextField)`
+  width: ${getDeviceType() === "mobile" ? "75%" : "40%"};
   height: 50px;
   padding-left: 30px;
-  border: 0.3px #eee solid;
-  border-radius: 5px;
-  outline: none;
   box-shadow: 12px 12px 25px rgb(0 0 0 / 6%);
-  margin-bottom: 1rem;
-  margin-top: 2rem;
 `;
-const Form = styled.form`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  height: 80%;
-  justify-content: space-evenly;
-`;
+
 const Button = styled.button`
   margin-top: 1.5rem;
-  width: 20%;
+  width: ${getDeviceType() === "mobile" ? "30%" : "20%"};
   height: 7vh;
   cursor: pointer;
   border-radius: 100px;
@@ -411,25 +470,6 @@ const Button = styled.button`
     background-color: #004182;
   }
 `;
-
-const Register = styled.span`
-  cursor: pointer;
-  padding-left: 10px;
-  :hover {
-    color: #fff;
-  }
-`;
-
-const Head = styled.p`
-  justify-content: space-between;
-  display: flex;
-`;
-
-const DOB = styled(TextField)`
-  && {
-    color: white;
-    width: 40%;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
+const MobLink = styled.div`
+  display: ${getDeviceType() === "desktop" ? "none" : ""};
 `;

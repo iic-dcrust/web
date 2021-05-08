@@ -1,117 +1,118 @@
 .logo h2 {
-	color: #fff;
-	text-align: center;
+  color: #fff;
+  text-align: center;
 }
 
 .logo img {
-	margin-top: 3rem;
-	margin-left: 2rem;
-	width: 80%;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  width: 80%;
 }
 
 .links {
-	margin-bottom: 6rem;
-	text-align: center;
+  margin-bottom: 6rem;
+  text-align: center;
 }
 
 .links .sec-link {
-	color: #b7b7b7;
-	font-weight: 500;
+  color: #b7b7b7;
+  font-weight: 500;
 }
 
 .links .prim-link {
-	color: #efefef;
-	font-weight: bolder;
-	cursor: pointer;
+  color: #b7b7b7;
+  font-weight: bolder;
+  cursor: pointer;
 }
 
 .links .prim-link:hover {
-	color: #fff;
+  color: #fff;
 }
 
 .auth-heading {
-	color: #333;
-	font-weight: bolder;
-	font-size: 3rem;
-	margin-bottom: 2rem;
-	margin-top: 4rem;
+  color: #333;
+  font-weight: bolder;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  margin-top: 4rem;
 }
 
 .register-head {
-	margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 .box {
-	flex: 5;
-	display: flex;
-	height: 85%;
-	flex-direction: column;
-	justify-content: space-between;
-	text-align: center;
+  flex: 5;
+  display: flex;
+  height: 85%;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .close {
-	position: absolute !important;
-	top: 10px !important;
-	right: 10px !important;
-	color: #999 !important;
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  color: #999 !important;
 }
 
 .close:hover {
-	color: #888 !important;
+  color: #888 !important;
 }
 
 .form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 80vh;
-	margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  margin: auto;
 }
 
 .register-input {
-	margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .google-login {
-	color: #444 !important;
-	padding: 0 20px 0 7px !important;
-	box-shadow: none !important;
-	border: 1px solid #ddd !important;
+  color: #444 !important;
+  padding: 0 20px 0 7px !important;
+  box-shadow: none !important;
+  border: 1px solid #ddd !important;
 }
 
 .login-alt-text {
-	font-size: 0.7rem;
-	font-weight: 500;
-	letter-spacing: 1px;
-	color: #aaa;
-	margin-top: 2rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #aaa;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
 .sideline {
-	line-height: 0.01;
-	text-align: center;
-	text-transform: uppercase;
+  line-height: 0.01;
+  text-align: center;
+  text-transform: uppercase;
 }
 .sideline span {
-	display: inline-block;
-	position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .sideline span:before,
 .sideline span:after {
-	content: "";
-	position: absolute;
-	border-bottom: 1px solid #aaa;
-	width: 5rem;
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #aaa;
+  width: 5rem;
 }
 
 .sideline span:before {
-	right: 100%;
-	margin-right: 15px;
+  right: 100%;
+  margin-right: 15px;
 }
 .sideline span:after {
-	left: 100%;
-	margin-left: 15px;
+  left: 100%;
+  margin-left: 15px;
 }

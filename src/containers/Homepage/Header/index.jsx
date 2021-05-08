@@ -124,7 +124,9 @@ const Header = () => {
           />
         )}
         <MainLogo />
-        <Name>Institute Innovation Cell</Name>
+        <Name onClick={() => handleChange("home")}>
+          Institute Innovation Cell
+        </Name>
       </Container>
       <Nav>
         <NavItem onClick={() => handleChange("home")}>Home</NavItem>
@@ -178,6 +180,7 @@ const Name = styled.h1`
   align-items: center;
   font-size: ${getDeviceType() === "mobile" ? "16px" : "22px"};
   margin-left: 20px;
+  cursor: pointer;
 `;
 const DrawerIcon = styled.span`
   display: ${getDeviceType() === "desktop" ? "none" : ""};
