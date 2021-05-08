@@ -1,55 +1,45 @@
 import React from "react";
-import styled from "styled-components";	
-import {getDeviceType} from "helpers";
+import styled from "styled-components";
+import { getDeviceType } from "helpers";
 
 import TeamBox from "./TeamBox";
 
 const Team = () => {
-	return (
-		<Container>
-			<Box>
-				<Heading>
-					Meet the Team
-				</Heading>
-			</Box>
-			<Image
-				src="https://i.pinimg.com/originals/70/9d/00/709d007dc00655a582927bdb1e08e080.jpg"
-			/>
-			<TeamBox />
-		</Container>
-	);
+  return (
+    <Container>
+      <Box>
+        <Heading>Meet the Team</Heading>
+      </Box>
+      <Image src="https://i.pinimg.com/originals/70/9d/00/709d007dc00655a582927bdb1e08e080.jpg" />
+      <TeamBox />
+    </Container>
+  );
 };
 
 export default Team;
 
 const Container = styled.div`
-	width: ${getDeviceType() === "mobile" ? "75vw" : "100%"};
-	padding-left:50px;
-	padding-top:80px;
-	margin:0 auto;
-	background-color:#f5f5f5;
+  width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  padding-top: 70px;
 `;
-
 const Box = styled.div`
-	padding-left:340px;
-	margin-top: 30px;
-	position:absolute;
+  width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
+  height: ${getDeviceType() === "mobile" ? "40vh" : "50vh"};
+  background-color: rgba(0, 0, 0, 0.699);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-const Heading = styled.h1`
-	width: ${getDeviceType() === "mobile" ? "75vw" : "50vw"};
-	height: ${getDeviceType() === "mobile" ? "30vh" : "45vh"};
-	font-size: ${getDeviceType() === "mobile" ? "30px" : "60px"};
-	font-family: time;
-	color:purple;
-	background-color:rgba(0,0,0,0.2);
-	display:flex;
-	justify-content:center;
+const Heading = styled.span`
+  color: #fff;
+  font-size: ${getDeviceType() === "mobile" ? "1.5rem" : "3.5rem"};
+  font-family: Quicksand;
 `;
 const Image = styled.img`
-	padding-left:340px;
-	margin-top: 30px;
-	background-size:cover;
-	height: ${getDeviceType() === "mobile" ? "30vh" : "45vh"};
-	width: ${getDeviceType() === "mobile" ? "75vw" : "50vw"};
-`
+  width: 100%;
+  max-height: 50vh;
+`;
