@@ -8,7 +8,7 @@ import {
 import styled from "styled-components";
 
 import Homepage from "pages/Homepage";
-import { Header, Footer } from "containers/Homepage";
+import { Header, Footer } from "components";
 import Team from "containers/Team";
 
 import Events from "pages/Events";

@@ -1,3 +1,5 @@
-import MainLogo from './MainLogo'
+import MainLogo from "./MainLogo";
+import Header from "./Header";
+import Footer from "./Footer";
 
-export {MainLogo }
+export { MainLogo, Header, Footer };

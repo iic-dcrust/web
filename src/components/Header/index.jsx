@@ -8,7 +8,7 @@ import DrawerStructure from "./drawer";
 import { useHistory } from "react-router-dom";
 import LoginModal from "./LoginModal";
 import { useStateValue } from "helpers/StateProvider";
-import axios from "../../../helpers/axios";
+import axios from "helpers/axios";
 import Alerts from "./Alerts";
 import { appColors } from "styles/colors";
 
@@ -21,16 +21,16 @@ const Header = () => {
 	const history = useHistory();
 
 	useEffect(() => {
-		axios.get("/api/").then((res) =>
+		axios.get("/api/events?type=all&page=1").then((res) =>
 			dispatch({
 				type: "SET_EVENTS",
 				events: {
 					id: res.data.id,
 					title: res.data.title,
-					desc: res.data.desc,
-					start: res.data.start,
+					desc: res.data.description,
+					start: res.data.startDate,
 					venue: res.data.venue,
-					url: res.data.url,
+					url: res.data.mainImgUrl,
 				},
 			})
 		);

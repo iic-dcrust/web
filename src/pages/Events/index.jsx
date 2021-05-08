@@ -1,14 +1,42 @@
 import { Pagination } from "@material-ui/lab";
 import { getDeviceType } from "helpers";
-import { useStateValue } from "helpers/StateProvider";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import EventBox from "containers/Events/EventBox/EventBox";
 import EventHeader from "containers/Events/EventBox/EventHeader";
 import { appColors } from "styles/colors";
+import axios from "helpers/axios";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import NoData from "assets/nodata.svg";
 
 const Events = () => {
-	const [{ events }] = useStateValue();
+	const [events, setEvents] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const [page, setPage] = useState(1);
+	const [type, setType] = useState("all");
+	const [time, setTime] = useState("all");
+
+	useEffect(() => {
+		updateEventsList();
+	}, [type, time, page]);
+	useEffect(() => {
+		setPage(1);
+	}, [time, type]);
+
+	const updateEventsList = () => {
+		setLoading(true);
+		axios
+			.get(`/api/events?type=${type}&page=${page}&time=${time}`)
+			.then((res) => {
+				setEvents(res.data);
+				setLoading(false);
+			})
+			.catch((err) => {
+				setEvents(null);
+				setLoading(false);
+			});
+	};
+
 	return (
 		<Container>
 			<Mask>
@@ -16,19 +44,41 @@ const Events = () => {
 			</Mask>
 			<Image src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=748&q=80" />
 			<Box>
-				<EventHeader />
+				<EventHeader
+					time={time}
+					type={type}
+					setTime={setTime}
+					setType={setType}
+				/>
 				<EventWrapper>
-					{events.map((event) => (
-						<EventBox event={event} />
-					))}
+					{loading ? (
+						<CircularProgress style={{ margin: "150px auto" }} />
+					) : events && events.length !== 0 ? (
+						events.map((e) => <EventBox event={e} key={e.id} />)
+					) : (
+						<NoDataImg src={NoData} alt=" " />
+					)}
 				</EventWrapper>
-				<Page count={10} color="primary" />
+				<Page
+					count={10}
+					page={page}
+					onChange={(e, value) => {
+						setPage(value);
+					}}
+					color="primary"
+				/>
 			</Box>
 		</Container>
 	);
 };
 
 export default Events;
+
+const NoDataImg = styled.img`
+	height: 200px;
+	width: 200px;
+	margin: 90px auto;
+`;
 
 const EventWrapper = styled.div`
 	display: flex;

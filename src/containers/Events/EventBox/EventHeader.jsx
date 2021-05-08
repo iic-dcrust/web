@@ -6,29 +6,71 @@ import CodeIcon from "@material-ui/icons/Code";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
 import { getDeviceType } from "helpers";
 import { appColors } from "styles/colors";
-const EventHeader = () => {
+
+const EventHeader = ({ setType, setTime, time, type }) => {
 	return (
 		<>
 			<Container>
-				<Tag>
+				<Tag
+					onClick={() => {
+						setType("all");
+					}}
+					active={type === "all"}
+				>
 					<EventNoteIcon />
 					<span> All</span>
 				</Tag>
-				<Tag>
+				<Tag
+					onClick={() => {
+						setType("webinar");
+					}}
+					active={type === "webinar"}
+				>
 					<ComputerIcon /> <span> Webinars</span>
 				</Tag>
-				<Tag>
+				<Tag
+					onClick={() => {
+						setType("workshop");
+					}}
+					active={type === "workshop"}
+				>
 					<WebAssetIcon /> <span> Workshops</span>
 				</Tag>
-				<Tag>
+				<Tag
+					onClick={() => {
+						setType("hack");
+					}}
+					active={type === "hack"}
+				>
 					<CodeIcon />
 					<span> Hackathons</span>
 				</Tag>
 			</Container>
 			<Cont>
-				<Tag>All Time</Tag>
-				<Tag>Upcoming</Tag>
-				<Tag>Past</Tag>
+				<Tag
+					onClick={() => {
+						setTime("all");
+					}}
+					active={time === "all"}
+				>
+					All Time
+				</Tag>
+				<Tag
+					onClick={() => {
+						setTime("upcomming");
+					}}
+					active={time === "upcomming"}
+				>
+					Upcoming
+				</Tag>
+				<Tag
+					onClick={() => {
+						setTime("past");
+					}}
+					active={time === "past"}
+				>
+					Past
+				</Tag>
 			</Cont>
 		</>
 	);
@@ -59,6 +101,7 @@ const Tag = styled.span`
 	span {
 		margin-left: 5px;
 	}
+	${(props) => props.active && `background-color: ${appColors.accentDark};`}
 
 	:hover {
 		background-color: ${appColors.accentDark};

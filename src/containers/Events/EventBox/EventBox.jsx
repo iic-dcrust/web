@@ -4,14 +4,13 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { appColors } from "styles/colors";
+import moment from "moment";
 
 const EventBox = ({ event }) => {
 	const history = useHistory();
-	const truncate = (desc, n) => {
-		return desc.slice(0, n) + " ...";
+	const truncate = (description, n) => {
+		return description.slice(0, n) + " ...";
 	};
-	let desc =
-		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi utaliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
 	return (
 		<Container
 			onClick={() => {
@@ -19,25 +18,26 @@ const EventBox = ({ event }) => {
 				window.scrollTo(0, 0);
 			}}
 		>
-			<Image
-				src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80"
-				alt=""
-			></Image>
-			<Text>Event Title</Text>
-			<Body>{desc.length > 300 ? truncate(desc, 300) : desc}</Body>
+			<Image src={event.mainImgUrl} alt=""></Image>
+			<Text>{event.title}</Text>
+			<Body>
+				{event.description.length > 300
+					? truncate(event.description, 300)
+					: event.description}
+			</Body>
 			<Box>
 				<Info>
 					<Tag>
 						<InfoHead>Start:</InfoHead>
-						<InfoBody>Start Time</InfoBody>
+						<InfoBody>{moment(event.startTime).format("DD-MM-YYYY")}</InfoBody>
 					</Tag>
 					<Tag>
 						<InfoHead>End:</InfoHead>
-						<InfoBody>End Time</InfoBody>
+						<InfoBody>{moment(event.endTime).format("DD-MM-YYYY")}</InfoBody>
 					</Tag>
 					<Tag>
 						<InfoHead>Venue</InfoHead>
-						<InfoBody>DCRUST / Online</InfoBody>
+						<InfoBody>{event.venue}</InfoBody>
 					</Tag>
 				</Info>
 			</Box>
@@ -53,7 +53,7 @@ export default EventBox;
 const Container = styled.div`
 	height: 550px;
 	background-color: white;
-	margin: 30px auto;
+	margin: 30px 40px;
 	width: ${getDeviceType() === "mobile" ? "80vw" : "400px"};
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 20px;
