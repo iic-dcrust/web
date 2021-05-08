@@ -23,7 +23,6 @@ const Team = () => {
 export default Team;
 
 const Container = styled.div`
-<<<<<<< HEAD
 	padding-top: 70px;
 	min-height: 70vh;
 
@@ -34,7 +33,6 @@ const Container = styled.div`
 
 const Heading = styled.h1`
 	width: ${getDeviceType() === "mobile" ? "35vw" : "50vw"};
-=======
 	width: ${getDeviceType() === "mobile" ? "75vw" : "100%"};
 	padding-left:50px;
 	padding-top:80px;
@@ -50,7 +48,7 @@ const Box = styled.div`
 
 const Heading = styled.h1`
 	width: ${getDeviceType() === "mobile" ? "75vw" : "50vw"};
->>>>>>> team
+
 	height: ${getDeviceType() === "mobile" ? "30vh" : "45vh"};
 	font-size: ${getDeviceType() === "mobile" ? "30px" : "60px"};
 	font-family: time;
@@ -58,12 +56,9 @@ const Heading = styled.h1`
 	background-color:rgba(0,0,0,0.2);
 	display:flex;
 	justify-content:center;
-<<<<<<< HEAD
 `;
 const Image = styled.img`
 	max-width: 100vw;
-=======
->>>>>>> team
 `;
 const Image = styled.img`
 	padding-left:340px;
