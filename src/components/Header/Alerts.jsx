@@ -9,8 +9,9 @@ const alertStyle = {
   marginLeft: `${getDeviceType() === "mobile" ? "" : "18%"}`,
 };
 const alertValStyle = {
-  width: getDeviceType() === "desktop" ? "27vw" : "72vw",
+  width: getDeviceType() === "desktop" ? "35vw" : "72vw",
   top: "2vh",
+  left: "10%",
   position: "absolute",
 };
 
