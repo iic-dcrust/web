@@ -23,6 +23,48 @@ export const TeamData = [
       "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
     work: "Developer",
   },
+  {
+    name: "Name",
+    image:
+      "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+    work: "Developer",
+  },
+  {
+    name: "Name",
+    image:
+      "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+    work: "Developer",
+  },
+  {
+    name: "Name",
+    image:
+      "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+    work: "Developer",
+  },
+  {
+    name: "Name",
+    image:
+      "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+    work: "Developer",
+  },
+  {
+    name: "Name",
+    image:
+      "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+    work: "Developer",
+  },
+  {
+    name: "Name",
+    image:
+      "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+    work: "Developer",
+  },
+  {
+    name: "Name",
+    image:
+      "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+    work: "Developer",
+  },
 ];
 
 export const IntroData = {
