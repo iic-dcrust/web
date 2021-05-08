@@ -235,7 +235,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     <Input
                       type="email"
                       label="Email"
-                      placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       error={
@@ -249,7 +248,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     <Input
                       label="Password"
                       type="password"
-                      placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       error={
@@ -297,7 +295,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 
                     <Input
                       label="Full Name"
-                      placeholder="Name"
                       value={name}
                       name="name"
                       error={
@@ -310,7 +307,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     <Input
                       type="phone"
                       label="Roll No."
-                      placeholder="Roll No."
                       name="roll"
                       value={roll}
                       error={
@@ -339,7 +335,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     </Input>
                     <Input
                       label="Branch"
-                      placeholder="Branch"
                       value={branch}
                       name="branch"
                       error={
@@ -399,7 +394,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 
                     <Input
                       type="email"
-                      placeholder="Email"
                       name="email"
                       label="Email"
                       value={email}
@@ -415,7 +409,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     <Input
                       type="phone"
                       label="Phone"
-                      placeholder="Phone"
                       name="phone"
                       value={phone}
                       error={
@@ -430,7 +423,6 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
                     <Input
                       type="password"
                       label="Password"
-                      placeholder="Password"
                       value={password}
                       error={
                         valError &&
@@ -504,8 +496,8 @@ const SideBar = styled.div`
 const Input = styled(TextField)`
   width: ${getDeviceType() === "mobile" ? "75%" : "40%"};
   height: 50px;
-  padding-left: 30px;
-  box-shadow: 12px 12px 25px rgb(0 0 0 / 6%);
+  margin: 17px auto !important;
+  text-align: left;
 `;
 
 const Button = styled.button`
