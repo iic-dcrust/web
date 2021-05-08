@@ -19,22 +19,38 @@ const Header = () => {
 
   const history = useHistory();
 
+  // useEffect(() => {
+  //   axios.get("/api/").then((res) =>
+  //     dispatch({
+  //       type: "SET_EVENTS",
+  //       events: {
+  //         id: res.data.id,
+  //         title: res.data.title,
+  //         desc: res.data.desc,
+  //         start: res.data.start,
+  //         venue: res.data.venue,
+  //         url: res.data.url,
+  //       },
+  //     })
+  //   );
+  //   // .catch((e) => alert(e));
+  // }, [dispatch]);
   useEffect(() => {
-    axios.get("/api/").then((res) =>
-      dispatch({
-        type: "SET_EVENTS",
-        events: {
-          id: res.data.id,
-          title: res.data.title,
-          desc: res.data.desc,
-          start: res.data.start,
-          venue: res.data.venue,
-          url: res.data.url,
-        },
-      })
-    );
-    // .catch((e) => alert(e));
+    axios
+      .get("api/users/isLogedIn")
+      .then((res) => res.json())
+      .then((parJson) => {
+        if (parJson.email) {
+          dispatch({
+            type: "SET_USER",
+            user: { email: parJson.email, name: parJson.firstName },
+          });
+        } else if (parJson.error) {
+          alert("error occured");
+        }
+      });
   }, [dispatch]);
+
   const toggleDrawer = () => {
     setOpen(!open);
   };

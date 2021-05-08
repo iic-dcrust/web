@@ -9,6 +9,7 @@ import Alerts from "./Alerts";
 import "./LoginModal.css";
 import DcrustLogo from "assets/dcrust-logo.jpeg";
 import { baseColor } from "styles/base";
+import axios from "helpers/axios";
 
 const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
   const [, dispatch] = useStateValue();
@@ -64,10 +65,64 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
         setvalError(error);
       } else {
         //request
+        axios
+          .post(
+            "/api/users/register",
+            JSON.stringify({
+              firstName: name,
+              username: email,
+              password: password,
+              phone: phone,
+              branch: branch,
+              year: year,
+              rollNumber: roll,
+            }),
+            { headers: { "Content-Type": "application/json" } }
+          )
+          .then((res) => res.json())
+          .then((parJson) => {
+            if (parJson.email) {
+              dispatch({
+                type: "SET_USER",
+                user: {
+                  email: parJson.email,
+                  name: name,
+                },
+              });
+              handleCloseLogin();
+              toggleDrawer();
+            } else if (parJson.error) {
+              alert("error occured");
+            }
+          });
       }
     } else {
       if (email && password) {
-        //request
+        axios
+          .post(
+            "/api/users/login",
+            JSON.stringify({
+              username: email,
+              password: password,
+            }),
+            { headers: { "Content-Type": "application/json" } }
+          )
+          .then((res) => res.json())
+          .then((parJson) => {
+            if (parJson.firstName) {
+              dispatch({
+                type: "SET_USER",
+                user: {
+                  name: parJson.firstName,
+                  email: email,
+                },
+              });
+              handleCloseLogin();
+              toggleDrawer();
+            } else if (parJson.error) {
+              alert("error occured");
+            }
+          });
       } else {
         setvalError({
           title: "Missing Input",
