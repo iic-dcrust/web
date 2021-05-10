@@ -23,6 +23,7 @@ const Container = styled.div`
 	margin: 0 auto;
 	background-color: #f5f5f5;
 	padding-top: 70px;
+	transition-duration: 0.2s;
 `;
 const Box = styled.div`
 	width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};

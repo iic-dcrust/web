@@ -1,29 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Grid } from "@material-ui/core";
+import { TeamData } from "helpers/Data";
+import { appColors } from "styles/colors.js";
+import TeamHeader from "./TeamHeader";
 import TeamDetails from "./TeamDetails";
 
 function TeamBox() {
+	const [type, setType] = useState("all");
 	return (
 		<Container>
-			<Grid container spacing={0}>
-				<Grid item xs={3}>
-					<TeamDetails position="President" name="name" />
-					<TeamDetails position="Member" name="name" />
-				</Grid>
-				<Grid item xs={3}>
-					<TeamDetails position="Teacher Coordinator" name="name" />
-					<TeamDetails position="Member" name="name" />
-				</Grid>
-				<Grid item xs={3}>
-					<TeamDetails position="Teacher Coordinator" name="name" />
-					<TeamDetails position="Member" name="name" />
-				</Grid>
-				<Grid item xs={3}>
-					<TeamDetails position="Teacher Coordinator" name="name" />
-					<TeamDetails position="Member" name="name" />
-				</Grid>
-			</Grid>
+			<TeamHeader setType={setType} type={type} />
+			<Box>
+				{TeamData[type].map((item) => {
+					if ((item.type = type)) {
+						return <TeamDetails details={item} />;
+					} else {
+						return null;
+					}
+				})}
+			</Box>
 		</Container>
 	);
 }
@@ -34,9 +29,19 @@ const Container = styled.div`
 	width: "100%";
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
 		rgba(17, 17, 26, 0.05) 0px 8px 32px;
-	border: 1px solid rgba(4, 0, 22, 0.541);
-	padding: 30px;
+	border: 1px solid rgba(173, 173, 173, 0.541);
+	padding-bottom: 5px;
 	border-radius: 10px;
 	margin-bottom: 20px;
-	padding-bottom: 20px;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+`;
+
+const Box = styled.div`
+	background-color: ${appColors.bgVar3};
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 `;
