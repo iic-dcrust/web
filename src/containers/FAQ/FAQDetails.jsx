@@ -33,7 +33,7 @@ export default FAQDetails;
 
 const Container = styled.div`
 	width: ${getDeviceType() === "mobile" ? "50vw" : "75vw"};
-	margin: 0 auto;
+	margin: ${getDeviceType() === "mobile" ? "0 auto" : "200px auto"};
 	justify-content: center;
 	align-items: center;
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 7px;

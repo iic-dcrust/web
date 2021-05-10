@@ -111,7 +111,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 			if (email && password) {
 				//request
 				try {
-					setRegisterBtnDisable(true);
+					setLoginBtnDisable(true);
 					let postData = {
 						email: email,
 						password: password,
@@ -131,7 +131,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 							},
 						});
 						handleCloseLogin();
-						setRegisterBtnDisable(false);
+						setLoginBtnDisable(false);
 					} else {
 						alert("Unexpected Error");
 					}
@@ -141,7 +141,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 					} else if (err.response.status === 500) {
 						alert("Internal Error");
 					}
-					setRegisterBtnDisable(false);
+					setLoginBtnDisable(false);
 				}
 			} else {
 				setvalError({
