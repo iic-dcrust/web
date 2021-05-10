@@ -9,6 +9,7 @@ import Alerts from "./Alerts";
 import "./LoginModal.css";
 import DcrustLogo from "assets/dcrust-logo.jpeg";
 import { baseColor } from "styles/base";
+import axios from "helpers/axios";
 
 const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 	const [, dispatch] = useStateValue();
@@ -23,6 +24,8 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 	const [year, setYear] = useState("");
 	const [branch, setBranch] = useState("");
 	const [valError, setvalError] = useState(null);
+	const [loginBtnDisable, setLoginBtnDisable] = useState(false);
+	const [registerBtnDisable, setRegisterBtnDisable] = useState(false);
 
 	const handleRegister = () => {
 		setRegister(!register);
@@ -52,7 +55,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 		}
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (register) {
 			const error = validateDetails({
@@ -63,11 +66,83 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 			if (error) {
 				setvalError(error);
 			} else {
-				//request
+				//request registration
+				try {
+					setRegisterBtnDisable(true);
+					let postData = {
+						firstName: name,
+						username: email,
+						phone: phone,
+						branch: branch,
+						year: year,
+						rollNumber: roll,
+						email: email,
+						password: password,
+					};
+
+					let response = await axios.post(
+						"/api/users/register",
+						JSON.stringify(postData)
+					);
+
+					if (response.data) {
+						dispatch({
+							type: "SET_USER",
+							user: {
+								email: response.data.email,
+								name: name,
+							},
+						});
+						handleCloseLogin();
+						setRegisterBtnDisable(false);
+					} else {
+						alert("Unexpected Error");
+					}
+				} catch (err) {
+					if (err.response.status === 400) {
+						alert(err.response.data.error);
+					} else if (err.response.status === 500) {
+						alert("Internal Error");
+					}
+					setRegisterBtnDisable(false);
+				}
 			}
 		} else {
 			if (email && password) {
 				//request
+				try {
+					setRegisterBtnDisable(true);
+					let postData = {
+						email: email,
+						password: password,
+					};
+
+					let response = await axios.post(
+						"/api/users/login",
+						JSON.stringify(postData)
+					);
+
+					if (response.data) {
+						dispatch({
+							type: "SET_USER",
+							user: {
+								email: email,
+								name: response.data.firstName,
+							},
+						});
+						handleCloseLogin();
+						setRegisterBtnDisable(false);
+					} else {
+						alert("Unexpected Error");
+					}
+				} catch (err) {
+					if (err.response.status === 400) {
+						alert(err.response.data.error);
+					} else if (err.response.status === 500) {
+						alert("Internal Error");
+					}
+					setRegisterBtnDisable(false);
+				}
 			} else {
 				setvalError({
 					title: "Missing Input",
@@ -152,7 +227,11 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 									</div>
 									<div className="links">
 										<p className="sec-link">Don't have an account?</p>
-										<p className="prim-link" onClick={handleRegister}>
+										<p
+											className="prim-link"
+											onClick={handleRegister}
+											disabled={registerBtnDisable}
+										>
 											Sign Up
 										</p>
 									</div>
@@ -203,7 +282,11 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 													: false
 											}
 										/>
-										<Button type="submit" onClick={(e) => handleSubmit(e)}>
+										<Button
+											type="submit"
+											onClick={(e) => handleSubmit(e)}
+											disabled={loginBtnDisable}
+										>
 											Sign In
 										</Button>
 										<MobLink className="links">

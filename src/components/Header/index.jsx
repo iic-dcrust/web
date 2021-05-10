@@ -113,7 +113,7 @@ const Header = () => {
 						alertOpen={alertOpen}
 						type="success"
 						title="Welcome to IIC"
-						body={`Logged in as - ${user.firstName} ${user.lastName}`}
+						body={`Logged in as - ${user.name}`}
 					/>
 				) : (
 					<Alerts
