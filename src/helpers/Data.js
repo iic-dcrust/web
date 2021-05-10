@@ -4,6 +4,8 @@ export const TeamData = [
     image:
       "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
     work: "Developer",
+    whatsapp: "https://wa.me/919992825300",
+    linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
   },
   {
     name: "Name",

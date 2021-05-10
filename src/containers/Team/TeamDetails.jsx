@@ -1,58 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import {getDeviceType} from "helpers";
+import { getDeviceType } from "helpers";
+import { appColors } from "styles/colors";
+import { LinkedIn, WhatsApp } from "@material-ui/icons";
 
+const TeamDetails = ({ details }) => {
+  const [active, setActive] = useState(true);
 
-const TeamDetails = (details) => {
-    return( 
-    <Container>
+  return (
+    <Person>
       <Image
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png"
+        src={details.image}
         alt=""
-      ></Image>
-      <Box>
-        <Text>{details.position}</Text>
-        <Info>
-          {details.name}
-        </Info>
-      </Box>
-    </Container>
-    );
-}
+        onMouseEnter={() => setActive(false)}
+        onMouseLeave={() => setActive(true)}
+        active={active}
+      />
+      <Icons
+        active={active}
+        onMouseEnter={() => setActive(false)}
+        onMouseLeave={() => setActive(true)}
+      >
+        <a href={details.whatsapp}>
+          <WhatsApp style={{ fontSize: "23px", color: "white" }} />
+        </a>
+        <a href={details.linkedin}>
+          <LinkedIn style={{ fontSize: "23px", color: "white" }} />
+        </a>
+      </Icons>
 
-const Container = styled.div`
-    margin: 20px 0px;
-    width:${getDeviceType() === "mobile" ? "5vw" : "13.5vw"};
-    height:${getDeviceType() === "mobile" ? "10vh" : "42vh"};
-    justify-content:center;
-    flex-direction: column;
-    :hover{
-      opacity:.85;
-      transform: scale(0.95);
-    }
-`
+      <Name>{details.name}</Name>
+      <Work>{details.work}</Work>
+    </Person>
+  );
+};
+
+const Person = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: ${appColors.primary};
+  padding: 15px;
+`;
+
+const Name = styled.h3`
+  padding-top: 10px;
+  font-weight: 600;
+`;
 const Image = styled.img`
-    height:${getDeviceType() === "mobile" ? "100px" : "200px"};
-    width:${getDeviceType() === "mobile" ? "100px" : "200px"};
-    box-shadow:rgba(0,0,0,0.5) 0px 5px 10px;
-    border-radius:50%;
-`
+  height: ${getDeviceType() === "mobile" ? "100px" : "180px"};
+  border-radius: 45% 10%;
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.568);
+  transition-duration: 0.3s;
+  ${(props) => props.active && `opacity:1; transform: scale(0.8);`}
+`;
+const Work = styled.h4`
+  padding-bottom: 15px;
+  font-weight: 500;
+`;
 
-const Box = styled.div`
-    height:${getDeviceType() === "mobile" ? "1vw" : "5vw"};
-    text-align:center;
-    margin: 10px;
-`
-const Text = styled.h1`
-  font-size:${getDeviceType() === "mobile" ? "15px" : "30px"};
-  font-family:time;
-`
-const Info =  styled.p`
-  margin: 5px;
-  font-size:${getDeviceType() === "mobile" ? "10px" : "20px"};
-  font-family:time;
-  font-style:italic;
-  font-weight:bold;
-`
+const Icons = styled.div`
+  position: absolute;
+  color: white;
+  transform: scale(1.8);
+  z-index: 1001;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  ${(props) => props.active && `display: none; `}
+`;
 
 export default TeamDetails;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { TeamData } from "helpers/Data";
-import { getDeviceType } from "helpers";
 import { appColors } from "styles/colors.js";
 import TeamHeader from "./TeamHeader";
+import TeamDetails from "./TeamDetails";
 
 function TeamBox() {
   const [type, setType] = useState("all");
@@ -12,11 +12,7 @@ function TeamBox() {
       <TeamHeader setType={setType} type={type} />
       <Box>
         {TeamData.map((item) => (
-          <Person onClick={() => {}}>
-            <Image src={item.image} />
-            <Name>{item.name}</Name>
-            <Work>{item.work}</Work>
-          </Person>
+          <TeamDetails details={item} />
         ))}
       </Box>
     </Container>
@@ -44,31 +40,4 @@ const Box = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-`;
-
-const Person = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: ${appColors.primary};
-  padding: 15px;
-  cursor: pointer;
-  :hover {
-    opacity: 0.5;
-    background-color: rgba(0, 0, 0, 0.568);
-  }
-`;
-
-const Name = styled.h3`
-  padding-top: 10px;
-  font-weight: 600;
-`;
-const Image = styled.img`
-  height: ${getDeviceType() === "mobile" ? "100px" : "180px"};
-  border-radius: 45% 10%;
-`;
-const Work = styled.h4`
-  padding-bottom: 15px;
-  font-weight: 500;
 `;
