@@ -27,7 +27,7 @@ const Container = styled.div`
 `;
 const Box = styled.div`
 	width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
-	height: ${getDeviceType() === "mobile" ? "40vh" : "50vh"};
+	height: ${getDeviceType() === "mobile" ? "200px" : "400px"};
 	background-color: rgba(0, 0, 0, 0.699);
 	position: absolute;
 	display: flex;
@@ -42,5 +42,5 @@ const Heading = styled.span`
 `;
 const Image = styled.img`
 	width: 100%;
-	max-height: 50vh;
+	height: ${getDeviceType() === "mobile" ? "200px" : "400px"};
 `;

@@ -4,6 +4,7 @@ import { TeamData } from "helpers/Data";
 import { appColors } from "styles/colors.js";
 import TeamHeader from "./TeamHeader";
 import TeamDetails from "./TeamDetails";
+import { getDeviceType } from "helpers";
 
 function TeamBox() {
 	const [type, setType] = useState("all");
@@ -11,6 +12,11 @@ function TeamBox() {
 		<Container>
 			<TeamHeader setType={setType} type={type} />
 			<Box>
+				<Info>
+					{" "}
+					{getDeviceType() === "mobile" ? "Tap" : "Hover"} on Images to Know
+					More.
+				</Info>
 				{TeamData[type].map((item) => {
 					if ((item.type = type)) {
 						return <TeamDetails details={item} />;
@@ -25,6 +31,16 @@ function TeamBox() {
 
 export default TeamBox;
 
+const Info = styled.span`
+	position: absolute;
+	top: 108px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: grey;
+	font-weight: 400;
+	font-size: 12px;
+`;
+
 const Container = styled.div`
 	width: "100%";
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
@@ -36,6 +52,7 @@ const Container = styled.div`
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+	position: relative;
 `;
 
 const Box = styled.div`
