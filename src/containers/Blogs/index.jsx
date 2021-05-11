@@ -1,21 +1,11 @@
-import React, {Component} from 'react'
-// import { withRouter } from "react-router-dom";
-import style from './Blog.module.css'
+import React from "react";
+import style from "./Blog.module.css";
 import { BlogData, BlogList, TrendingBlog } from "./BlogData";
 import { BlogCard, BlogListBox, TrendingBlogBox } from "./BlogCard";
-import { Container,Grid} from "@material-ui/core";
-class BlogsComponent extends Component{
-constructor(props){
-  super(props);
-  this.state={}
-}
-componentDidMount(){
-
-}
-render(){
+import { Container, Grid } from "@material-ui/core";
+const BlogsComponent = () => {
   return (
     <>
-      
       <Container maxWidth="lg" className={style.BlogContainer}>
         <div className={style.innoBlogBox}>
           <Grid container spacing={1}>
@@ -73,7 +63,6 @@ render(){
       </Container>
     </>
   );
-}
-}
-// export default withRouter(BlogsComponent);
+};
+
 export default BlogsComponent;

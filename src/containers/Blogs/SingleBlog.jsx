@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import style from "./Blog.module.css";
-import { BlogData} from "./BlogData";
- import { SingleBlogBox, SingleBlogRight, RelatedPost } from "./BlogCard";
+import { BlogData } from "./BlogData";
+import { SingleBlogBox, SingleBlogRight, RelatedPost } from "./BlogCard";
 import { Container, Grid } from "@material-ui/core";
 class SingleBlogsComponent extends Component {
   constructor(props) {
@@ -25,7 +25,6 @@ class SingleBlogsComponent extends Component {
                 </div>
                 {BlogData.map((val, ind) => {
                   return (
-                    
                     <RelatedPost
                       key={ind}
                       BlogHeading={val.BlogHeading}
@@ -42,5 +41,4 @@ class SingleBlogsComponent extends Component {
     );
   }
 }
-// export default withRouter(BlogsComponent);
 export default SingleBlogsComponent;

@@ -1,108 +1,103 @@
-import React from 'react'
-import blogProfile  from "../assets/blogProfile.png";
-import blogLeftimg from "../assets/blogLeftimg.jpg";
+import React from "react";
+import blogProfile from "assets/blogProfile.png";
+import blogLeftimg from "assets/blogLeftimg.jpg";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import style from "./Blog.module.css";
-const BlogCard =(props) =>{
-    return (
-      <>
-        <div className={style.blogBloxInner}>
-          <div className={style.blogCard}>
-            <div className={style.insideCard}>
-              <article className={style.cardArticle}>
-                <div className={style.innerContent}>
-                  <div className={style.cardCategory}>
-                    <a className={style.cardCategoryLink} href="">
-                      {props.Category}
-                    </a>
-                  </div>
-                  <a className={style.blogName} href="">
-                    {props.BlogHeading}
+const BlogCard = (props) => {
+  return (
+    <>
+      <div className={style.blogBloxInner}>
+        <div className={style.blogCard}>
+          <div className={style.insideCard}>
+            <article className={style.cardArticle}>
+              <div className={style.innerContent}>
+                <div className={style.cardCategory}>
+                  <a className={style.cardCategoryLink} href="">
+                    {props.Category}
                   </a>
-                  <div className={style.blogContent}>{props.AboutBlog}</div>
-                  <div className={style.profileBox}>
-                    <div className={style.profileImg}>
-                      <img
-                        src={blogProfile}
-                        style={{ width: "50px", height: "50px" }}
-                      />
-                    </div>
-                    <div className={style.profileInfoBox}>
-                      <div className={style.profileName}>
-                        <strong>{props.Name}</strong>
-                      </div>
-                    
-                    
-                    <div className={style.Blogdate}>{props.BlogDate}</div>
-                    
+                </div>
+                <a className={style.blogName} href="">
+                  {props.BlogHeading}
+                </a>
+                <div className={style.blogContent}>{props.AboutBlog}</div>
+                <div className={style.profileBox}>
+                  <div className={style.profileImg}>
+                    <img
+                      src={blogProfile}
+                      style={{ width: "50px", height: "50px" }}
+                    />
                   </div>
+                  <div className={style.profileInfoBox}>
+                    <div className={style.profileName}>
+                      <strong>{props.Name}</strong>
+                    </div>
+
+                    <div className={style.Blogdate}>{props.BlogDate}</div>
                   </div>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
-      </>
-    );
-}
-const BlogListBox = (props)=>
-{
-return (
-  <>
-    <div className={style.CategoryList}>
-      <a className={style.categoryLinklist} href="">
-        <div className={style.categoryLinkIcon}>
-          {props.CategoryIcon}
-        </div>
-        <span className={style.categorylistName}>{props.CategoryName}</span>
-      </a>
-    </div>
-  </>
-);
-}
+      </div>
+    </>
+  );
+};
+const BlogListBox = (props) => {
+  return (
+    <>
+      <div className={style.CategoryList}>
+        <a className={style.categoryLinklist} href="">
+          <div className={style.categoryLinkIcon}>{props.CategoryIcon}</div>
+          <span className={style.categorylistName}>{props.CategoryName}</span>
+        </a>
+      </div>
+    </>
+  );
+};
 const TrendingBlogBox = (props) => {
   return (
     <>
-    <div className={style.outerTrending}>
-      <div className={style.tendingBox}>
-        <div className={style.trendingInner}>
-          <article className={style.cardArticle}>
-            <a href="">
-              <div className={style.leftImgBox}>
-                <img src={blogLeftimg} className={style.leftImg} />
-              </div>
-            </a>
-            <div className={style.innerContent}>
-              <div className={style.cardCategory}>
-                <a className={style.cardCategoryLink} href="">
-                  {props.Category}
-                </a>
-              </div>
-              <a className={style.blogName} href="">
-                {props.BlogHeading}
+      <div className={style.outerTrending}>
+        <div className={style.tendingBox}>
+          <div className={style.trendingInner}>
+            <article className={style.cardArticle}>
+              <a href="">
+                <div className={style.leftImgBox}>
+                  <img src={blogLeftimg} className={style.leftImg} />
+                </div>
               </a>
-              <div className={style.blogContent}>{props.AboutBlog}</div>
-              <div className={style.profileBox}>
-                <div className={style.profileImg}>
-                  <img
-                    src={blogProfile}
-                    style={{ width: "50px", height: "50px" }}
-                  />
+              <div className={style.innerContent}>
+                <div className={style.cardCategory}>
+                  <a className={style.cardCategoryLink} href="">
+                    {props.Category}
+                  </a>
                 </div>
-                <div className={style.profileInfoBox}>
-                  <div className={style.profileName}>
-                    <strong>{props.Name}</strong>
+                <a className={style.blogName} href="">
+                  {props.BlogHeading}
+                </a>
+                <div className={style.blogContent}>{props.AboutBlog}</div>
+                <div className={style.profileBox}>
+                  <div className={style.profileImg}>
+                    <img
+                      src={blogProfile}
+                      style={{ width: "50px", height: "50px" }}
+                    />
                   </div>
+                  <div className={style.profileInfoBox}>
+                    <div className={style.profileName}>
+                      <strong>{props.Name}</strong>
+                    </div>
 
-                  <div className={style.Blogdate}>{props.BlogDate}</div>
+                    <div className={style.Blogdate}>{props.BlogDate}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
-      </div>
       </div>
     </>
   );
@@ -179,7 +174,6 @@ const SingleBlogBox = (props) => {
                     </li>
                   </ul>
                 </div>
-                
               </div>
             </article>
           </div>
@@ -246,39 +240,40 @@ const SingleBlogRight = (props) => {
         </div>
       </div>
     </>
-  );};
-  const RelatedPost = (props) => {
-    return (
-      <>
-        <div className={style.RelatedPostBox}>
-          <div className={style.blogCard}>
-            <div className={style.insideCard}>
-              <article className={style.cardArticle}>
-                <div className={style.innerContent}>
-                  <a className={style.blogName} href="">
-                    {props.BlogHeading}
-                  </a>
+  );
+};
+const RelatedPost = (props) => {
+  return (
+    <>
+      <div className={style.RelatedPostBox}>
+        <div className={style.blogCard}>
+          <div className={style.insideCard}>
+            <article className={style.cardArticle}>
+              <div className={style.innerContent}>
+                <a className={style.blogName} href="">
+                  {props.BlogHeading}
+                </a>
 
-                  <div className={style.profileInfoBox}>
-                    <div className={style.profileName}>
-                      <strong>{props.Name}</strong>
-                    </div>
-
-                    <div className={style.Blogdate}>{props.BlogDate}</div>
+                <div className={style.profileInfoBox}>
+                  <div className={style.profileName}>
+                    <strong>{props.Name}</strong>
                   </div>
+
+                  <div className={style.Blogdate}>{props.BlogDate}</div>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
-      </>
-    );
-  };
+      </div>
+    </>
+  );
+};
 export {
   BlogCard,
   BlogListBox,
   TrendingBlogBox,
   SingleBlogBox,
   SingleBlogRight,
-  RelatedPost
+  RelatedPost,
 };
