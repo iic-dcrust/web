@@ -257,7 +257,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 									<div className="form login-form">
 										<div>
 											<GoogleLogin
-												clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+												clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 												buttonText="Continue with Google"
 												onSuccess={responseGoogle}
 												onFailure={responseGoogle}
@@ -321,7 +321,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 									<div className="form login-form">
 										<div>
 											<GoogleLogin
-												clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+												clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 												buttonText="Continue with Google"
 												onSuccess={responseGoogle}
 												onFailure={responseGoogle}
@@ -420,7 +420,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 									<div className="form login-form">
 										<div>
 											<GoogleLogin
-												clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+												clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 												buttonText="Continue with Google"
 												onSuccess={responseGoogle}
 												onFailure={responseGoogle}
