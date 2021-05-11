@@ -125,7 +125,11 @@ const Header = () => {
           />
         )}
         <MainLogo />
-        <Name>{getDeviceType() === "mobile" ? "IIC Dcrust" : "Institute Innovation Cell"}</Name>
+        <Name onClick={() => handleChange("home")}>
+          {getDeviceType() === "mobile"
+            ? "IIC Dcrust"
+            : "Institute Innovation Cell"}
+        </Name>
       </Container>
       <Nav>
         <NavItem onClick={() => handleChange("home")}>Home</NavItem>
@@ -133,9 +137,15 @@ const Header = () => {
         <NavItem onClick={() => handleChange("blogs")}>Blogs</NavItem>
         <NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
         <NavItem onClick={() => handleChange("team")}>Our Team</NavItem>
-        <NavButton onClick={handleOpenLogin}>{user ? "Logout" : "Login"}</NavButton>
+        <NavButton onClick={handleOpenLogin}>
+          {user ? "Logout" : "Login"}
+        </NavButton>
       </Nav>
-      <LoginModal login={login} handleCloseLogin={handleCloseLogin} setAlertOpen={setAlertOpen} />
+      <LoginModal
+        login={login}
+        handleCloseLogin={handleCloseLogin}
+        setAlertOpen={setAlertOpen}
+      />
       <DrawerIcon>
         <IconButton>
           <MenuIcon style={{ color: "#fafafa" }} onClick={toggleDrawer} />
@@ -174,6 +184,7 @@ const Name = styled.h1`
   align-items: center;
   font-size: ${getDeviceType() === "mobile" ? "20px" : "22px"};
   margin-left: 20px;
+  cursor: pointer;
   width: 200px;
 `;
 const DrawerIcon = styled.span`
@@ -198,7 +209,9 @@ const NavItem = styled.span`
   cursor: pointer;
   align-items: center;
   :hover {
-    background-color: ${getDeviceType() === "desktop" ? appColors.secondary : ""};
+    background-color: ${getDeviceType() === "desktop"
+      ? appColors.secondary
+      : ""};
   }
 `;
 const NavButton = styled.button`

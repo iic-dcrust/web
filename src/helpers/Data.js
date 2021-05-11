@@ -329,39 +329,29 @@ export const TeamData = {
 
 export const IntroData = {
   title: "Institute Innovation Cell",
-  p1: "Ministry of Education (MoE), Govt. of India has established ‘MoE’sm Innovation Cell (MIC)’ to systematically foster the culture of Innovation amongst all Higher Education Institutions (HEIs). The primary mandate of MIC is to encourage, inspire and nurture young students by supporting them to work with new ideas and transform them into prototypes while they are informative years.",
-  p2: "MIC has envisioned encouraging creation of ‘Institution’s Innovation Council (IICs)’ across selected HEIs. A network of these IICs will be established to promote innovation in the Institution through multitudinous modes leading to an innovation promotion eco-system in the campuses.",
+  p1: "Under the leadership of Hon’ble Vice Chancellor, Prof. (Dr.) Rajendrakumar Anayath, Deenbandhu Chhotu Ram University Of Science And Technology, Murthal (Sonepat) successfully established Institute Innovation Council (IIC) as per the norms and directives of Innovation Cell, Ministry of Human Resource Development (MHRD), Government of India, in 2019. ",
+  p2: "MIC has envisioned encouraging creation of ‘Institution’s Innovation Council (IICs)’ across selected HEIs. A network of these IICs will be established to promote innovation in the Institution through multitudinous modes leading to an innovation promotion eco-system in the campuses. IIC has been established to systematically foster the culture of innovation in the institute. IICs are responsible for conducting the activities as per activity calendar provided by MHRD Innovation Cell.",
 };
 
 export const FunctionsData = {
   title: "FUNCTIONS OF IIC",
   list1: (
     <>
-      <li>To create a vibrant local innovation ecosystem.</li>
-      <li>Start-up supporting Mechanism in HEIs.</li>
+      <li>To foster the culture of innovation in the institute.</li>
       <li>
-        Prepare institute for Atal Ranking of Institutions on Innovation
-        Achievements Framework.
-      </li>
-      <li>
-        Establish Function Ecosystem for Scouting Ideas and Pre-incubation of
-        Ideas.
-      </li>
-      <li>
-        Develop better Cognitive Ability for Technology Students.To conduct
-        various innovation and entrepreneurship-related activities prescribed by
-        Central MIC in time bound fashion.
+        To conduct various innovation and entrepreneurship-related activities
+        prescribed by Central MIC in time bound fashion.
       </li>
       <li>Identify and reward innovations and share success stories.</li>
-    </>
-  ),
-  list2: (
-    <>
       <li>
         Organize periodic workshops/ seminars/ interactions with entrepreneurs,
         investors, professionals and create a mentor pool for student
         innovators.
       </li>
+    </>
+  ),
+  list2: (
+    <>
       <li>
         Network with peers and national entrepreneurship development
         organizations.
@@ -373,6 +363,10 @@ export const FunctionsData = {
       <li>
         Organize Hackathons, idea competition, mini-challenges etc. with the
         involvement of industries.
+      </li>
+      <li>
+        To mentor students in analyzing their new ideas and transforming the
+        ideas into prototypes and further into startups
       </li>
     </>
   ),
