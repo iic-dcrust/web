@@ -14,6 +14,7 @@ import Team from "containers/Team";
 import Events from "pages/Events";
 import EventDetails from "containers/Events/EventDetials";
 import FAQ from "containers/FAQ";
+import BlogsComponent from "containers/Blogs";
 
 export default function App() {
   return (
@@ -31,9 +32,11 @@ export default function App() {
           <Route path="/events">
             <Events />
           </Route>
-          <Route path="/blogs">{/* <FAQ /> */}</Route>
           <Route path="/faq">
             <FAQ />
+          </Route>
+          <Route path="/blogs">
+            <BlogsComponent />
           </Route>
           <Route path="/team">
             <Team />
