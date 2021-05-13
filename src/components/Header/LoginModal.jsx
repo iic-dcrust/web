@@ -99,10 +99,14 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 						alert("Unexpected Error");
 					}
 				} catch (err) {
-					if (err.response.status === 400) {
-						alert(err.response.data.error);
-					} else if (err.response.status === 500) {
-						alert("Internal Error");
+					if (err.response) {
+						if (err.response.status === 400) {
+							alert(err.response.data.error);
+						} else if (err.response.status === 500) {
+							alert("Internal Error");
+						}
+					} else {
+						alert(err);
 					}
 					setRegisterBtnDisable(false);
 				}
@@ -136,10 +140,14 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 						alert("Unexpected Error");
 					}
 				} catch (err) {
-					if (err.response.status === 400) {
-						alert(err.response.data.error);
-					} else if (err.response.status === 500) {
-						alert("Internal Error");
+					if (err.response) {
+						if (err.response.status === 400) {
+							alert(err.response.data.error);
+						} else if (err.response.status === 500) {
+							alert("Internal Error");
+						}
+					} else {
+						alert(err);
 					}
 					setLoginBtnDisable(false);
 				}
@@ -175,30 +183,35 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 		setDetails(true);
 	};
 
-	const responseGoogle = (res) => {
-		fetch("/api/register/google", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ tokenId: res.tokenId }),
-		})
-			.then((res) => res.json())
-			.then((parJson) => {
-				if (parJson.email) {
-					dispatch({
-						type: "SET_USER",
-						user: {
-							id: res.googleId,
-							firstName: res.profileObj.givenName,
-							lastName: res.profileObj.familyName,
-							email: res.profileObj.email,
-						},
-					});
-					handleCloseLogin();
-					toggleDrawer();
-				} else if (parJson.error) {
-					alert("error occured");
+	const responseGoogle = async (res) => {
+		try {
+			let response = await axios.post(
+				"/api/users/google",
+				JSON.stringify({ idToken: res.tokenId })
+			);
+
+			if (response.data.email) {
+				dispatch({
+					type: "SET_USER",
+					user: {
+						email: response.data.email,
+						name: response.data.firstName,
+					},
+				});
+				handleCloseLogin();
+			} else {
+				alert("Unexpected Error");
+			}
+		} catch (err) {
+			if (err.response) {
+				if (err.response.status === 400) {
+					alert(err.response.data.error);
+				} else if (err.response.status === 500) {
 				}
-			});
+			} else {
+				alert(err);
+			}
+		}
 	};
 	return (
 		<>
@@ -244,7 +257,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 									<div className="form login-form">
 										<div>
 											<GoogleLogin
-												clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+												clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 												buttonText="Continue with Google"
 												onSuccess={responseGoogle}
 												onFailure={responseGoogle}
@@ -308,7 +321,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 									<div className="form login-form">
 										<div>
 											<GoogleLogin
-												clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+												clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 												buttonText="Continue with Google"
 												onSuccess={responseGoogle}
 												onFailure={responseGoogle}
@@ -407,7 +420,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
 									<div className="form login-form">
 										<div>
 											<GoogleLogin
-												clientId="269195292319-tpn3nc6dfm6jncjlsd7jp3ogluicr7fb.apps.googleusercontent.com"
+												clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
 												buttonText="Continue with Google"
 												onSuccess={responseGoogle}
 												onFailure={responseGoogle}

@@ -62,7 +62,6 @@ const Container = styled.div`
 	overflow-x: scroll;
 	width: 100%;
 	height: 100px;
-	${getDeviceType() === "mobile" && `margin-top:60px;`}
 `;
 const Tag = styled.span`
 	padding: 15px 20px;

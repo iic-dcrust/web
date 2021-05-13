@@ -9,8 +9,15 @@ const TeamDetails = ({ details }) => {
 
   return (
     <Person
-      onMouseEnter={() => setActive(false)}
-      onMouseLeave={() => setActive(true)}
+      onMouseEnter={() => {
+        getDeviceType() === "desktop" && setActive(false);
+      }}
+      onMouseLeave={() => {
+        getDeviceType() === "desktop" && setActive(true);
+      }}
+      onClick={() => {
+        getDeviceType() === "mobile" && setActive((prev) => !prev);
+      }}
     >
       <Image src={details.image} alt="" active={active} />
       <Icons active={active}>
