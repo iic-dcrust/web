@@ -13,7 +13,7 @@ function TeamBox() {
 			<TeamHeader setType={setType} type={type} />
 			<Box>
 				<Info>
-					{" "}
+					
 					{getDeviceType() === "mobile" ? "Tap" : "Hover"} on Images to Know
 					More.
 				</Info>

@@ -1,14 +1,18 @@
 import { getDeviceType } from "helpers";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 // import { useStateValue } from "helpers/StateProvider";
 // import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { appColors } from "styles/colors";
+import Related from "./Related";
+import Schedule from "./Schedule";
 
 const EventDetails = () => {
-  //   const location = useLocation();
+  const history = useHistory();
   //   const [{ events }] = useStateValue();
   const [isPast] = useState(true);
+  const [isRegistered] = useState(true);
   let desc =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
@@ -19,7 +23,15 @@ const EventDetails = () => {
       <Box>
         <Head>Event Title</Head>
         <Info>
-          <Button>Register</Button>
+          <Button
+            onClick={() =>
+              !isRegistered
+                ? history.push("/register")
+                : window.location.assign("http://www.google.com")
+            }
+          >
+            {isRegistered ? "Join Now" : "Register"}
+          </Button>
           <Tag>
             <InfoHead>Starts on:</InfoHead>
             <InfoBody>
@@ -44,39 +56,14 @@ const EventDetails = () => {
       </Box>
       <Box>
         <Desc>Schedule</Desc>
-        <Body>
-          <Sessions>
-            <strong>Session 1</strong> : Lecture by Expert Speakers at 10:30
-            a.m.
-          </Sessions>
-
-          <Sessions>
-            <strong>Session 2</strong> : Lecture by Expert Speakers at 03:00
-            p.m.
-          </Sessions>
-        </Body>
+        <Schedule />
       </Box>
       <Box>
         <Desc>Related Stuff</Desc>
 
         <Info>
-          {isPast && (
-            <Type>
-              <Download href="https://drive.google.com/u/0/uc?id=1DrEpG4dQgKLmTHmB4ffQHavISp16EduX&export=download">
-                Event Record
-              </Download>
-            </Type>
-          )}
-          <Type>
-            <Download href="https://drive.google.com/u/0/uc?id=1DrEpG4dQgKLmTHmB4ffQHavISp16EduX&export=download">
-              Poster
-            </Download>
-          </Type>
-          <Type>
-            <Download href="https://drive.google.com/u/0/uc?id=1DrEpG4dQgKLmTHmB4ffQHavISp16EduX&export=download">
-              Details
-            </Download>
-          </Type>
+          {isPast && <Related />} <Related />
+          <Related />
         </Info>
       </Box>
     </Container>
@@ -104,9 +91,6 @@ const Image = styled.img`
 `;
 
 const Box = styled.div``;
-const Sessions = styled.p`
-  margin-bottom: 20px;
-`;
 const Head = styled.h1`
   font-family: Quicksand;
   font-size: ${getDeviceType() === "mobile" ? "25px" : "35px"};
@@ -139,7 +123,6 @@ const Button = styled.button`
   font-size: 16px;
   margin-right: 10px;
   margin-top: 10px;
-
   outline: none;
   cursor: pointer;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
@@ -169,27 +152,8 @@ const Desc = styled.h2`
 `;
 
 const Body = styled.p`
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   text-align: justify;
 
   padding: ${getDeviceType() === "mobile" ? "20px" : "35px"}; ;
-`;
-
-const Type = styled.span`
-  padding: 8px 17px;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 16px;
-  border: 1px solid ${appColors.primary};
-  background-color: rgb(12, 136, 194);
-  text-align: center;
-  :hover {
-    background-color: ${appColors.primary};
-  }
-  margin-bottom: 10px;
-`;
-
-const Download = styled.a`
-  color: white;
-  text-decoration: none;
 `;
