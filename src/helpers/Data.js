@@ -2,7 +2,8 @@ export const TeamData = {
 	all: [
 		{
 			name: "Tushar",
-			image: "https://iamtushar324.live/static/media/my-image.47180d3f.jpeg",
+			image:
+				"https://media-exp1.licdn.com/dms/image/C5603AQGBg948r4NJkQ/profile-displayphoto-shrink_200_200/0/1620752111516?e=1626307200&v=beta&t=YZ5HnJOglB7_jfxNtbG2IPCmntcatWBjzMui5_CGnY8",
 			work: "Full Stack Developer",
 			whatsapp: "https://wa.me/919315876022",
 			linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
