@@ -62,7 +62,8 @@ const EventDetails = () => {
         <Desc>Related Stuff</Desc>
 
         <Info>
-          {isPast && <Related />} <Related />
+          {isPast && <Related />}
+          <Related />
           <Related />
         </Info>
       </Box>
@@ -102,7 +103,7 @@ const Info = styled.div`
   border-bottom: 1px solid lightgray;
   padding: 15px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 40px;
 `;
 

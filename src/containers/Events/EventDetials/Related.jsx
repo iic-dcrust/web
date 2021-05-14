@@ -43,7 +43,7 @@ const Click = styled(CloudDownload)`
 
 const Cover = styled.span`
   transition: all 0.3s;
-  ${(props) => (props.active ? "dispay:flex" : "display: none")};
+  ${(props) => (props.active ? "dispay:block" : "display: none")};
 `;
 
 const Body = styled.p`
@@ -63,6 +63,8 @@ const RelatedBox = styled.div`
   background-color: ${appColors.accentDark};
   transition: all 0.3s;
   cursor: pointer;
+  max-width: 240px;
+  min-height: 240px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   :hover {
     opacity: 0.7;

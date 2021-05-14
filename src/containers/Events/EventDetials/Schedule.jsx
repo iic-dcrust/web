@@ -21,17 +21,18 @@ const Schedule = () => {
 
   return (
     <Container>
+      <RowHead>
+        <Cell>Time</Cell>
+        <Cell>Event</Cell>
+      </RowHead>
       {[1, 2, 3].map((item) => (
         <Box>
-          <Icon>
-            <span>Day {item}</span>
-          </Icon>
-          {[1, 2, 3, 5, 4, 6, 7].map((item) => (
-            <>
-              <Rule />
-              <Info onClick={handlePopoverOpen}>Event</Info>
-            </>
-          ))}
+          <Row>
+            <Cell>Day {item}</Cell>
+            <EventCell onClick={handlePopoverOpen}>
+              {`${desc.slice(0, 50)}...`}
+            </EventCell>
+          </Row>
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -66,7 +67,6 @@ export default Schedule;
 
 const Container = styled.div`
   padding: 6vh 8vw;
-  overflow-x: scroll;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@ const Box = styled.div`
   align-items: center;
   padding-bottom: 10px;
   justify-content: center;
-  color: white;
+  width: 100%;
 `;
 const HoverBox = styled.div`
   display: flex;
@@ -89,8 +89,8 @@ const HoverBox = styled.div`
   border: none;
   outline: none;
   margin: auto;
-  margin-top: ${getDeviceType() === "mobile" ? "10vh" : "20vw"};
-  width: ${getDeviceType() === "mobile" ? "80vw" : "50vw"};
+  margin-top: ${getDeviceType() === "mobile" ? "10vh" : "14vw"};
+  width: ${getDeviceType() === "mobile" ? "80vw" : "40vw"};
   background-color: ${appColors.accentDark};
   color: #fafafa;
   text-align: justify;
@@ -102,28 +102,34 @@ const ModalHead = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 `;
-const Rule = styled.hr`
-  background-color: ${appColors.secondary};
-  min-width: 25px;
-  max-width: 100px;
-  height: 2px;
-  margin: 0 10px;
-  outline: none;
-  border: none;
-`;
-const Icon = styled.span`
-  padding: 20px 30px;
-  border-radius: 30% 10%;
-  background-color: ${appColors.accentDark};
+
+const Row = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: ${getDeviceType() === "desktop"
+    ? "center"
+    : "space-between"};
+  margin-bottom: 10px;
+  align-items: center;
+  text-align: justify;
 `;
 
-const Info = styled.span`
-  padding: 20px 35px;
-  border-radius: 30px;
-  font-size: 24px;
-  background-color: ${appColors.accentLight};
+const Cell = styled.span`
+  font-size: 23px;
+  font-family: Quicksand;
+  flex: 0.35;
+  color: ${appColors.accentDark};
+`;
+
+const EventCell = styled(Cell)`
   cursor: pointer;
+  color: ${appColors.secondary};
+  flex: ${getDeviceType() === "mobile" ? "0.55" : "0.35"};
   :hover {
-    background-color: ${appColors.primary};
+    color: ${appColors.primary};
   }
+`;
+const RowHead = styled(Row)`
+  font-weight: bold;
+  margin-bottom: 25px;
 `;
