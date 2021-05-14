@@ -1,5 +1,5 @@
 import { getDeviceType } from "helpers";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 // import { useStateValue } from "helpers/StateProvider";
 // import { useLocation } from "react-router-dom";
@@ -7,154 +7,225 @@ import styled from "styled-components";
 import { appColors } from "styles/colors";
 import Related from "./Related";
 import Schedule from "./Schedule";
+import axios from "../../../helpers/axios";
+import { useParams } from "react-router";
 
 const EventDetails = () => {
-  const history = useHistory();
-  //   const [{ events }] = useStateValue();
-  const [isPast] = useState(true);
-  const [isRegistered] = useState(true);
-  let desc =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+	const [isRegistered, setIsRegistered] = useState(true);
+	const [details, setDeatils] = useState({});
+	const [schedule, setSchedule] = useState(false);
+	const [attachedFiles, setAttachedFiles] = useState([]);
+	const [startTime, setStartTime] = useState("");
+	const [endTime, setEndTime] = useState("");
+	const { eventId } = useParams();
 
-  // const event = events.filter((e) => e.id === location.pathname.slice(8))[0];
-  return (
-    <Container>
-      <Image src="https://images.unsplash.com/photo-1578775334692-756031b1121a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"></Image>
-      <Box>
-        <Head>Event Title</Head>
-        <Info>
-          <Button
-            onClick={() =>
-              !isRegistered
-                ? history.push("/register")
-                : window.location.assign("http://www.google.com")
-            }
-          >
-            {isRegistered ? "Join Now" : "Register"}
-          </Button>
-          <Tag>
-            <InfoHead>Starts on:</InfoHead>
-            <InfoBody>
-              18<sup>th</sup> May, 2021
-            </InfoBody>
-          </Tag>
-          <Tag>
-            <InfoHead>Ends on:</InfoHead>
-            <InfoBody>
-              19<sup>th</sup> May, 2021
-            </InfoBody>
-          </Tag>
-          <Tag>
-            <InfoHead>Venue:</InfoHead>
-            <InfoBody>Online</InfoBody>
-          </Tag>
-        </Info>
-      </Box>
-      <Box>
-        <Desc>Description</Desc>
-        <Body>{desc}</Body>
-      </Box>
-      <Box>
-        <Desc>Schedule</Desc>
-        <Schedule />
-      </Box>
-      <Box>
-        <Desc>Related Stuff</Desc>
+	useEffect(async () => {
+		try {
+			let response = await axios.get("/api/events/" + eventId);
+			setDeatils(response.data);
+			let stime = new Date(response.data.startTime);
+			let etime = new Date(response.data.endTime);
+			stime = stime.toLocaleString("en-US");
+			etime = etime.toLocaleString("en-US");
+			setStartTime(stime);
+			setEndTime(etime);
+			setIsRegistered(response.data.eventRegistered);
 
-        <Info>
-          {isPast && <Related />}
-          <Related />
-          <Related />
-        </Info>
-      </Box>
-    </Container>
-  );
+			let arr = response.data.schedule.split(";");
+			let res = [];
+			for (let i = 0; i < arr.length; i += 3) {
+				let temp = {
+					text: arr[i],
+					shortText: arr[i + 1],
+					description: arr[i + 2],
+				};
+				res.push(temp);
+			}
+			setSchedule(res);
+
+			let arr2 = response.data.attachedFiles.split(";");
+			console.log(arr2);
+			let res2 = [];
+			for (let i = 0; i < arr2.length; i += 2) {
+				let temp = {
+					text: arr2[i],
+					url: arr2[i + 1],
+				};
+				res2.push(temp);
+			}
+			console.log(res2);
+			setAttachedFiles(res2);
+		} catch (err) {
+			if (err.response) {
+				if (err.response.status === 400) {
+					alert(err.response.data.error);
+				} else if (err.response.status === 500) {
+					alert("Internal Error");
+				}
+			} else {
+				alert(err);
+			}
+		}
+	}, []);
+
+	const registerEvent = async () => {
+		try {
+		} catch (err) {
+			if (err.response) {
+				if (err.response.status === 400) {
+					alert(err.response.data.error);
+				} else if (err.response.status === 500) {
+					alert("Internal Error");
+				}
+			} else {
+				alert(err);
+			}
+		}
+	};
+
+	// const event = events.filter((e) => e.id === location.pathname.slice(8))[0];
+	return (
+		<Container>
+			<Image src={details.mainImgUrl}></Image>
+			<Box>
+				<Head>{details.title}</Head>
+				<Info>
+					<Button
+						onClick={() =>
+							!isRegistered
+								? registerEvent()
+								: window.open(details.joinLink, "_blank")
+						}
+					>
+						{isRegistered ? "Join Now" : "Register"}
+					</Button>
+					<Tag>
+						<InfoHead>Starts on:</InfoHead>
+						<InfoBody>{startTime}</InfoBody>
+					</Tag>
+					<Tag>
+						<InfoHead>Ends on:</InfoHead>
+						<InfoBody>{endTime}</InfoBody>
+					</Tag>
+					<Tag>
+						<InfoHead>Venue:</InfoHead>
+						<InfoBody>{details.venue}</InfoBody>
+					</Tag>
+				</Info>
+			</Box>
+			<Box>
+				<Desc>Description</Desc>
+				<Body>{details.description}</Body>
+			</Box>
+			{details.schedule && (
+				<Box>
+					<Desc>Schedule</Desc>
+					<Schedule data={schedule} />
+				</Box>
+			)}
+			<Box>
+				<Desc>Related Stuff</Desc>
+				<Info>
+					{attachedFiles &&
+						attachedFiles.map((e) => {
+							return <Related text={e.text} link={e.url} />;
+						})}
+				</Info>
+			</Box>
+		</Container>
+	);
 };
 
 export default EventDetails;
 
 const Container = styled.div`
-  width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
-  margin: 100px auto;
-  color: ${appColors.primary};
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
-    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
-    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-  background-color: #fafafa;
-  padding: ${getDeviceType() === "mobile" ? "0" : "20px"};
-  padding-top: 70px;
-  border-radius: 10px;
+	width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
+	margin: 100px auto;
+	color: ${appColors.primary};
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+		rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+		rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+	background-color: #fafafa;
+	padding: ${getDeviceType() === "mobile" ? "0" : "20px"};
+	padding-top: 35px;
+	border-radius: 10px;
 `;
 const Image = styled.img`
-  width: 100%;
-  max-height: 55vh;
-  margin-bottom: 35px;
+	width: 100%;
+	max-height: 55vh;
+	margin-bottom: 35px;
+	object-fit: cover;
+	border-radius: 10px;
 `;
 
 const Box = styled.div``;
 const Head = styled.h1`
-  font-family: Quicksand;
-  font-size: ${getDeviceType() === "mobile" ? "25px" : "35px"};
-  padding: 5px 10px;
+	font-family: Quicksand;
+	font-size: ${getDeviceType() === "mobile" ? "25px" : "35px"};
+	padding: 5px 10px;
 `;
 const Info = styled.div`
-  display: flex;
-  flex-direction: ${getDeviceType() === "mobile" ? "column" : "row"};
-  border-bottom: 1px solid lightgray;
-  padding: 15px;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-bottom: 40px;
+	display: flex;
+	flex-direction: ${getDeviceType() === "mobile" ? "column" : "row"};
+	border-bottom: 1px solid lightgray;
+	padding: 15px;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 40px;
 `;
 
 const Tag = styled.div`
-  display: flex;
-  margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: baseline;
+	margin-top: 20px;
+	padding: 5px 5px;
 `;
 const InfoHead = styled.span`
-  color: gray;
-  font-size: ${getDeviceType() === "mobile" ? "14px" : "16px"};
-  margin-right: ${getDeviceType() === "mobile" ? "10px" : "20px"};
+	color: gray;
+	font-size: ${getDeviceType() === "mobile" ? "14px" : "16px"};
+	margin-right: ${getDeviceType() === "mobile" ? "10px" : "20px"};
 `;
 const InfoBody = styled.span`
-  font-weight: 500;
-  font-size: ${getDeviceType() === "mobile" ? "16px" : "18px"};
+	font-weight: 500;
+	font-size: ${getDeviceType() === "mobile" ? "16px" : "18px"};
 `;
 const Button = styled.button`
-  font-size: 16px;
-  margin-right: 10px;
-  margin-top: 10px;
-  outline: none;
-  cursor: pointer;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
-    rgba(17, 17, 26, 0.1) 0px 0px 8px;
-  background-image: linear-gradient(
-    to right,
-    #040016,
-    rgba(12, 136, 194, 0.945)
-  );
-  border: none;
-  color: white;
-  padding: 10px 25px;
+	font-size: 16px;
+	margin-right: 10px;
+	margin-top: 10px;
+	outline: none;
+	cursor: pointer;
+	box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+		rgba(17, 17, 26, 0.1) 0px 0px 8px;
+	background-image: linear-gradient(
+		to right,
+		#040016,
+		rgba(12, 136, 194, 0.945)
+	);
+	border: none;
+	color: white;
+	padding: 10px 25px;
 
-  :hover {
-    background-image: linear-gradient(
-      to left,
-      #040016,
-      rgba(12, 136, 194, 0.945)
-    );
-  }
+	:hover {
+		background-image: linear-gradient(
+			to left,
+			#040016,
+			rgba(12, 136, 194, 0.945)
+		);
+	}
 `;
 
 const Desc = styled.h2`
-  font-family: Quicksand;
-  padding: 0 20px;
-  margin-bottom: 10px;
+	font-family: Quicksand;
+	padding: 0 20px;
+	margin-bottom: 10px;
 `;
 
 const Body = styled.p`
-  margin-bottom: 15px;
-  text-align: justify;
+	margin-bottom: 15px;
+	text-align: justify;
 
-  padding: ${getDeviceType() === "mobile" ? "20px" : "35px"}; ;
+	padding: ${getDeviceType() === "mobile" ? "20px" : "35px"}; ;
 `;
