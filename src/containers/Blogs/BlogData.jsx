@@ -1,6 +1,5 @@
-import blogProfile from "../assets/blogProfile.png";
-import blogLeftimg from "../assets/blogLeftimg.jpg";
-import {LocalHospitalIcon} from "@material-ui/icons";
+import blogProfile from "assets/blogProfile.png";
+import blogLeftimg from "assets/blogLeftimg.jpg";
 const BlogData = [
   {
     Category: "Agriculture",
