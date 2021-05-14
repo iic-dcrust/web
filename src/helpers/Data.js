@@ -36,7 +36,7 @@ export const TeamData = {
       image:
         "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981575/Others/IMG_20210511_180431_aj3waf.jpg",
       work: "Full Stack Developer",
-      whatsapp: "https://wa.me/919992825300",
+      telegram: "https://telegram.me/VinayMatta63",
       linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
     },
     {
@@ -64,7 +64,7 @@ export const TeamData = {
       image:
         "https://media-exp1.licdn.com/dms/image/C5103AQGF5s5cpSLHaQ/profile-displayphoto-shrink_200_200/0/1561714126384?e=1626307200&v=beta&t=_w5sGBFfQGdySpYDvO5J2odbU029V__rq4cHRf90MEk",
       work: "Record of Activities",
-      whatsapp: "https://wa.me/919813146563",
+      whatsapp: "https://wa.me/919991884487",
       linkedin: "https://www.linkedin.com/in/hemant-sangwan-78734b18a/",
     },
     {
@@ -205,7 +205,7 @@ export const TeamData = {
       image:
         "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981575/Others/IMG_20210511_180431_aj3waf.jpg",
       work: "Full Stack Developer",
-      whatsapp: "https://wa.me/919992825300",
+      telegram: "https://telegram.me/VinayMatta63",
       linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
     },
     {

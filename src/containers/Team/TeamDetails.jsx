@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { getDeviceType } from "helpers";
 import { appColors } from "styles/colors";
-import { LinkedIn, WhatsApp } from "@material-ui/icons";
+import { LinkedIn, Telegram, WhatsApp } from "@material-ui/icons";
 
 const TeamDetails = ({ details }) => {
   const [active, setActive] = useState(true);
@@ -21,16 +21,30 @@ const TeamDetails = ({ details }) => {
     >
       <Image src={details.image} alt="" active={active} />
       <Icons active={active}>
-        <a href={details.whatsapp}>
-          <WhatsApp
-            style={{
-              fontSize: "17px",
-              color: "#19d03e",
-              marginTop: "10px",
-              marginRight: "10px",
-            }}
-          />
-        </a>
+        {details.whatsapp ? (
+          <a href={details.whatsapp}>
+            <WhatsApp
+              style={{
+                fontSize: "17px",
+                color: "#4FCE5D",
+                marginTop: "10px",
+                marginRight: "10px",
+              }}
+            />
+          </a>
+        ) : (
+          <a href={details.telegram}>
+            <Telegram
+              style={{
+                fontSize: "17px",
+                color: "#0088CC",
+                marginTop: "10px",
+                marginRight: "10px",
+              }}
+            />
+          </a>
+        )}
+
         <a href={details.linkedin}>
           <LinkedIn
             style={{
