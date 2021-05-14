@@ -136,6 +136,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
               },
             });
             localStorage.setItem("user", JSON.stringify(email, name));
+            localStorage.setItem("token", response.data.token);
 
             handleCloseLogin();
             setLoginBtnDisable(false);
