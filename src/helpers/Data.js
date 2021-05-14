@@ -34,7 +34,7 @@ export const TeamData = {
     {
       name: "Vinay Matta",
       image:
-        "https://res.cloudinary.com/dpnapmmwm/image/upload/v1609433854/Museum%20Councel/xtds4jbyk2e5d1hnwjmm.jpg",
+        "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981575/Others/IMG_20210511_180431_aj3waf.jpg",
       work: "Full Stack Developer",
       whatsapp: "https://wa.me/919992825300",
       linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
@@ -54,14 +54,18 @@ export const TeamData = {
     {
       name: "Chirag Goyal",
       image:
-        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+        "https://media-exp1.licdn.com/dms/image/C5103AQHqh1hd7IiywA/profile-displayphoto-shrink_200_200/0/1575391903187?e=1626307200&v=beta&t=ZiCy2hctplwpNzE7tNpADzSP-LSQSQ-orIk4ftwr8Qg",
       work: "Record of Activities",
+      linkedin: "https://www.linkedin.com/in/chirag-goyal-a0959a184/",
+      whatsapp: "https://wa.me/918920742810",
     },
     {
       name: "Hemant",
       image:
-        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+        "https://media-exp1.licdn.com/dms/image/C5103AQGF5s5cpSLHaQ/profile-displayphoto-shrink_200_200/0/1561714126384?e=1626307200&v=beta&t=_w5sGBFfQGdySpYDvO5J2odbU029V__rq4cHRf90MEk",
       work: "Record of Activities",
+      whatsapp: "https://wa.me/919813146563",
+      linkedin: "https://www.linkedin.com/in/hemant-sangwan-78734b18a/",
     },
     {
       name: "Rohan Malik",
@@ -90,8 +94,10 @@ export const TeamData = {
     {
       name: "Devansh Atray",
       image:
-        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+        "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981141/Others/IMG-20210504-WA0003__01_zs6fyl.jpg",
       work: "Event Management",
+      linkedin: "https://www.linkedin.com/in/devanshatray",
+      whatsapp: "https://wa.me/917082349057",
     },
     {
       name: "Tamanna Verma",
@@ -197,7 +203,7 @@ export const TeamData = {
     {
       name: "Vinay Matta",
       image:
-        "https://res.cloudinary.com/dpnapmmwm/image/upload/v1609433854/Museum%20Councel/xtds4jbyk2e5d1hnwjmm.jpg",
+        "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981575/Others/IMG_20210511_180431_aj3waf.jpg",
       work: "Full Stack Developer",
       whatsapp: "https://wa.me/919992825300",
       linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
@@ -217,14 +223,18 @@ export const TeamData = {
     {
       name: "Chirag Goyal",
       image:
-        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+        "https://media-exp1.licdn.com/dms/image/C5103AQHqh1hd7IiywA/profile-displayphoto-shrink_200_200/0/1575391903187?e=1626307200&v=beta&t=ZiCy2hctplwpNzE7tNpADzSP-LSQSQ-orIk4ftwr8Qg",
       work: "Record of Activities",
+      linkedin: "https://www.linkedin.com/in/chirag-goyal-a0959a184/",
+      whatsapp: "https://wa.me/918920742810",
     },
     {
       name: "Hemant",
       image:
-        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+        "https://media-exp1.licdn.com/dms/image/C5103AQGF5s5cpSLHaQ/profile-displayphoto-shrink_200_200/0/1561714126384?e=1626307200&v=beta&t=_w5sGBFfQGdySpYDvO5J2odbU029V__rq4cHRf90MEk",
       work: "Record of Activities",
+      whatsapp: "https://wa.me/919813146563",
+      linkedin: "https://www.linkedin.com/in/hemant-sangwan-78734b18a/",
     },
     {
       name: "Rohan Malik",
@@ -253,8 +263,10 @@ export const TeamData = {
     {
       name: "Devansh Atray",
       image:
-        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+        "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981141/Others/IMG-20210504-WA0003__01_zs6fyl.jpg",
       work: "Event Management",
+      linkedin: "https://www.linkedin.com/in/devanshatray",
+      whatsapp: "https://wa.me/917082349057",
     },
     {
       name: "Tamanna Verma",
