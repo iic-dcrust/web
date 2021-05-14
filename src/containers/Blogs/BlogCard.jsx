@@ -19,7 +19,7 @@ const BlogCard = (props) => {
                   <span
                     className={style.cardCategoryLink}
                     onClick={() => {
-                      history.push(props.Category);
+                      history.push(`blogs/${props.Category}`);
                     }}
                   >
                     {props.Category}
@@ -28,7 +28,9 @@ const BlogCard = (props) => {
                 <span
                   className={style.blogName}
                   onClick={() => {
-                    history.push();
+                    history.push(
+                      `blogs/${props.Category}/${props.BlogHeading}`
+                    );
                   }}
                 >
                   {props.BlogHeading}
@@ -67,7 +69,7 @@ const BlogListBox = (props) => {
         <span
           className={style.categoryLinklist}
           onClick={() => {
-            history.push();
+            history.push(`blogs/${props.CategoryName}`);
           }}
         >
           <div className={style.categoryLinkIcon}>{props.CategoryIcon}</div>
@@ -88,7 +90,7 @@ const TrendingBlogBox = (props) => {
             <article className={style.cardArticle}>
               <span
                 onClick={() => {
-                  history.push();
+                  history.push(`blogs/${props.Category}/${props.BlogHeading}`);
                 }}
               >
                 <div className={style.leftImgBox}>
@@ -100,7 +102,7 @@ const TrendingBlogBox = (props) => {
                   <span
                     className={style.cardCategoryLink}
                     onClick={() => {
-                      history.push();
+                      history.push(`blogs/${props.Category}`);
                     }}
                   >
                     {props.Category}
@@ -109,7 +111,9 @@ const TrendingBlogBox = (props) => {
                 <span
                   className={style.blogName}
                   onClick={() => {
-                    history.push();
+                    history.push(
+                      `blogs/${props.Category}/${props.BlogHeading}`
+                    );
                   }}
                 >
                   {props.BlogHeading}
