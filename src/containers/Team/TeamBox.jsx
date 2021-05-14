@@ -13,7 +13,6 @@ function TeamBox() {
 			<TeamHeader setType={setType} type={type} />
 			<Box>
 				<Info>
-					
 					{getDeviceType() === "mobile" ? "Tap" : "Hover"} on Images to Know
 					More.
 				</Info>
@@ -61,4 +60,5 @@ const Box = styled.div`
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+	padding-top: 20px;
 `;
