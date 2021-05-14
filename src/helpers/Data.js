@@ -155,22 +155,22 @@ export const TeamData = {
   teacher: [
     {
       name: "Prof. Suman Sangwan",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: suman,
       work: "President IIC, Prof. CSED",
     },
     {
       name: "Dr. Rohtash Dhiman",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: rd,
       work: "Assistant Professor, EED",
     },
     {
       name: "Dr. Ajmer Singh",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: ajmer,
       work: "Assistant Professor, CSED",
     },
     {
       name: "Mr. Vikas Nehra",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: vikas,
       work: "Assistant Professor, ECED",
     },
   ],
