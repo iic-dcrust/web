@@ -50,6 +50,7 @@ export const TeamData = {
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Record of Activities",
+      linkedin: "https://www.linkedin.com/in/deepanshu-kaushik-a479301b3/",
     },
     {
       name: "Chirag Goyal",
@@ -116,6 +117,7 @@ export const TeamData = {
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/guptachaitanya/",
     },
     {
       name: "Jatin",
@@ -152,6 +154,7 @@ export const TeamData = {
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/naveengill121/",
     },
     {
       name: "Kashish",
@@ -219,6 +222,7 @@ export const TeamData = {
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Record of Activities",
+      linkedin: "https://www.linkedin.com/in/deepanshu-kaushik-a479301b3/",
     },
     {
       name: "Chirag Goyal",
@@ -287,6 +291,7 @@ export const TeamData = {
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/guptachaitanya/",
     },
     {
       name: "Jatin",
@@ -323,6 +328,7 @@ export const TeamData = {
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/naveengill121/",
     },
     {
       name: "Kashish",

@@ -32,7 +32,7 @@ const TeamDetails = ({ details }) => {
               }}
             />
           </a>
-        ) : (
+        ) : details.telegram ? (
           <a href={details.telegram}>
             <Telegram
               style={{
@@ -43,6 +43,8 @@ const TeamDetails = ({ details }) => {
               }}
             />
           </a>
+        ) : (
+          ""
         )}
 
         <a href={details.linkedin}>
