@@ -38,15 +38,19 @@ const Header = () => {
 	// // }, [dispatch
 
 	useEffect(async () => {
-		let response = await axios.get("/api/users/data");
-		dispatch({
-			type: "SET_USER",
-			user: {
-				email: response.data.email,
-				name: response.data.firstName,
-			},
-		});
-		console.log(response);
+		try {
+			let response = await axios.get("/api/users/data");
+			dispatch({
+				type: "SET_USER",
+				user: {
+					email: response.data.email,
+					name: response.data.firstName,
+				},
+			});
+			console.log(response);
+		} catch (err) {
+			console.log(err);
+		}
 	}, []);
 	const toggleDrawer = () => {
 		setOpen(!open);
