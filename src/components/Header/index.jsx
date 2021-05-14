@@ -36,6 +36,16 @@ const Header = () => {
     );
     // .catch((e) => alert(e));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      dispatch({
+        type: "SET_USER",
+        user: JSON.parse(localStorage.getItem("user")),
+      });
+    }
+  },[dispatch]);
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -57,7 +67,7 @@ const Header = () => {
         type: "SET_USER",
         user: null,
       });
-      localStorage.removeItem("token");
+      localStorage.removeItem("user");
     } else {
       setLogin(true);
     }
