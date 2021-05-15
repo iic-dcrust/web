@@ -33,7 +33,7 @@ export default function App() {
           <Route path="/events">
             <Events />
           </Route>
-          <Route path="/blogs/:Category/:BlogHeading">
+          <Route path="/blogs/:Category/:blogId/:BlogHeading">
             <SingleBlogsComponent />
           </Route>
           <Route path="/blogs">

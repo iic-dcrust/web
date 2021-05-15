@@ -1,11 +1,14 @@
 import React from "react";
 import blogProfile from "assets/blogProfile.png";
-import blogLeftimg from "assets/blogLeftimg.jpg";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import style from "./Blog.module.css";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
+import { BlogData } from "./BlogData";
+import styled from "styled-components";
+import { getDeviceType } from "helpers";
+
 const BlogCard = (props) => {
   const history = useHistory();
   return (
@@ -18,9 +21,9 @@ const BlogCard = (props) => {
                 <div className={style.cardCategory}>
                   <span
                     className={style.cardCategoryLink}
-                    onClick={() => {
-                      history.push(`blogs/${props.Category}`);
-                    }}
+                    // onClick={() => {
+                    //   history.push(`/${props.Category}`);
+                    // }}
                   >
                     {props.Category}
                   </span>
@@ -29,7 +32,7 @@ const BlogCard = (props) => {
                   className={style.blogName}
                   onClick={() => {
                     history.push(
-                      `blogs/${props.Category}/${props.BlogHeading}`
+                      `/blogs/${props.Category}/${props.blogId}/${props.BlogHeading}`
                     );
                   }}
                 >
@@ -61,16 +64,16 @@ const BlogCard = (props) => {
   );
 };
 const BlogListBox = (props) => {
-  const history = useHistory();
+  // const history = useHistory();
 
   return (
     <>
       <div className={style.CategoryList}>
         <span
           className={style.categoryLinklist}
-          onClick={() => {
-            history.push(`blogs/${props.CategoryName}`);
-          }}
+          // onClick={() => {
+          //   history.push(`/blogs/${props.CategoryName}`);
+          // }}
         >
           <div className={style.categoryLinkIcon}>{props.CategoryIcon}</div>
           <span className={style.categorylistName}>{props.CategoryName}</span>
@@ -85,25 +88,31 @@ const TrendingBlogBox = (props) => {
   return (
     <>
       <div className={style.outerTrending}>
-        <div className={style.tendingBox}>
+        <TrendingBox>
           <div className={style.trendingInner}>
-            <article className={style.cardArticle}>
+            <Article className={style.cardArticle}>
               <span
                 onClick={() => {
-                  history.push(`blogs/${props.Category}/${props.BlogHeading}`);
+                  history.push(
+                    `/blogs/${props.Category}/${props.blogId}/${props.BlogHeading}`
+                  );
                 }}
               >
                 <div className={style.leftImgBox}>
-                  <img src={blogLeftimg} className={style.leftImg} alt="" />
+                  <Img
+                    src={props.blogLeftimg}
+                    className={style.leftImg}
+                    alt=""
+                  />
                 </div>
               </span>
               <div className={style.innerContent}>
                 <div className={style.cardCategory}>
                   <span
                     className={style.cardCategoryLink}
-                    onClick={() => {
-                      history.push(`blogs/${props.Category}`);
-                    }}
+                    // onClick={() => {
+                    //   history.push(`/blogs/${props.Category}`);
+                    // }}
                   >
                     {props.Category}
                   </span>
@@ -112,7 +121,7 @@ const TrendingBlogBox = (props) => {
                   className={style.blogName}
                   onClick={() => {
                     history.push(
-                      `blogs/${props.Category}/${props.BlogHeading}`
+                      `/blogs/${props.Category}/${props.blogId}/${props.BlogHeading}`
                     );
                   }}
                 >
@@ -136,16 +145,18 @@ const TrendingBlogBox = (props) => {
                   </div>
                 </div>
               </div>
-            </article>
+            </Article>
           </div>
-        </div>
+        </TrendingBox>
       </div>
     </>
   );
 };
 const SingleBlogBox = (props) => {
-  const history = useHistory();
-
+  const { blogId } = useParams();
+  const blogTemp = BlogData.filter(
+    (blog) => blog.blogId.toString() === blogId
+  )[0];
   return (
     <>
       <div className={style.blogBloxInner}>
@@ -154,42 +165,12 @@ const SingleBlogBox = (props) => {
             <article className={style.cardArticle}>
               <div className={style.innerContent}>
                 <h2 className={style.SingleBlogHeading}>
-                  <span
-                    className={style.blogName}
-                    onClick={() => {
-                      history.push();
-                    }}
-                  >
-                    What I’ll Be Wearing This Party Season & The Festive Edit
-                  </span>
+                  <span className={style.blogName}>{blogTemp.BlogHeading}</span>
                 </h2>
                 <div className={style.blogContent}>
-                  <p className={style.SingleBlogContent}>
-                    Lorem markdownum illic venturi instructa nobis Echidnae, cum
-                    quid magna fatebor. Levat placetque Phrygios annis micat
-                    carpat; sua iamque disparibus omnia Daedalion utinam et
-                    curvos nomine potentia. Retro fecit stridore ignarus spatium
-                    petit germanam; sive tergoque. Time sibi sit vulnere
-                    Iurantem vimque Alendi ad suspiria fores An nec tumulo
-                    fratres arcana Terris passos vix tenuavit petit Hostes
-                    iamque Amor tamen
-                  </p>
-
-                  <ol
-                    style={{
-                      paddingLeft: "17px",
-                      color: "#718096",
-                      fontSize: "18px",
-                      lineHeight: "31px",
-                    }}
-                  >
-                    <li>Time sibi sit vulnere </li>
-                    <li>Iurantem vimque</li>
-                    <li>Alendi ad suspiria fores </li>
-                    <li>An nec tumulo fratres arcana </li>
-                    <li>Terris passos vix tenuavit petit</li>
-                    <li>Hostes iamque Amor tamen</li>
-                  </ol>
+                  {blogTemp.FullBlog.map((data) => (
+                    <p className={style.SingleBlogContent}>{data}</p>
+                  ))}
                 </div>
                 <div className={style.SocialIcons}>
                   <ul className={style.Socialul}>
@@ -248,7 +229,7 @@ const SingleBlogRight = (props) => {
                   </div>
                   <div className={style.profileInfoBox}>
                     <div className={style.profileName}>
-                      <strong>Prateek</strong>
+                      <strong>Tamanna Verma</strong>
                     </div>
                     <div className={style.SocialIcons}>
                       <ul className={style.Socialul}>
@@ -304,7 +285,9 @@ const RelatedPost = (props) => {
                 <span
                   className={style.blogName}
                   onClick={() => {
-                    history.push();
+                    history.push(
+                      `/blogs/${props.Category}/${props.blogId}/${props.BlogHeading}`
+                    );
                   }}
                 >
                   {props.BlogHeading}
@@ -333,3 +316,19 @@ export {
   SingleBlogRight,
   RelatedPost,
 };
+
+const Article = styled.div`
+  display: flex;
+  flex-direction: ${getDeviceType() === "mobile" ? "column" : "row"};
+`;
+
+const Img = styled.img`
+  height: ${getDeviceType() === "desktop" ? "max-content" : "250px"};
+  border-radius: ${getDeviceType() === "mobile"
+    ? "16px 16px 0 0"
+    : "16px 0 0 16px"};
+`;
+
+const TrendingBox = styled.div`
+  padding: ${getDeviceType() === "desktop" ? "10px" : "0"};
+`;

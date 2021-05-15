@@ -94,6 +94,7 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
               },
             });
             localStorage.setItem("user", JSON.stringify(email, name));
+            localStorage.setItem("token", response.data.token);
             handleCloseLogin();
             setRegisterBtnDisable(false);
           } else {
@@ -202,7 +203,11 @@ const LoginModal = ({ login, handleCloseLogin, toggleDrawer }) => {
             name: response.data.firstName,
           },
         });
-        localStorage.setItem("user", JSON.stringify(email, name));
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.data.email, response.data.firstName)
+        );
+        localStorage.setItem("token", response.data.token);
         handleCloseLogin();
       } else {
         alert("Unexpected Error");

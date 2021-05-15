@@ -29,7 +29,9 @@ const Links = () => {
 			</Column>
 			<Column>
 				<Head>Contact us</Head>
-				<Body>DCRUST University</Body>
+				<Link href="https://www.facebook.com/Institute-Innovation-Council-Dcrust-102870201956938">
+					IIC Facebook Page
+				</Link>
 			</Column>
 		</Container>
 	);
