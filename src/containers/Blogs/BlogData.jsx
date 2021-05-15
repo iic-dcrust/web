@@ -2,22 +2,23 @@ import blogProfile from "assets/blogProfile.png";
 import blogLeftimg from "assets/blogLeftimg.jpg";
 const BlogData = [
   {
-    Category: "Agriculture",
-    BlogHeading: "What I’ll Be Wearing This Party Season & The Festive Edit",
+    Category: "Technical",
+    BlogHeading:
+      "How to create a setup where A can ping to B and C, but B and C are not able to ping each other?",
     AboutBlog:
-      "Lorem markdownum illic venturi instructa nobis Echidnae,  cum  quid magna",
+      "A can Ping to B to C , B and C can ping to A but B and C are not able to ping each other",
     imgsrc: blogProfile,
-    Name: "Prateek",
-    BlogDate: "May 2, 2021",
+    Name: "Tamanna Verma",
+    BlogDate: "May 15, 2021",
   },
   {
-    Category: "Agriculture",
-    BlogHeading: "What I’ll Be Wearing This Party Season & The Festive Edit",
+    Category: "Technical",
+    BlogHeading: "Machine Learning is Driving Innovation at Uber.",
     AboutBlog:
-      "Lorem markdownum illic venturi instructa nobis Echidnae,  cum  quid magna",
+      "Some of us really don’t know that what is machine learning actually …",
     imgsrc: blogProfile,
-    Name: "Prateek",
-    BlogDate: "May 2, 2021",
+    Name: "Tamanna Verma",
+    BlogDate: "May 15, 2021",
   },
   {
     Category: "Agriculture",
@@ -58,14 +59,15 @@ const BlogList = [
 ];
 const TrendingBlog = [
   {
-    Category: "Agriculture",
-    BlogHeading: "What I’ll Be Wearing This Party Season & The Festive Edit",
+    Category: "Technical",
+    BlogHeading:
+      "How to create a setup where A can ping to B and C, but B and C are not able to ping each other?",
     AboutBlog:
-      "Lorem markdownum illic venturi instructa nobis Echidnae,  cum  quid magna",
+      "A can Ping to B to C , B and C can ping to A but B and C are not able to ping each other",
     imgsrc: blogProfile,
-    Name: "Prateek",
-    BlogDate: "May 2, 2021",
-    BlogLeftimg: blogLeftimg,
+    Name: "Tamanna Verma",
+    BlogDate: "May 15, 2021",
+    blogLeftimg: blogProfile,
   },
   {
     Category: "Agriculture",

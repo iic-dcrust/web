@@ -5,7 +5,9 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import style from "./Blog.module.css";
+import { useHistory } from "react-router";
 const BlogCard = (props) => {
+  const history = useHistory();
   return (
     <>
       <div className={style.blogBloxInner}>
@@ -14,11 +16,25 @@ const BlogCard = (props) => {
             <article className={style.cardArticle}>
               <div className={style.innerContent}>
                 <div className={style.cardCategory}>
-                  <span className={style.cardCategoryLink}>
+                  <span
+                    className={style.cardCategoryLink}
+                    onClick={() => {
+                      history.push(`blogs/${props.Category}`);
+                    }}
+                  >
                     {props.Category}
                   </span>
                 </div>
-                <span className={style.blogName}>{props.BlogHeading}</span>
+                <span
+                  className={style.blogName}
+                  onClick={() => {
+                    history.push(
+                      `blogs/${props.Category}/${props.BlogHeading}`
+                    );
+                  }}
+                >
+                  {props.BlogHeading}
+                </span>
                 <div className={style.blogContent}>{props.AboutBlog}</div>
                 <div className={style.profileBox}>
                   <div className={style.profileImg}>
@@ -45,10 +61,17 @@ const BlogCard = (props) => {
   );
 };
 const BlogListBox = (props) => {
+  const history = useHistory();
+
   return (
     <>
       <div className={style.CategoryList}>
-        <span className={style.categoryLinklist}>
+        <span
+          className={style.categoryLinklist}
+          onClick={() => {
+            history.push(`blogs/${props.CategoryName}`);
+          }}
+        >
           <div className={style.categoryLinkIcon}>{props.CategoryIcon}</div>
           <span className={style.categorylistName}>{props.CategoryName}</span>
         </span>
@@ -57,24 +80,44 @@ const BlogListBox = (props) => {
   );
 };
 const TrendingBlogBox = (props) => {
+  const history = useHistory();
+
   return (
     <>
       <div className={style.outerTrending}>
         <div className={style.tendingBox}>
           <div className={style.trendingInner}>
             <article className={style.cardArticle}>
-              <span>
+              <span
+                onClick={() => {
+                  history.push(`blogs/${props.Category}/${props.BlogHeading}`);
+                }}
+              >
                 <div className={style.leftImgBox}>
                   <img src={blogLeftimg} className={style.leftImg} alt="" />
                 </div>
               </span>
               <div className={style.innerContent}>
                 <div className={style.cardCategory}>
-                  <span className={style.cardCategoryLink}>
+                  <span
+                    className={style.cardCategoryLink}
+                    onClick={() => {
+                      history.push(`blogs/${props.Category}`);
+                    }}
+                  >
                     {props.Category}
                   </span>
                 </div>
-                <span className={style.blogName}>{props.BlogHeading}</span>
+                <span
+                  className={style.blogName}
+                  onClick={() => {
+                    history.push(
+                      `blogs/${props.Category}/${props.BlogHeading}`
+                    );
+                  }}
+                >
+                  {props.BlogHeading}
+                </span>
                 <div className={style.blogContent}>{props.AboutBlog}</div>
                 <div className={style.profileBox}>
                   <div className={style.profileImg}>
@@ -101,6 +144,8 @@ const TrendingBlogBox = (props) => {
   );
 };
 const SingleBlogBox = (props) => {
+  const history = useHistory();
+
   return (
     <>
       <div className={style.blogBloxInner}>
@@ -109,7 +154,12 @@ const SingleBlogBox = (props) => {
             <article className={style.cardArticle}>
               <div className={style.innerContent}>
                 <h2 className={style.SingleBlogHeading}>
-                  <span className={style.blogName}>
+                  <span
+                    className={style.blogName}
+                    onClick={() => {
+                      history.push();
+                    }}
+                  >
                     What I’ll Be Wearing This Party Season & The Festive Edit
                   </span>
                 </h2>
@@ -242,6 +292,8 @@ const SingleBlogRight = (props) => {
   );
 };
 const RelatedPost = (props) => {
+  const history = useHistory();
+
   return (
     <>
       <div className={style.RelatedPostBox}>
@@ -249,7 +301,14 @@ const RelatedPost = (props) => {
           <div className={style.insideCard}>
             <article className={style.cardArticle}>
               <div className={style.innerContent}>
-                <span className={style.blogName}>{props.BlogHeading}</span>
+                <span
+                  className={style.blogName}
+                  onClick={() => {
+                    history.push();
+                  }}
+                >
+                  {props.BlogHeading}
+                </span>
 
                 <div className={style.profileInfoBox}>
                   <div className={style.profileName}>
