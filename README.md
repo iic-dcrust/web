@@ -2,7 +2,7 @@
 
 Live At :- https://iicdcrustm.com
 
-Dev Live At :- https://dev.iicdcrustm.com
+Development Site Link :- https://dev.iicdcrustm.com
 
 ### Setup On Local
 
