@@ -14,6 +14,8 @@ Install Node Modules
 
 > npm i
 
+Create a .env file and add credentials
+
 Start Application
 
 > npm start
