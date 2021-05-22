@@ -1,4 +1,4 @@
-## Offical Web Application for Thinkbots
+## Official Web Application for Thinkbots
 
 Live At :- https://iicdcrustm.com
 
