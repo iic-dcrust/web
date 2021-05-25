@@ -46,16 +46,19 @@ const TeamDetails = ({ details }) => {
         ) : (
           ""
         )}
-
-        <a href={details.linkedin}>
-          <LinkedIn
-            style={{
-              marginTop: "10px",
-              fontSize: "17px",
-              color: "#0075b3",
-            }}
-          />
-        </a>
+        {details.linkedin ? (
+          <a href={details.linkedin}>
+            <LinkedIn
+              style={{
+                marginTop: "10px",
+                fontSize: "17px",
+                color: "#0075b3",
+              }}
+            />
+          </a>
+        ) : (
+          ""
+        )}
       </Icons>
 
       <Name active={active}>{details.name}</Name>

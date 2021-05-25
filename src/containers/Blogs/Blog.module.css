@@ -16,8 +16,6 @@
   max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 .blogBoxInner {
   display: flex;
@@ -68,8 +66,6 @@
   min-width: 0;
   align-items: stretch;
   height: 100%;
-  flex-direction: row;
-  display: flex;
 }
 .innerContent {
   margin: 0;
@@ -87,6 +83,7 @@
   margin-bottom: 1rem;
 }
 .cardCategoryLink {
+  /* cursor: pointer; */
   font-size: 13px;
   padding: 0.15rem 1rem 0.25rem 1rem;
   border-radius: 0.5rem;
@@ -103,6 +100,7 @@
   border: 1px solid #718096;
 }
 .blogName {
+  cursor: pointer;
   display: block;
   color: #2d3748;
   font-weight: 700;
@@ -166,6 +164,7 @@
   box-sizing: border-box;
 }
 .categoryLinklist {
+  /* cursor: pointer; */
   display: inline-block;
   text-align: center;
   line-height: inherit;
@@ -323,9 +322,7 @@
   font-size: 24px;
   margin-top: auto;
 }
-.tendingBox {
-  padding: 10px;
-}
+
 .trendingInner {
   border-radius: 1rem;
   background-color: #fff;
@@ -337,16 +334,17 @@
 .leftImgBox {
   max-width: 296px;
   display: block;
+  cursor: pointer;
+  max-height: 300px;
 }
 .leftImg {
   max-width: 100%;
   display: block;
   position: static;
-  border-radius: 16px 0 0 16px;
 }
 .outerTrending {
   float: left;
-  width: 615px;
+  max-width: 615px;
 }
 .SingleBlogContent {
   color: #718096;

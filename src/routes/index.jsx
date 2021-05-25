@@ -13,8 +13,9 @@ import Team from "containers/Team";
 
 import Events from "pages/Events";
 import EventDetails from "containers/Events/EventDetials";
-import FAQ from "containers/FAQ";
 import BlogsComponent from "containers/Blogs";
+import SingleBlogsComponent from "containers/Blogs/SingleBlog";
+import FAQ from "containers/FAQ";
 
 export default function App() {
   return (
@@ -32,11 +33,14 @@ export default function App() {
           <Route path="/events">
             <Events />
           </Route>
-          <Route path="/faq">
-            <FAQ />
+          <Route path="/blogs/:Category/:blogId/:BlogHeading">
+            <SingleBlogsComponent />
           </Route>
           <Route path="/blogs">
             <BlogsComponent />
+          </Route>
+          <Route path="/faq">
+            <FAQ />
           </Route>
           <Route path="/team">
             <Team />
