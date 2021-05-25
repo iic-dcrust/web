@@ -28,6 +28,7 @@ const Events = () => {
     axios
       .get(`/api/events?type=${type}&page=${page}&time=${time}`)
       .then((res) => {
+        console.log(res.data);
         setEvents(res.data);
         setLoading(false);
       })
