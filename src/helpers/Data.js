@@ -8,46 +8,46 @@ export const TeamData = {
     {
       name: "Prof. Suman Sangwan",
       image: suman,
-      work: "President IIC, Prof. CSED",
+      work: "President IIC",
     },
     {
       name: "Dr. Rohtash Dhiman",
       image: rd,
-      work: "Assistant Professor, EED",
+      work: "Co-ordinator",
     },
     {
       name: "Dr. Ajmer Singh",
       image: ajmer,
-      work: "Assistant Professor, CSED",
+      work: "Co-ordinator",
     },
     {
       name: "Mr. Vikas Nehra",
       image: vikas,
-      work: "Assistant Professor, ECED",
+      work: "Co-ordinator",
     },
     {
       name: "Tushar",
-      image:
-        "https://media-exp1.licdn.com/dms/image/C5603AQGBg948r4NJkQ/profile-displayphoto-shrink_200_200/0/1620752111516?e=1626307200&v=beta&t=YZ5HnJOglB7_jfxNtbG2IPCmntcatWBjzMui5_CGnY8",
+      image: "https://pub.iicdcrustm.com/images/tushar.JPG",
       work: "Full Stack Developer",
       telegram: "https://t.me/iamtushar324",
       linkedin: "https://www.linkedin.com/in/tushar-bhardwaj-5a820a193/",
     },
     {
       name: "Vinay Matta",
-      image: "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981575/Others/IMG_20210511_180431_aj3waf.jpg",
+      image: "https://pub.iicdcrustm.com/images/vinay.jpeg",
       work: "Full Stack Developer",
       telegram: "https://telegram.me/VinayMatta63",
       linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
     },
     {
       name: "Nikita Jain",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/nikita.jpeg",
       work: "Developer",
+      linkedin: "https://www.linkedin.com/in/nikita-jain-97b463149/",
     },
     {
       name: "Deepanshu Kaushik",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/deepanshu.jpg",
       work: "Record of Activities",
       linkedin: "https://www.linkedin.com/in/deepanshu-kaushik-a479301b3/",
     },
@@ -69,87 +69,105 @@ export const TeamData = {
     },
     {
       name: "Rohan Malik",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Media/ Publicity",
     },
     {
       name: "Yashwant Soni",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/yashwant.jfif",
       work: "Media/ Publicity",
+      linkedin: "https://www.linkedin.com/in/yashwant-soni-5354ba169",
     },
     {
       name: "Anjali Duhan",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Event Management",
+      linkedin: "https://www.linkedin.com/in/anjali-duhan-0385651a2",
     },
     {
       name: "Yash Mohan",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/yashmohan.png",
       work: "Event Management",
+      linkedin: "https://www.linkedin.com/in/yash-mohan-060b23190",
+      telegram: "https://telegram.me/yashmohan1609",
     },
     {
       name: "Devansh Atray",
-      image: "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981141/Others/IMG-20210504-WA0003__01_zs6fyl.jpg",
+      image: "https://pub.iicdcrustm.com/images/devansh.jpg",
       work: "Event Management",
       linkedin: "https://www.linkedin.com/in/devanshatray",
       whatsapp: "https://wa.me/917082349057",
     },
     {
       name: "Tamanna Verma",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Event Management",
     },
     {
       name: "Harsh Kumar phogat",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Chaitanya",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/chaitanaya.png",
       work: "Member",
       linkedin: "https://www.linkedin.com/in/guptachaitanya/",
     },
     {
       name: "Jatin",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/jatin-saini-467223193/",
     },
     {
       name: "Yuvraj Singh",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Paritosh Dahiya",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/paritosh-dahiya-57b568192/",
+      telegram: "https://telegram.me/hnhparitosh",
     },
     {
       name: "Rahul Saini",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/rahul.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/rahul-saini-b712311a8",
     },
     {
       name: "Rishabh Kalra",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Naveen",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/naveen.jpeg",
       work: "Member",
       linkedin: "https://www.linkedin.com/in/naveengill121/",
     },
     {
       name: "Kashish",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Bharti",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/bharti.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/bharti-sharma-9140a0161/",
     },
   ],
   teacher: [
@@ -177,27 +195,27 @@ export const TeamData = {
   "student-co": [
     {
       name: "Tushar",
-      image:
-        "https://media-exp1.licdn.com/dms/image/C5603AQGBg948r4NJkQ/profile-displayphoto-shrink_200_200/0/1620752111516?e=1626307200&v=beta&t=YZ5HnJOglB7_jfxNtbG2IPCmntcatWBjzMui5_CGnY8",
+      image: "https://pub.iicdcrustm.com/images/tushar.JPG",
       work: "Full Stack Developer",
-      whatsapp: "https://wa.me/919315876022",
-      linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
+      telegram: "https://t.me/iamtushar324",
+      linkedin: "https://www.linkedin.com/in/tushar-bhardwaj-5a820a193/",
     },
     {
       name: "Vinay Matta",
-      image: "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981575/Others/IMG_20210511_180431_aj3waf.jpg",
+      image: "https://pub.iicdcrustm.com/images/vinay.jpeg",
       work: "Full Stack Developer",
       telegram: "https://telegram.me/VinayMatta63",
       linkedin: "https://www.linkedin.com/in/vinay-matta-465578192/",
     },
     {
       name: "Nikita Jain",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/nikita.jpeg",
       work: "Developer",
+      linkedin: "https://www.linkedin.com/in/nikita-jain-97b463149/",
     },
     {
       name: "Deepanshu Kaushik",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/deepanshu.jpg",
       work: "Record of Activities",
       linkedin: "https://www.linkedin.com/in/deepanshu-kaushik-a479301b3/",
     },
@@ -219,99 +237,115 @@ export const TeamData = {
     },
     {
       name: "Rohan Malik",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Media/ Publicity",
     },
     {
       name: "Yashwant Soni",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/yashwant.jfif",
       work: "Media/ Publicity",
+      linkedin: "https://www.linkedin.com/in/yashwant-soni-5354ba169",
     },
     {
       name: "Anjali Duhan",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Event Management",
+      linkedin: "https://www.linkedin.com/in/anjali-duhan-0385651a2",
     },
     {
       name: "Yash Mohan",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/yashmohan.png",
       work: "Event Management",
+      linkedin: "https://www.linkedin.com/in/yash-mohan-060b23190",
+      telegram: "https://telegram.me/yashmohan1609",
     },
     {
       name: "Devansh Atray",
-      image: "https://res.cloudinary.com/dpnapmmwm/image/upload/v1620981141/Others/IMG-20210504-WA0003__01_zs6fyl.jpg",
+      image: "https://pub.iicdcrustm.com/images/devansh.jpg",
       work: "Event Management",
       linkedin: "https://www.linkedin.com/in/devanshatray",
       whatsapp: "https://wa.me/917082349057",
     },
     {
       name: "Tamanna Verma",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Event Management",
     },
   ],
   members: [
     {
       name: "Harsh Kumar phogat",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Chaitanya",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/chaitanaya.png",
       work: "Member",
       linkedin: "https://www.linkedin.com/in/guptachaitanya/",
     },
     {
       name: "Jatin",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/jatin-saini-467223193/",
     },
     {
       name: "Yuvraj Singh",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Paritosh Dahiya",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/paritosh-dahiya-57b568192/",
+      telegram: "https://telegram.me/hnhparitosh",
     },
     {
       name: "Rahul Saini",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/rahul.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/rahul-saini-b712311a8",
     },
     {
       name: "Rishabh Kalra",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Naveen",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/naveen.jpeg",
       work: "Member",
       linkedin: "https://www.linkedin.com/in/naveengill121/",
     },
     {
       name: "Kashish",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Member",
     },
     {
       name: "Bharti",
-      image: "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      image: "https://pub.iicdcrustm.com/images/bharti.jpg",
       work: "Member",
+      linkedin: "https://www.linkedin.com/in/bharti-sharma-9140a0161/",
     },
   ],
 };
 
 export const IntroData = {
   title: "Institute Innovation Cell",
-  p1:
-    "Under the leadership of Hon’ble Vice Chancellor, Prof. (Dr.) Rajendrakumar Anayath, Deenbandhu Chhotu Ram University Of Science And Technology, Murthal (Sonepat) successfully established Institute Innovation Council (IIC) as per the norms and directives of Innovation Cell, Ministry of Human Resource Development (MHRD), Government of India, in 2019. ",
-  p2:
-    "MIC has envisioned encouraging creation of ‘Institution’s Innovation Council (IICs)’ across selected HEIs. A network of these IICs will be established to promote innovation in the Institution through multitudinous modes leading to an innovation promotion eco-system in the campuses. IIC has been established to systematically foster the culture of innovation in the institute. IICs are responsible for conducting the activities as per activity calendar provided by MHRD Innovation Cell.",
+  p1: "Under the leadership of Hon’ble Vice Chancellor, Prof. (Dr.) Rajendrakumar Anayath, Deenbandhu Chhotu Ram University Of Science And Technology, Murthal (Sonepat) successfully established Institute Innovation Council (IIC) as per the norms and directives of Innovation Cell, Ministry of Human Resource Development (MHRD), Government of India, in 2019. ",
+  p2: "MIC has envisioned encouraging creation of ‘Institution’s Innovation Council (IICs)’ across selected HEIs. A network of these IICs will be established to promote innovation in the Institution through multitudinous modes leading to an innovation promotion eco-system in the campuses. IIC has been established to systematically foster the culture of innovation in the institute. IICs are responsible for conducting the activities as per activity calendar provided by MHRD Innovation Cell.",
 };
 
 export const FunctionsData = {
@@ -320,27 +354,34 @@ export const FunctionsData = {
     <>
       <li>To foster the culture of innovation in the institute.</li>
       <li>
-        To conduct various innovation and entrepreneurship-related activities prescribed by Central MIC in time bound
-        fashion.
+        To conduct various innovation and entrepreneurship-related activities
+        prescribed by Central MIC in time bound fashion.
       </li>
       <li>Identify and reward innovations and share success stories.</li>
       <li>
-        Organize periodic workshops/ seminars/ interactions with entrepreneurs, investors, professionals and create a
-        mentor pool for student innovators.
+        Organize periodic workshops/ seminars/ interactions with entrepreneurs,
+        investors, professionals and create a mentor pool for student
+        innovators.
       </li>
     </>
   ),
   list2: (
     <>
-      <li>Network with peers and national entrepreneurship development organizations.</li>
       <li>
-        Create an Institution’s Innovation portal to highlight innovative projects carried out by institution’s faculty
-        and students.
+        Network with peers and national entrepreneurship development
+        organizations.
       </li>
-      <li>Organize Hackathons, idea competition, mini-challenges etc. with the involvement of industries.</li>
       <li>
-        To mentor students in analyzing their new ideas and transforming the ideas into prototypes and further into
-        startups
+        Create an Institution’s Innovation portal to highlight innovative
+        projects carried out by institution’s faculty and students.
+      </li>
+      <li>
+        Organize Hackathons, idea competition, mini-challenges etc. with the
+        involvement of industries.
+      </li>
+      <li>
+        To mentor students in analyzing their new ideas and transforming the
+        ideas into prototypes and further into startups
       </li>
     </>
   ),
@@ -348,7 +389,6 @@ export const FunctionsData = {
 
 export const VisionData = {
   title: "VISION OF IIC",
-  body:
-    "Primarily, the IICs' role is to engage a large number of faculty and staff, and encourage, inspire, and nuture young students in various innovation and enterpreneurship-relaed activities such as ideation, problem-solving, proof of concept development, design thinking, IPR, project handling and management at pre-incubting/incubation stage, etc.,so that innovation and entrepreneurship ecosystem gets established and stabilized in HEIs.",
+  body: "Primarily, the IICs' role is to engage a large number of faculty and staff, and encourage, inspire, and nuture young students in various innovation and enterpreneurship-relaed activities such as ideation, problem-solving, proof of concept development, design thinking, IPR, project handling and management at pre-incubting/incubation stage, etc.,so that innovation and entrepreneurship ecosystem gets established and stabilized in HEIs.",
   image: "https://www.mic.gov.in/assets/img/iic-logo.png",
 };
