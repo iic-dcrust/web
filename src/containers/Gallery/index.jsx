@@ -96,7 +96,7 @@ const Img = styled(Image)`
   border-radius: 5px;
   max-width: 300px;
   max-height: 180px;
-  margin: 5px;
+  margin: 35px 30px;
   cursor: pointer;
   object-fit: fill;
   :hover {
