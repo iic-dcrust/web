@@ -8,6 +8,7 @@ import Related from "./Related";
 import Schedule from "./Schedule";
 import axios from "../../../helpers/axios";
 import { useParams } from "react-router";
+import Interweave from 'interweave'
 
 const EventDetails = () => {
 	const [isRegistered, setIsRegistered] = useState(false);
@@ -31,7 +32,10 @@ const EventDetails = () => {
 				setEndTime(etime);
 				setIsRegistered(response.data.eventRegistered);
 
-				let arr = response.data.schedule.split(";");
+				let arr = response.data.schedule?.split(";");
+				if(!arr){
+					return
+				}
 				let res = [];
 				for (let i = 0; i < arr.length; i += 3) {
 					let temp = {
@@ -43,7 +47,10 @@ const EventDetails = () => {
 				}
 				setSchedule(res);
 
-				let arr2 = response.data.attachedFiles.split(";");
+				let arr2 = response.data.attachedFiles?.split(";");
+				if(!arr){
+					return
+				}
 				console.log(arr2);
 				let res2 = [];
 				for (let i = 0; i < arr2.length; i += 2) {
@@ -122,7 +129,7 @@ const EventDetails = () => {
 			</Box>
 			<Box>
 				<Desc>Description</Desc>
-				<Body>{details.description}</Body>
+				<Body><Interweave content={details.description}/></Body>
 			</Box>
 			{details.schedule && (
 				<Box>
