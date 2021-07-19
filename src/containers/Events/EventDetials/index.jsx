@@ -9,6 +9,7 @@ import Schedule from "./Schedule";
 import axios from "../../../helpers/axios";
 import { useParams } from "react-router";
 import Interweave from 'interweave'
+import moment from 'moment';
 
 const EventDetails = () => {
 	const [isRegistered, setIsRegistered] = useState(false);
@@ -18,6 +19,7 @@ const EventDetails = () => {
 	const [startTime, setStartTime] = useState("");
 	const [endTime, setEndTime] = useState("");
 	const { eventId } = useParams();
+	const [isPast , setIsPast] = useState(false)
 
 	useEffect(() => {
 		async function eventFunction() {
@@ -26,10 +28,11 @@ const EventDetails = () => {
 				setDeatils(response.data);
 				let stime = new Date(response.data.startTime);
 				let etime = new Date(response.data.endTime);
-				stime = stime.toLocaleString("en-US");
-				etime = etime.toLocaleString("en-US");
-				setStartTime(stime);
-				setEndTime(etime);
+				if(stime < Date.now()){
+					setIsPast(true)
+				}
+				setStartTime(moment(stime).format('MMM DD YYYY  hh:mm A'));
+				setEndTime(moment(etime).format('MMM DD YYYY  hh:mm A'));
 				setIsRegistered(response.data.eventRegistered);
 
 				let arr = response.data.schedule?.split(";");
@@ -104,6 +107,7 @@ const EventDetails = () => {
 			<Box>
 				<Head>{details.title}</Head>
 				<Info>
+					{!isPast &&
 					<Button
 						onClick={() =>
 							!isRegistered
@@ -113,12 +117,13 @@ const EventDetails = () => {
 					>
 						{isRegistered ? "Join Now" : "Register"}
 					</Button>
+}
 					<Tag>
-						<InfoHead>Starts on:</InfoHead>
+						<InfoHead>{isPast ?"Started On" : "Starts on:"}</InfoHead>
 						<InfoBody>{startTime}</InfoBody>
 					</Tag>
 					<Tag>
-						<InfoHead>Ends on:</InfoHead>
+						<InfoHead>{isPast ? "Ended On" : "Ends On" }</InfoHead>
 						<InfoBody>{endTime}</InfoBody>
 					</Tag>
 					<Tag>
@@ -166,7 +171,6 @@ const Container = styled.div`
 `;
 const Image = styled.img`
 	width: 100%;
-	max-height: 55vh;
 	margin-bottom: 35px;
 	object-fit: cover;
 	border-radius: 10px;
@@ -201,14 +205,15 @@ const Tag = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	align-content: baseline;
+	align-content: center;
 	margin-top: 20px;
 	padding: 5px 5px;
 `;
 const InfoHead = styled.span`
 	color: gray;
-	font-size: ${getDeviceType() === "mobile" ? "14px" : "16px"};
+	font-size: ${getDeviceType() === "mobile" ? "16px" : "18px"};
 	margin-right: ${getDeviceType() === "mobile" ? "10px" : "20px"};
+	margin-left: ${getDeviceType() === "mobile" ? "15px" : "25px"};
 `;
 const InfoBody = styled.span`
 	font-weight: 500;
