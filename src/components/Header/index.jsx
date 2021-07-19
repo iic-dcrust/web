@@ -157,7 +157,7 @@ const Header = () => {
         <NavItem onClick={() => handleChange("home")}>Home</NavItem>
         <NavItem onClick={() => handleChange("events")}>Events</NavItem>
         <NavItem onClick={() => handleChange("blogs")}>Blogs</NavItem>
-        <NavItem onClick={() => handleChange("gallery")}>Image Gallery</NavItem>
+        <NavItem onClick={() => handleChange("gallery")}>Gallery</NavItem>
         <NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
         <NavItem onClick={() => handleChange("team")}>Our Team</NavItem>
         <NavButton onClick={handleOpenLogin}>

@@ -117,11 +117,11 @@ const ImgModal = styled.img`
   margin: auto;
   object-fit: fill;
   width: ${getDeviceType() === "desktop" ? "60vw" : "90vw"};
-  height: ${getDeviceType() === "desktop" ? "60vh" : "50vh"};
+  height: ${getDeviceType() === "desktop" ? "70vh" : "50vh"};
 `;
 const ImgContainer = styled.div`
   width: ${getDeviceType() === "desktop" ? "60vw" : "90vw"};
-  height: ${getDeviceType() === "desktop" ? "60vh" : "50vh"};
+  height: ${getDeviceType() === "desktop" ? "70vh" : "50vh"};
   margin: auto;
   margin-top: 15vh;
   display: flex;

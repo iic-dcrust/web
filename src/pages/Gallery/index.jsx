@@ -38,7 +38,7 @@ export default Gallery;
 const Container = styled.div`
   width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
   margin: 0 auto;
-  background-color: ${appColors.bgVar1};
+  background-color: ${appColors.bgVar3};
   padding-top: 70px;
 `;
 const Image = styled.img`
