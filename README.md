@@ -1,4 +1,8 @@
-## Offical Web Application for Thinkbots
+## Official Web Application for Thinkbots
+
+Live At :- https://iicdcrustm.com
+
+Development Site Link :- https://dev.iicdcrustm.com
 
 ### Setup On Local
 
@@ -9,6 +13,8 @@ First Clone the Repo
 Install Node Modules
 
 > npm i
+
+Create a .env file and add credentials
 
 Start Application
 
