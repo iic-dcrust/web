@@ -65,6 +65,14 @@ const Drawer = ({
             <NavItem>Our Team</NavItem>
           </ListItemText>
         </ListItem>
+        <ListItem onClick={() => handleChange("gallery")}>
+          <ListItemIcon>
+            <PeopleRounded style={IconStyle} />
+          </ListItemIcon>
+          <ListItemText>
+            <NavItem>Image Gallery</NavItem>
+          </ListItemText>
+        </ListItem>
         <ListItem>
           <ListItemIcon>
             <AccountBox style={IconStyle} />

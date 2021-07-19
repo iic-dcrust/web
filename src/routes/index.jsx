@@ -15,6 +15,7 @@ import Events from "pages/Events";
 import EventDetails from "containers/Events/EventDetials";
 import FAQ from "containers/FAQ";
 import BlogsComponent from "containers/Blogs";
+import Gallery from "pages/Gallery";
 
 export default function App() {
   return (
@@ -40,6 +41,9 @@ export default function App() {
           </Route>
           <Route path="/team">
             <Team />
+          </Route>
+          <Route path="/gallery">
+            <Gallery />
           </Route>
           <Route>404</Route>
         </Switch>

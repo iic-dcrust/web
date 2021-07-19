@@ -4,6 +4,7 @@ import {
   HomeTeam,
   Introduction,
   Vision,
+  ExpertPanel,
 } from "containers/Homepage";
 import styled from "styled-components";
 import { appColors } from "styles/colors";
@@ -14,6 +15,7 @@ function Homepage() {
       <Introduction />
       <Vision />
       <Functions />
+      <ExpertPanel />
       <HomeEvents />
       <HomeTeam />
     </Container>

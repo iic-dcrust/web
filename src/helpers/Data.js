@@ -53,8 +53,7 @@ export const TeamData = {
     },
     {
       name: "Chirag Goyal",
-      image:
-        "https://media-exp1.licdn.com/dms/image/C5103AQHqh1hd7IiywA/profile-displayphoto-shrink_200_200/0/1575391903187?e=1626307200&v=beta&t=ZiCy2hctplwpNzE7tNpADzSP-LSQSQ-orIk4ftwr8Qg",
+      image: "https://pub.iicdcrustm.com/images/chirag.jpg",
       work: "Record of Activities",
       linkedin: "https://www.linkedin.com/in/chirag-goyal-a0959a184/",
       whatsapp: "https://wa.me/918920742810",
@@ -391,4 +390,37 @@ export const VisionData = {
   title: "VISION OF IIC",
   body: "Primarily, the IICs' role is to engage a large number of faculty and staff, and encourage, inspire, and nuture young students in various innovation and enterpreneurship-relaed activities such as ideation, problem-solving, proof of concept development, design thinking, IPR, project handling and management at pre-incubting/incubation stage, etc.,so that innovation and entrepreneurship ecosystem gets established and stabilized in HEIs.",
   image: "https://www.mic.gov.in/assets/img/iic-logo.png",
+};
+
+export const PanelData = {
+  title: "EXTERNAL EXPERT PANEL OF IIC",
+  list1: (
+    <>
+      <li>
+        <strong>Prof. Rajiv Kumar</strong>, Member Secretary, AICTE, New Delhi.
+      </li>
+      <li>
+        <strong>Prof. Shakti Kumar</strong>, Director PIET, Samalkha.
+      </li>
+      <li>
+        <strong>Mr. Vikas Garg</strong>, Deputy Director at STPI, Ministry of
+        Electronics and Information Technology, Govt. of India.
+      </li>
+      <li>
+        <strong>Mr. Gurudutt Narula</strong>, M3Y Mobile Solutions, Pune.
+      </li>
+      <li>
+        <strong>Mr. Arvind Dixit</strong>, Director & CEO, Advance Tech India
+        Pvt. Ltd., Chandigarh.
+      </li>
+      <li>
+        <strong>Dr. Rajeev Kamal</strong>, Senior Staff Engineer, Samsung
+        Semiconductor India Research (SSIR), Bangalore.
+      </li>
+      <li>
+        <strong>Mr. Kamal Sihaag</strong>, Senior Advisory Specialist, IBM,
+        India.
+      </li>
+    </>
+  ),
 };
