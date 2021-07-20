@@ -19,6 +19,7 @@ const Events = () => {
   useEffect(() => {
     updateEventsList(page, type, time);
   }, [type, time, page]);
+
   useEffect(() => {
     setPage(1);
   }, [time, type]);

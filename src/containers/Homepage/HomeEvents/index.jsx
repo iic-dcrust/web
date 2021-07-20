@@ -1,27 +1,59 @@
-import { People } from "@material-ui/icons";
+// import { People } from "@material-ui/icons";
 import { getDeviceType } from "helpers";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { appColors } from "styles/colors";
+import { ArrowRight } from "@material-ui/icons";
+import { useHistory } from "react-router";
+import axios from "helpers/axios";
+import EventBox from "containers/Events/EventBox/EventBox";
+import NoData from "assets/nodata.svg";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const HomeEvents = () => {
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    updateEventsList();
+  }, []);
+
+  const updateEventsList = () => {
+    setLoading(true);
+    axios
+      .get(`/api/events?type=${"all"}&page=${1}&time=${"upcomming"}`)
+      .then((res) => {
+        setEvent(
+          res.data.sort((x, y) => new Date(x.endTime) - new Date(y.endTime))[0]
+        );
+        setLoading(false);
+      })
+      .catch((err) => {
+        setEvent(null);
+        setLoading(false);
+      });
+  };
+
   return (
     <Container>
-      <Head>EVENT SCHEDULE</Head>
+      <Head>UPCOMING EVENTS</Head>
+      {loading ? (
+        <CircularProgress style={{ margin: "150px auto" }} />
+      ) : event ? (
+        <EventBox event={event} key={event.id} />
+      ) : (
+        <NoDataImg src={NoData} alt=" " />
+      )}
 
-      {[0, 1, 2, 3].map((item) => (
-        <Box>
-          <Info>Date</Info>
-          <Rule />
-          <Icon>
-            <People
-              style={{ fontSize: "50px", color: `${appColors.accentLight}` }}
-            />
-          </Icon>
-          <Rule />
-          <Info>Event</Info>
-        </Box>
-      ))}
+      <Button
+        onClick={() => {
+          history.push("/events");
+          window.scrollTo(0, 0);
+        }}
+      >
+        View More <ArrowRight />
+      </Button>
     </Container>
   );
 };
@@ -30,6 +62,9 @@ export default HomeEvents;
 
 const Container = styled.div`
   padding: 10vh 22vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `;
 const Head = styled.h1`
   color: ${appColors.homeText};
@@ -43,30 +78,27 @@ const Head = styled.h1`
   padding: 35px 0;
 `;
 
-const Box = styled.div`
+const Button = styled.button`
+  background-color: ${appColors.bgVar3};
+  outline: none;
+  border: 1px solid ${appColors.homeDecor};
+  padding: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  color: ${appColors.accentLight};
+  border-radius: 15px;
   display: flex;
   align-items: center;
-  padding-bottom: 20px;
-  justify-content: center;
+  max-width: 150px;
+  :hover {
+    color: ${appColors.bgVar3};
+    background-color: ${appColors.accentLight};
+    transition: all 0.35s;
+  }
 `;
-
-const Rule = styled.hr`
-  background-color: ${appColors.secondary};
+const NoDataImg = styled.img`
+  height: 200px;
   width: 200px;
-  height: 2px;
-  margin: 0 10px;
-  outline: none;
-  border: none;
-`;
-const Icon = styled.span`
-  padding: 10px 25px;
-  border-radius: 30% 5%;
-  background-color: ${appColors.bgVar3};
-`;
-
-const Info = styled.span`
-  padding: 20px 35px;
-  border-radius: 30px;
-  font-size: 24px;
-  background-color: ${appColors.bgVar3};
+  margin: 40px auto;
 `;
