@@ -1,7 +1,7 @@
 import { ArrowRight } from "@material-ui/icons";
+import { useHistory } from "react-router";
 import { getDeviceType } from "helpers";
 import React from "react";
-import { useHistory } from "react-router";
 import styled from "styled-components";
 import { appColors } from "styles/colors";
 import { TeamData } from "helpers/Data";

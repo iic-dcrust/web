@@ -47,7 +47,7 @@ const Header = () => {
           name: response.data.firstName,
         },
       });
-      console.log(response);
+      // console.log(response);
     } catch (err) {
       console.log(err);
     }
