@@ -75,7 +75,7 @@ const Head = styled.h1`
   text-decoration-color: ${appColors.homeDecor};
   text-underline-offset: 10px;
   text-align: center;
-  padding: 35px 0;
+  padding: 0 0;
 `;
 
 const Button = styled.button`
@@ -91,6 +91,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   max-width: 150px;
+  margin-top:35px;
   :hover {
     color: ${appColors.bgVar3};
     background-color: ${appColors.accentLight};
