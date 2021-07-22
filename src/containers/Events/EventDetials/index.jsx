@@ -110,12 +110,10 @@ const EventDetails = () => {
 					{!isPast &&
 					<Button
 						onClick={() =>
-							!isRegistered
-								? registerEvent()
-								: window.open(details.joinLink, "_blank")
+							window.open(details.joinLink, "_blank")
 						}
 					>
-						{isRegistered ? "Join Now" : "Register"}
+						{ "Register"}
 					</Button>
 }
 					<Tag>

@@ -14,7 +14,7 @@ const Events = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [type, setType] = useState("all");
-  const [time, setTime] = useState("all");
+  const [time, setTime] = useState("upcomming");
 
   useEffect(() => {
     updateEventsList(page, type, time);
@@ -28,7 +28,7 @@ const Events = () => {
     axios
       .get(`/api/events?type=${type}&page=${page}&time=${time}`)
       .then((res) => {
-        setEvents(res.data);
+        setEvents(res.data.reverse());
         setLoading(false);
       })
       .catch((err) => {
