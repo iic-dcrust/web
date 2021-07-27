@@ -424,3 +424,109 @@ export const PanelData = {
     </>
   ),
 };
+
+export const ScheduleData = [
+  {
+    text: "2.00-2.10 pm",
+    shortText: "Communicative and effective platform for studies",
+    description: "Happy Garg CSE 1st year",
+    domain: "IoT",
+  },
+  {
+    text: "2.10-2.20 pm",
+    shortText: "Super Pentagon",
+    description: "Anshul, Bsc. Physics (Hons.), 2nd year",
+    domain: "IoT",
+  },
+  {
+    text: "2.20-2.30 pm",
+    shortText: "Artificial Farming",
+    description: "Harsh Kumar Phogat, CSE, 2nd year",
+    domain: "AI, IoT, Automation",
+  },
+  {
+    text: "2.30-2.40 pm",
+    shortText: "AI based Artificial Limb",
+    description: "Harsh Kumar Phogat, CSE, 2nd year",
+    domain: "AI, IoT",
+  },
+  {
+    text: "2.40-2.50 pm",
+    shortText: "Smart security system for women based on IOT.",
+    description: "Akanksha Srivastava, B.Tech. ECE, IVth year",
+    domain: "IoT",
+  },
+  {
+    text: "2.50-3.00 pm",
+    shortText: "AI-based Platform to Diagnose Multiple Diseases",
+    description: "Paritosh Dahiya, B.Tech. CSE, 2nd year",
+    domain: "AI",
+  },
+  {
+    text: "3.00-3.10 pm",
+    shortText:
+      "Grapleup - A Data driven online marketplace for informal or casual learning courses.",
+    description: "Aman Sharma,EE 2nd Year",
+    domain: "Automation",
+  },
+  {
+    text: "3.10-3.20 pm",
+    shortText: "Intelligent Farming",
+    description: "Anjali Duhan , CSE , 3rd Year",
+    domain: "AI, IoT, Robotics",
+  },
+  {
+    text: "3.20-3.30 pm",
+    shortText: "Autonomous line following solar vehicle",
+    description: "PANKAJ, ECE, 1st",
+    domain: "Robotics, Automation",
+  },
+  {
+    text: "3.30-3.40 pm",
+    shortText: "The Amphibious Vehicle - VIPER",
+    description: "Aman Varchaswi , ECE, 2nd",
+    domain: "IoT, Automation",
+  },
+  {
+    text: "3.40-3.50 pm",
+    shortText: "AI CARE",
+    description: "Rahul, CSE, First year",
+    domain: "AI",
+  },
+  {
+    text: "3.50-4.00 pm",
+    shortText: "Drone Attack Prevention System",
+    description: "Nilaksh Chhabra, EE 2nd year",
+    domain: "Robotics, Automation",
+  },
+  {
+    text: "4.00-4.10 pm",
+    shortText: "Enhanced Efficiency Electric Vehicle(EEEV)",
+    description: "Naman Sharma, ME 1st year",
+    domain: "Automation",
+  },
+  {
+    text: "4.10-4.20 pm",
+    shortText: "Smart agribot",
+    description: "Ankit, M.tech(Instrum. & control),second",
+    domain: "AI, IoT, Robotics, Automation",
+  },
+  {
+    text: "4.20-4.30 pm",
+    shortText: "AQUIRRI",
+    description: "Pranav Garg, CSE 3rd year",
+    domain: "AI, IoT, Automation",
+  },
+  {
+    text: "4.30-4.40 pm",
+    shortText: "Dumb speaker",
+    description: "Chaitanya Kamra",
+    domain: "AI, IoT, Robotics, Aotomation",
+  },
+  {
+    text: "4.40-4.50 pm",
+    shortText: "Gsm dustbin",
+    description: "Chaitanya Kamra",
+    domain: "IoT, Robotics",
+  },
+];

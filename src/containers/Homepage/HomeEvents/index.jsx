@@ -9,6 +9,8 @@ import axios from "helpers/axios";
 import EventBox from "containers/Events/EventBox/EventBox";
 import NoData from "assets/nodata.svg";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Schedule from "containers/Events/EventDetials/Schedule";
+import { ScheduleData } from "helpers/Data";
 
 const HomeEvents = () => {
   const [event, setEvent] = useState(null);
@@ -45,7 +47,9 @@ const HomeEvents = () => {
       ) : (
         <NoDataImg src={NoData} alt=" " />
       )}
+      <Head>SCHEDULE</Head>
 
+      <Schedule data={ScheduleData} />
       <Button
         onClick={() => {
           history.push("/events");
