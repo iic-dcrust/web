@@ -5,6 +5,7 @@ import LeftIcon from "@material-ui/icons/ChevronLeft";
 import RightIcon from "@material-ui/icons/ChevronRight";
 import Modal from "@material-ui/core/Modal";
 import { Close } from "@material-ui/icons";
+
 const Gallery = ({ images }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
@@ -18,7 +19,7 @@ const Gallery = ({ images }) => {
     setSelected(select);
   };
   const handleRight = () => {
-    const select = selected < 5 ? selected + 1 : 1;
+    const select = selected < 12 ? selected + 1 : 1;
     setSelected(select);
   };
 

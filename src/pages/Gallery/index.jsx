@@ -7,6 +7,22 @@ import image2 from "../../assets/gallery/image2.jpeg";
 import image3 from "../../assets/gallery/image3.jpeg";
 import image4 from "../../assets/gallery/image4.jpeg";
 import image5 from "../../assets/gallery/image5.jpeg";
+import image6 from "../../assets/gallery/image6.jpeg";
+import image7 from "../../assets/gallery/image7.jpeg";
+import image8 from "../../assets/gallery/image8.jpeg";
+import image9 from "../../assets/gallery/image9.jpeg";
+import image10 from "../../assets/gallery/image10.jpeg";
+import image11 from "../../assets/gallery/image11.jpeg";
+import image12 from "../../assets/gallery/image12.jpeg";
+import image13 from "../../assets/gallery/image13.jpeg";
+import image14 from "../../assets/gallery/image14.jpeg";
+import image15 from "../../assets/gallery/image15.jpeg";
+import image16 from "../../assets/gallery/image16.jpeg";
+import image17 from "../../assets/gallery/image17.jpeg";
+import image18 from "../../assets/gallery/image18.jpeg";
+import image19 from "../../assets/gallery/image19.jpeg";
+import image20 from "../../assets/gallery/image20.jpeg";
+import image21 from "../../assets/gallery/image21.jpeg";
 import GalleryComponent from "../../containers/Gallery";
 
 const Gallery = () => {
@@ -16,7 +32,26 @@ const Gallery = () => {
     { id: 3, src: image3 },
     { id: 4, src: image4 },
     { id: 5, src: image5 },
+    
   ];
+  const ideaImages = [
+{ id: 6, src: image6 },
+    { id: 7, src: image7 },
+    { id: 8, src: image8 },
+    { id: 9, src: image9 },
+    { id: 10, src: image10 },
+    { id: 11, src: image11 },
+    { id: 12, src: image12 },
+    { id: 13, src: image13 },
+    { id: 14, src: image14 },
+    { id: 15, src: image15 },
+    { id: 16, src: image16 },
+    { id: 17, src: image17 },
+    { id: 18, src: image18 },
+    { id: 19, src: image19 },
+    { id: 20, src: image20 },
+    { id: 21, src: image21 },
+  ]
 
   return (
     <Container>
@@ -29,6 +64,10 @@ const Gallery = () => {
           <Tag>Workshop on Start-ups and Entrepreneurship</Tag>
         </EventHeader>
         <GalleryComponent images={images} />
+        <EventHeader>
+          <Tag>Idea Challenge</Tag>
+        </EventHeader>
+        <GalleryComponent images={ideaImages} />
       </Box>
     </Container>
   );
