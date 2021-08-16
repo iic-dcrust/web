@@ -36,7 +36,6 @@ export default HomeTeam;
 
 const Container = styled.div`
   align-items: center;
-  background-color: ${appColors.bgVar2};
 
   padding: 10vh 10vw;
 

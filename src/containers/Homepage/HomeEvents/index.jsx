@@ -65,6 +65,7 @@ const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  background-color: ${appColors.bgVar2};
 `;
 const Head = styled.h1`
   color: ${appColors.homeText};
@@ -91,7 +92,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   max-width: 150px;
-  margin-top:35px;
+  margin-top: 35px;
   :hover {
     color: ${appColors.bgVar3};
     background-color: ${appColors.accentLight};
