@@ -5,8 +5,6 @@ import { appColors } from "styles/colors";
 import resultData from "./resultsdata";
 
 const ResultPanel = () => {
-  console.log(resultData);
-
   return (
     <Container>
       <Head>Results of Idea Challenge</Head>
@@ -22,11 +20,11 @@ const ResultPanel = () => {
                   <TeamMember>{member}</TeamMember>
                 ))}
               </TeamMembers>
-              <div>
+              <Domains>
                 {domains.map((domain) => (
                   <Domain>{domain} </Domain>
                 ))}
-              </div>
+              </Domains>
             </Result>
           </>
         ))}
@@ -63,21 +61,21 @@ const Result = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
 `;
 const Index = styled.h2`
-  font-size: 3em;
+  font-size: ${getDeviceType() === "mobile" ? "2em" : "3em"};
   font-weight: 800;
   z-index: 1;
   opacity: 0.1;
 `;
 const Heading = styled.h3`
-  font-size: 1.4rem;
+  font-size: ${getDeviceType() === "mobile" ? "1.2rem" : "1.4rem"};
   color: #333;
   margin-bottom: 1rem;
+  text-align: center;
 `;
 const TeamLeader = styled.p`
-  font-size: 1.1rem;
+  font-size: ${getDeviceType() === "mobile" ? "1rem" : "1.1rem"};
   font-weight: 500;
   color: #567;
   margin-bottom: 1rem;
@@ -87,17 +85,23 @@ const TeamMembers = styled.div`
 `;
 const TeamMember = styled.span`
   color: #666;
-  font-size: 1rem;
+  font-size: ${getDeviceType() === "mobile" ? ".9rem" : "1rem"};
 
   &:not(:last-child)::after {
     content: ", ";
   }
 `;
+const Domains = styled.div`
+  display: flex;
+`;
 const Domain = styled.span`
-  font-size: 0.9rem;
+  font-size: ${getDeviceType() === "mobile" ? "0.8rem" : "0.9rem"};
   background-color: #bde1f1;
   border-radius: 100px;
   color: #0489c7;
   padding: 2px 20px;
-  margin-right: 10px;
+
+  &:not(:last-child) {
+    margin-right: ${getDeviceType() === "mobile" ? "8px" : "10px"};
+  }
 `;
