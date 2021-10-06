@@ -1,9 +1,13 @@
-
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
+import HeaderComponent from "./Components/Header/HeaderComponent";
+import FooterComponent from "./Components/FooterComponent";
 function App() {
   return (
-    <div className="App">
-      Admin Panel IIC-DCRUST
-    </div>
+    <BrowserRouter>
+      <HeaderComponent />;
+      <FooterComponent />
+    </BrowserRouter>
   );
 }
 

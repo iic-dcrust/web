@@ -1,0 +1,40 @@
+.formBox{
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px, rgb(0 0 0 / 6%) 0px 1px 2px 0px;
+    border-radius: 20px 20px 0px 0px;
+    padding: 50px 50px;
+}
+.formField{
+    margin-bottom: 20px !important;
+    width:100%;
+}
+.formBtn{
+    background:#0e95d4;
+    max-width: 131px;
+    padding: 10px 0 !important;
+    font-weight: 600 !important;
+}
+.dashboardHeading{
+    padding:20px 0;
+}
+.footerText{
+padding : 0 0 12px 0;
+
+}
+.logo{
+    width:50px;
+    margin-top: 6px;
+}
+.logoBox{
+    display: flex;
+}
+.logoText{
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: x-large;
+    margin-left: 10px;
+}
+.makeStyles-wrapper-6{
+    min-height: 110vh !important;
+}
