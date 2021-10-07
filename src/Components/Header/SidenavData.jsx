@@ -6,8 +6,6 @@ import {
   ListItemText,
   Button,
 } from "@material-ui/core";
-
-import DashboardIcon from "@material-ui/icons/Dashboard";
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import EventAvailableOutlinedIcon from '@mui/icons-material/EventAvailableOutlined';
 import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
