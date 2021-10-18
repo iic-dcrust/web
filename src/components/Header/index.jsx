@@ -127,64 +127,64 @@ const Header = () => {
   };
 
   return (
-    <Main>
-      <Container>
-        {user ? (
-          <Alerts
-            setAlertOpen={setAlertOpen}
-            alertOpen={alertOpen}
-            type="success"
-            title="Welcome to IIC"
-            body={`Logged in as - ${user.name}`}
-          />
-        ) : (
-          <Alerts
-            setAlertOpen={setAlertOpen}
-            alertOpen={alertOpen}
-            type="info"
-            title="Thanks for Visiting"
-            body="Successfully logged out."
-          />
-        )}
-        <MainLogo />
-        <Name onClick={() => handleChange("home")}>
-          {getDeviceType() === "mobile"
-            ? "IIC Dcrust"
-            : "Institute Innovation Cell"}
-        </Name>
-      </Container>
-      <Nav>
-        <NavItem onClick={() => handleChange("home")}>Home</NavItem>
-        <NavItem onClick={() => handleChange("events")}>Events</NavItem>
-        <NavItem onClick={() => handleChange("blogs")}>Blogs</NavItem>
-        <NavItem onClick={() => handleChange("gallery")}>Gallery</NavItem>
-        <NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
-        <NavItem onClick={() => handleChange("team")}>Our Team</NavItem>
-        <NavButton onClick={handleOpenLogin}>
-          {user ? "Logout" : "Login"}
-        </NavButton>
-      </Nav>
-      <LoginModal
-        login={login}
-        handleCloseLogin={handleCloseLogin}
-        setAlertOpen={setAlertOpen}
-      />
-      <DrawerIcon>
-        <IconButton>
-          <MenuIcon style={{ color: "#fafafa" }} onClick={toggleDrawer} />
-        </IconButton>
-      </DrawerIcon>
-      <Drawer anchor={"bottom"} open={open} onClose={toggleDrawer}>
-        <DrawerStructure
-          handleOpenLogin={handleOpenLogin}
-          login={login}
-          handleCloseLogin={handleCloseLogin}
-          handleChange={handleChange}
-          toggleDrawer={toggleDrawer}
-        />
-      </Drawer>
-    </Main>
-  );
+		<Main>
+			<Container>
+				{user ? (
+					<Alerts
+						setAlertOpen={setAlertOpen}
+						alertOpen={alertOpen}
+						type="success"
+						title="Welcome to IIC"
+						body={`Logged in as - ${user.name}`}
+					/>
+				) : (
+					<Alerts
+						setAlertOpen={setAlertOpen}
+						alertOpen={alertOpen}
+						type="info"
+						title="Thanks for Visiting"
+						body="Successfully logged out."
+					/>
+				)}
+				<MainLogo />
+				<Name onClick={() => handleChange("home")}>
+					{getDeviceType() === "mobile"
+						? "IIC Dcrust"
+						: "Institute Innovation Council"}
+				</Name>
+			</Container>
+			<Nav>
+				<NavItem onClick={() => handleChange("home")}>Home</NavItem>
+				<NavItem onClick={() => handleChange("events")}>Events</NavItem>
+				<NavItem onClick={() => handleChange("blogs")}>Blogs</NavItem>
+				<NavItem onClick={() => handleChange("gallery")}>Gallery</NavItem>
+				<NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
+				<NavItem onClick={() => handleChange("team")}>Our Team</NavItem>
+				<NavButton onClick={handleOpenLogin}>
+					{user ? "Logout" : "Login"}
+				</NavButton>
+			</Nav>
+			<LoginModal
+				login={login}
+				handleCloseLogin={handleCloseLogin}
+				setAlertOpen={setAlertOpen}
+			/>
+			<DrawerIcon>
+				<IconButton>
+					<MenuIcon style={{ color: "#fafafa" }} onClick={toggleDrawer} />
+				</IconButton>
+			</DrawerIcon>
+			<Drawer anchor={"bottom"} open={open} onClose={toggleDrawer}>
+				<DrawerStructure
+					handleOpenLogin={handleOpenLogin}
+					login={login}
+					handleCloseLogin={handleCloseLogin}
+					handleChange={handleChange}
+					toggleDrawer={toggleDrawer}
+				/>
+			</Drawer>
+		</Main>
+	);
 };
 
 export default Header;
