@@ -61,11 +61,11 @@ const HomeEvents = () => {
 export default HomeEvents;
 
 const Container = styled.div`
-  padding: 10vh 22vw;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  background-color: ${appColors.bgVar2};
+	padding: 10vh 22vw;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	background-color: ${appColors.bgVar1};
 `;
 const Head = styled.h1`
   color: ${appColors.homeText};

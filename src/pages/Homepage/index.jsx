@@ -12,16 +12,15 @@ import { appColors } from "styles/colors";
 
 function Homepage() {
   return (
-    <Container>
-      <Introduction />
-      <Vision />
-      <Functions />
-      <ExpertPanel />
-      <ResultPanel />
-      <HomeEvents />
-      <HomeTeam />
-    </Container>
-  );
+		<Container>
+			<Introduction />
+			<Vision />
+			<Functions />
+			<ExpertPanel />
+			<HomeEvents />
+			<HomeTeam />
+		</Container>
+	);
 }
 
 export default Homepage;

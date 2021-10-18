@@ -5,42 +5,42 @@ import React from "react";
 import styled from "styled-components";
 import { appColors } from "styles/colors";
 import { TeamData } from "helpers/Data";
+import { baseColor, baseStyle } from "styles/base";
 
 const HomeTeam = () => {
-  const history = useHistory();
-  return (
-    <Container>
-      <Head>Meet the Team</Head>
-      <Box>
-        {TeamData["teacher"].map((item) => (
-          <Person>
-            <Image src={item.image} />
-            <Name>{item.name}</Name>
-            <Work>{item.work}</Work>
-          </Person>
-        ))}
-      </Box>
-      <Button
-        onClick={() => {
-          history.push("/team");
-          window.scrollTo(0, 0);
-        }}
-      >
-        View More <ArrowRight />
-      </Button>
-    </Container>
-  );
+	const history = useHistory();
+	return (
+		<Container>
+			<Head>Meet the Team</Head>
+			<Box>
+				{TeamData["teacher"].map((item) => (
+					<Person>
+						<Image src={item.image} />
+						<Name>{item.name}</Name>
+						<Work>{item.work}</Work>
+					</Person>
+				))}
+			</Box>
+			<Button
+				onClick={() => {
+					history.push("/team");
+					window.scrollTo(0, 0);
+				}}
+			>
+				View More <ArrowRight />
+			</Button>
+		</Container>
+	);
 };
 
 export default HomeTeam;
 
 const Container = styled.div`
-  align-items: center;
-
-  padding: 10vh 10vw;
-
-  display: flex;
-  flex-direction: column;
+	align-items: center;
+	padding: 10vh 10vw;
+	display: flex;
+	flex-direction: column;
+	background-color: ${appColors.bgVar2};
 `;
 
 const Head = styled.h1`
