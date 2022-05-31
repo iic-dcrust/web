@@ -191,9 +191,27 @@ export const TeamData = {
       work: "Assistant Professor, ECED",
     },
   ],
+  "overall-co": [
+    {
+      name: "Tushar",
+      image: "https://pub.iicdcrustm.com/images/tushar.JPG",
+      work: "Coordinator",
+      year: "2021-2022",
+      telegram: "https://t.me/iamtushar324",
+      linkedin: "https://www.linkedin.com/in/tushar-bhardwaj-5a820a193/",
+    },
+    {
+      name: "Harsh Kumar phogat",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Coordinator",
+      year: "2022-2023",
+    },
+  ],
   "student-co": [
     {
       name: "Tushar",
+      year: "2021-2022",
       image: "https://pub.iicdcrustm.com/images/tushar.JPG",
       work: "Full Stack Developer",
       telegram: "https://t.me/iamtushar324",
@@ -201,6 +219,7 @@ export const TeamData = {
     },
     {
       name: "Vinay Matta",
+      year: "2021-2022",
       image: "https://pub.iicdcrustm.com/images/vinay.jpeg",
       work: "Full Stack Developer",
       telegram: "https://telegram.me/VinayMatta63",
@@ -208,18 +227,21 @@ export const TeamData = {
     },
     {
       name: "Nikita Jain",
+      year: "2021-2022",
       image: "https://pub.iicdcrustm.com/images/nikita.jpeg",
       work: "Developer",
       linkedin: "https://www.linkedin.com/in/nikita-jain-97b463149/",
     },
     {
       name: "Deepanshu Kaushik",
+      year: "2021-2022",
       image: "https://pub.iicdcrustm.com/images/deepanshu.jpg",
       work: "Record of Activities",
       linkedin: "https://www.linkedin.com/in/deepanshu-kaushik-a479301b3/",
     },
     {
       name: "Chirag Goyal",
+      year: "2021-2022",
       image:
         "https://media-exp1.licdn.com/dms/image/C5103AQHqh1hd7IiywA/profile-displayphoto-shrink_200_200/0/1575391903187?e=1626307200&v=beta&t=ZiCy2hctplwpNzE7tNpADzSP-LSQSQ-orIk4ftwr8Qg",
       work: "Record of Activities",
@@ -228,6 +250,7 @@ export const TeamData = {
     },
     {
       name: "Hemant",
+      year: "2021-2022",
       image:
         "https://media-exp1.licdn.com/dms/image/C5103AQGF5s5cpSLHaQ/profile-displayphoto-shrink_200_200/0/1561714126384?e=1626307200&v=beta&t=_w5sGBFfQGdySpYDvO5J2odbU029V__rq4cHRf90MEk",
       work: "Record of Activities",
@@ -236,18 +259,21 @@ export const TeamData = {
     },
     {
       name: "Rohan Malik",
+      year: "2021-2022",
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Media/ Publicity",
     },
     {
       name: "Yashwant Soni",
+      year: "2021-2022",
       image: "https://pub.iicdcrustm.com/images/yashwant.jfif",
       work: "Media/ Publicity",
       linkedin: "https://www.linkedin.com/in/yashwant-soni-5354ba169",
     },
     {
       name: "Anjali Duhan",
+      year: "2021-2022",
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Event Management",
@@ -255,6 +281,7 @@ export const TeamData = {
     },
     {
       name: "Yash Mohan",
+      year: "2021-2022",
       image: "https://pub.iicdcrustm.com/images/yashmohan.png",
       work: "Event Management",
       linkedin: "https://www.linkedin.com/in/yash-mohan-060b23190",
@@ -262,6 +289,7 @@ export const TeamData = {
     },
     {
       name: "Devansh Atray",
+      year: "2021-2022",
       image: "https://pub.iicdcrustm.com/images/devansh.jpg",
       work: "Event Management",
       linkedin: "https://www.linkedin.com/in/devanshatray",
@@ -269,9 +297,90 @@ export const TeamData = {
     },
     {
       name: "Tamanna Verma",
+      year: "2021-2022",
       image:
         "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
       work: "Event Management",
+    },
+    {
+      name: "Harsh Kumar phogat",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Coordinator",
+      year: "2022-2023",
+    },
+    {
+      name: "Chaitanya Gupta",
+      year: "2022-2023",
+      image: "https://pub.iicdcrustm.com/images/chaitanaya.png",
+      work: "Website Dev Coordinator",
+      linkedin: "https://www.linkedin.com/in/guptachaitanya/",
+    },
+    {
+      name: "Paritosh Dahiya",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Website Dev Coordinator",
+      linkedin: "https://www.linkedin.com/in/paritosh-dahiya-57b568192/",
+      telegram: "https://telegram.me/hnhparitosh",
+    },
+    {
+      name: "Rahul Saini",
+      year: "2022-2023",
+      image: "https://pub.iicdcrustm.com/images/rahul.jpg",
+      work: "Social Media Publicity",
+      linkedin: "https://www.linkedin.com/in/rahul-saini-b712311a8",
+    },
+    {
+      name: "Jatin",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Event Management",
+      linkedin: "https://www.linkedin.com/in/jatin-saini-467223193/",
+    },
+    {
+      name: "Yuvraj Singh",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Event Management",
+    },
+    {
+      name: "Rishabh Kalra",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Event Management",
+    },
+    {
+      name: "Rohan Malik",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Poster/Certificate Designing",
+    },
+    {
+      name: "Rahul",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Poster/Certificate Designing",
+    },
+    {
+      name: "Neha",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Poster/Certificate Designing",
+    },
+    {
+      name: "Suhavna",
+      year: "2022-2023",
+      image:
+        "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg",
+      work: "Poster/Certificate Designing",
     },
   ],
   members: [
@@ -282,7 +391,7 @@ export const TeamData = {
       work: "Member",
     },
     {
-      name: "Chaitanya",
+      name: "Chaitanya Gupta",
       image: "https://pub.iicdcrustm.com/images/chaitanaya.png",
       work: "Member",
       linkedin: "https://www.linkedin.com/in/guptachaitanya/",

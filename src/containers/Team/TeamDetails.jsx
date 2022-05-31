@@ -19,7 +19,16 @@ const TeamDetails = ({ details }) => {
         getDeviceType() === "mobile" && setActive((prev) => !prev);
       }}
     >
-      <Image src={details.image} alt="" active={active} />
+      <Image
+        src={details.image}
+        alt=""
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src =
+            "https://i.pinimg.com/originals/99/29/4a/99294a1f9c7e060973ee95fdb2a667b7.jpg";
+        }}
+        active={active}
+      />
       <Icons active={active}>
         {details.whatsapp ? (
           <a href={details.whatsapp}>
@@ -60,6 +69,7 @@ const TeamDetails = ({ details }) => {
 
       <Name active={active}>{details.name}</Name>
       <Work active={active}>{details.work}</Work>
+      {details.year && <Year active={active}>{details.year}</Year>}
     </Person>
   );
 };
@@ -70,19 +80,29 @@ const Person = styled.div`
   justify-content: center;
   align-items: center;
   color: ${appColors.primary};
-  padding: 15px 30px;
-  margin: 30px 30px;
+  padding: 20px 30px;
+  margin: 40px 30px;
   transform: translateY(-10px);
 `;
 
 const Name = styled.h3`
-  padding-top: 20px;
+  margin-top: 50px;
+  /* padding-top: 20px; */
   font-weight: 600;
   transform: translateY(10px);
   transition-duration: 0.3s;
   opacity: 1;
   ${(props) => props.active && `opacity:0;`}
 `;
+
+const Year = styled.h4`
+  font-weight: 500;
+  opacity: 1;
+  transition-duration: 0.3s;
+  ${(props) => props.active && `opacity:0;`}
+  color: #777;
+`;
+
 const Image = styled.img`
   height: ${getDeviceType() === "mobile" ? "100px" : "100px"};
   width: 100px;
