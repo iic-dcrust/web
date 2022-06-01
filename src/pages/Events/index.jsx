@@ -29,7 +29,7 @@ const Events = () => {
     axios
       .get(`/api/events?type=${type}&page=${page}&time=${time}`)
       .then((res) => {
-        setEvents(res.data.reverse());
+        setEvents(res.data);
         setLoading(false);
       })
       .catch((err) => {
