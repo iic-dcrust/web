@@ -11,7 +11,7 @@ const Links = () => {
 			<Column>
 				<Head>Quick Links</Head>
 				<Body>
-					<Link onClick={() => history.push("/blogs")}>Blogs</Link>
+					<Link onClick={() => history.push("/achievements")}>Achievements</Link>
 					<Link onClick={() => history.push("/faq")}>FAQ's</Link>
 					<Link onClick={() => history.push("/team")}>Our Team</Link>
 					<Link onClick={() => history.push("/events")}>Events</Link>

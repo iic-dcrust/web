@@ -86,20 +86,20 @@ const Person = styled.div`
 `;
 
 const Name = styled.h3`
-  margin-top: 50px;
+  margin-top: 100px;
   /* padding-top: 20px; */
   font-weight: 600;
   transform: translateY(10px);
   transition-duration: 0.3s;
   opacity: 1;
-  ${(props) => props.active && `opacity:0;`}
+  ${(props) => props.active && `opacity:1;`}
 `;
 
 const Year = styled.h4`
   font-weight: 500;
   opacity: 1;
   transition-duration: 0.3s;
-  ${(props) => props.active && `opacity:0;`}
+  ${(props) => props.active && `opacity:1;`}
   color: #777;
 `;
 
@@ -122,7 +122,7 @@ const Work = styled.h4`
   transform: translateY(10px);
   opacity: 1;
   transition-duration: 0.3s;
-  ${(props) => props.active && `opacity:0;`}
+  ${(props) => props.active && `opacity:1;`}
 `;
 
 const Icons = styled.div`
