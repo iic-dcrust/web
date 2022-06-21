@@ -41,12 +41,12 @@ const Drawer = ({
             <NavItem>Events</NavItem>
           </ListItemText>
         </ListItem>
-        <ListItem onClick={() => handleChange("blogs")}>
+        <ListItem onClick={() => handleChange("achievements")}>
           <ListItemIcon>
             <RateReview style={IconStyle} />
           </ListItemIcon>
           <ListItemText>
-            <NavItem>Blogs</NavItem>
+            <NavItem>Achievements</NavItem>
           </ListItemText>
         </ListItem>
         <ListItem onClick={() => handleChange("faq")}>
