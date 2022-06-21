@@ -49,9 +49,6 @@ function TeamBox() {
             } else if (type === "student-co" && item.year === year) {
               return <TeamDetails details={item} />;
             }
-            else{
-              return <TeamDetails/>
-            }
           } else {
             return null;
           }
