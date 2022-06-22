@@ -51,7 +51,7 @@ const Header = () => {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [dispatch]);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -103,8 +103,8 @@ const Header = () => {
           window.scrollTo(0, 0);
         }
         break;
-      case "blogs":
-        history.push("/blogs");
+      case "achievements":
+        history.push("/achievements");
         if (process.browser) {
           window.scrollTo(0, 0);
         }
@@ -156,7 +156,7 @@ const Header = () => {
 			<Nav>
 				<NavItem onClick={() => handleChange("home")}>Home</NavItem>
 				<NavItem onClick={() => handleChange("events")}>Events</NavItem>
-				<NavItem onClick={() => handleChange("blogs")}>Blogs</NavItem>
+				<NavItem onClick={() => handleChange("achievements")}>Achievements</NavItem>
 				<NavItem onClick={() => handleChange("gallery")}>Gallery</NavItem>
 				<NavItem onClick={() => handleChange("faq")}>FAQ's</NavItem>
 				<NavItem onClick={() => handleChange("team")}>Our Team</NavItem>

@@ -36,7 +36,7 @@ export default function App() {
           <Route path="/faq">
             <FAQ />
           </Route>
-          <Route path="/blogs">
+          <Route path="/achievements">
             <BlogsComponent />
           </Route>
           <Route path="/team">

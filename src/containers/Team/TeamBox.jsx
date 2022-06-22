@@ -44,7 +44,7 @@ function TeamBox() {
 
         {TeamData[type].map((item) => {
           if ((item.type = type)) {
-            if (type != "student-co") {
+            if (type !== "student-co") {
               return <TeamDetails details={item} />;
             } else if (type === "student-co" && item.year === year) {
               return <TeamDetails details={item} />;

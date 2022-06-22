@@ -23,6 +23,22 @@ import image18 from "../../assets/gallery/image18.jpeg";
 import image19 from "../../assets/gallery/image19.jpeg";
 import image20 from "../../assets/gallery/image20.jpeg";
 import image21 from "../../assets/gallery/image21.jpeg";
+import image22 from "../../assets/gallery/image22.jpeg";
+import image23 from "../../assets/gallery/image23.jpeg";
+import image24 from "../../assets/gallery/image24.jpeg";
+import image25 from "../../assets/gallery/image25.jpeg";
+import image26 from "../../assets/gallery/image26.jpeg";
+import image27 from "../../assets/gallery/image27.jpeg";
+import image28 from "../../assets/gallery/image28.jpeg";
+import image29 from "../../assets/gallery/image29.jpeg";
+import image30 from "../../assets/gallery/image30.jpeg";
+import image31 from "../../assets/gallery/image31.jpg";
+import image32 from "../../assets/gallery/image32.jpg";
+import image33 from "../../assets/gallery/image33.jpeg";
+import image34 from "../../assets/gallery/image34.jpeg";
+import image35 from "../../assets/gallery/image35.jpeg";
+import image36 from "../../assets/gallery/image36.jpeg";
+import image37 from "../../assets/gallery/image37.jpeg";
 import GalleryComponent from "../../containers/Gallery";
 
 const Gallery = () => {
@@ -31,11 +47,10 @@ const Gallery = () => {
     { id: 2, src: image2 },
     { id: 3, src: image3 },
     { id: 4, src: image4 },
-    { id: 5, src: image5 },
-    
+    { id: 5, src: image5 }
   ];
   const ideaImages = [
-{ id: 6, src: image6 },
+    { id: 6, src: image6 },
     { id: 7, src: image7 },
     { id: 8, src: image8 },
     { id: 9, src: image9 },
@@ -50,7 +65,27 @@ const Gallery = () => {
     { id: 18, src: image18 },
     { id: 19, src: image19 },
     { id: 20, src: image20 },
-    { id: 21, src: image21 },
+    { id: 21, src: image21 }
+  ];
+  const devprogramImages = [
+    { id: 22, src: image22 },
+    { id: 23, src: image23 },
+    { id: 24, src: image24 },
+    { id: 25, src: image25 },
+    { id: 26, src: image26 },
+    { id: 27, src: image27 },
+    { id: 28, src: image28 },
+    { id: 29, src: image29 },
+    { id: 30, src: image30 }
+  ];
+  const patentImages = [
+    { id: 31, src: image31 },
+    { id: 32, src: image32 },
+    { id: 33, src: image33 },
+    { id: 34, src: image34 },
+    { id: 35, src: image35 },
+    { id: 36, src: image36 },
+    { id: 37, src: image37 }
   ]
 
   return (
@@ -68,12 +103,21 @@ const Gallery = () => {
           <Tag>Idea Challenge</Tag>
         </EventHeader>
         <GalleryComponent images={ideaImages} />
+        <EventHeader>
+          <Tag>Entrepreneurship Development Programme</Tag>
+        </EventHeader>
+        <GalleryComponent images={devprogramImages} />
+        <EventHeader>
+          <Tag>Patent Expert Lecture</Tag>
+        </EventHeader>
+        <GalleryComponent images={patentImages} />
       </Box>
     </Container>
   );
 };
 
 export default Gallery;
+
 const Container = styled.div`
   width: ${getDeviceType() === "mobile" ? "100vw" : "75vw"};
   margin: 0 auto;
